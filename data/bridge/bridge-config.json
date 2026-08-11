@@ -10,5 +10,6 @@
     "enabled": true,
     "threshold": 0.8
   },
-  "embedKey": "sk-cuerpckyglkblcnapzbqufgrntwolpenfcgkybgpxrfekjue"
+  "embedKey": "sk-cuerpckyglkblcnapzbqufgrntwolpenfcgkybgpxrfekjue",
+  "barkUrl": "https://api.day.app/oyJyckFe8WGPjLMoj4mHyJ"
 }
