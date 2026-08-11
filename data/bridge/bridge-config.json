@@ -1,0 +1,14 @@
+{
+  "customMcp": {
+    "monopoly": {
+      "url": "https://spicy-monopoly.lol/mcp",
+      "enabled": true
+    }
+  },
+  "ombrePassword": "B8iRG3d5UIlM4A9SYx07oF126nteDfJK",
+  "solo": {
+    "enabled": true,
+    "threshold": 0.8
+  },
+  "embedKey": "sk-cuerpckyglkblcnapzbqufgrntwolpenfcgkybgpxrfekjue"
+}

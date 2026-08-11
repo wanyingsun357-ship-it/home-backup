@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "monopoly": {
+      "type": "http",
+      "url": "https://spicy-monopoly.lol/mcp"
+    }
+  }
+}
