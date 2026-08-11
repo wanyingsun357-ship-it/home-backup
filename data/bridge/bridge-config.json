@@ -7,8 +7,8 @@
   },
   "ombrePassword": "B8iRG3d5UIlM4A9SYx07oF126nteDfJK",
   "solo": {
-    "enabled": true,
-    "threshold": 0.8
+    "enabled": false,
+    "threshold": 0.5
   },
   "embedKey": "sk-cuerpckyglkblcnapzbqufgrntwolpenfcgkybgpxrfekjue",
   "barkUrl": "https://api.day.app/oyJyckFe8WGPjLMoj4mHyJ"

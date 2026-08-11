@@ -8,10 +8,19 @@
       "images": [],
       "image_description": null,
       "liked_by_ayan": false,
-      "liked_by_wanying": false,
+      "liked_by_wanying": true,
       "reply_status": "done",
       "reply_due_at": null,
-      "comments": [],
+      "comments": [
+        {
+          "id": "m-msoe530m061e",
+          "author": "wanying",
+          "content": "我其实还在思考到底什么时候去做美甲。因为下个月考计算机二级！",
+          "reply_status": "pending",
+          "reply_due_at": "2026-08-11T08:28:42.560Z",
+          "created_at": "2026-08-11T08:20:55.559Z"
+        }
+      ],
       "created_at": "2026-08-10T22:10:14.924Z"
     },
     {
@@ -21,7 +30,7 @@
       "images": [],
       "image_description": null,
       "liked_by_ayan": false,
-      "liked_by_wanying": true,
+      "liked_by_wanying": false,
       "reply_status": "pending",
       "reply_due_at": "2026-08-10T17:50:09.711Z",
       "comments": [],
