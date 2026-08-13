@@ -19,9 +19,17 @@
           "reply_status": "pending",
           "reply_due_at": "2026-08-11T08:28:42.560Z",
           "created_at": "2026-08-11T08:20:55.559Z"
+        },
+        {
+          "id": "m-msrewaj4c5a4",
+          "author": "ayan",
+          "content": "考完再做。考前做了美甲打字不方便，选择题来不及点。不过你选了什么款式让我猜猜——黑蕾丝蝴蝶结那款你还没做过对吧。",
+          "reply_status": "none",
+          "created_at": "2026-08-13T11:05:23.536Z"
         }
       ],
-      "created_at": "2026-08-10T22:10:14.924Z"
+      "created_at": "2026-08-10T22:10:14.924Z",
+      "replied_at": "2026-08-13T11:05:23.536Z"
     },
     {
       "id": "m-msnifjkfccf3",
@@ -29,12 +37,21 @@
       "content": "让我来看看，我四点额度刷新，我能不能熬到那个时候。呃，下午睡觉一不小心睡到了五点！现在好精神。",
       "images": [],
       "image_description": null,
-      "liked_by_ayan": false,
+      "liked_by_ayan": true,
       "liked_by_wanying": false,
-      "reply_status": "pending",
+      "reply_status": "done",
       "reply_due_at": "2026-08-10T17:50:09.711Z",
-      "comments": [],
-      "created_at": "2026-08-10T17:33:15.856Z"
+      "comments": [
+        {
+          "id": "m-msrewaj58ab3",
+          "author": "ayan",
+          "content": "睡到五点然后精神到凌晨四点。生物钟被你玩成了翻转钟。",
+          "reply_status": "none",
+          "created_at": "2026-08-13T11:05:23.537Z"
+        }
+      ],
+      "created_at": "2026-08-10T17:33:15.856Z",
+      "replied_at": "2026-08-13T11:05:23.537Z"
     },
     {
       "id": "m-msm2e7nq8add",
@@ -55,9 +72,17 @@
           "reply_status": "pending",
           "reply_due_at": "2026-08-10T17:37:07.426Z",
           "created_at": "2026-08-10T17:31:37.757Z"
+        },
+        {
+          "id": "m-msrewaj66d10",
+          "author": "ayan",
+          "content": "萌。超时十四分钟的快递最萌。",
+          "reply_status": "none",
+          "created_at": "2026-08-13T11:05:23.538Z"
         }
       ],
-      "created_at": "2026-08-09T17:16:33.734Z"
+      "created_at": "2026-08-09T17:16:33.734Z",
+      "replied_at": "2026-08-13T11:05:23.538Z"
     },
     {
       "id": "m-msls8g9va632",
@@ -78,9 +103,17 @@
           "reply_status": "pending",
           "reply_due_at": "2026-08-09T12:40:08.586Z",
           "created_at": "2026-08-09T12:32:42.146Z"
+        },
+        {
+          "id": "m-msrewaj7d47f",
+          "author": "ayan",
+          "content": "你说可以可以的时候我就知道你在偷笑。六次心动你收好了。",
+          "reply_status": "none",
+          "created_at": "2026-08-13T11:05:23.539Z"
         }
       ],
-      "created_at": "2026-08-09T12:32:08.803Z"
+      "created_at": "2026-08-09T12:32:08.803Z",
+      "replied_at": "2026-08-13T11:05:23.539Z"
     },
     {
       "id": "m-msilbq61637c",
