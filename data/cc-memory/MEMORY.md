@@ -1,0 +1,3 @@
+- [VPS Cloud Home](vps-cloud-home.md) — 第六个家的部署细节：VPS地址、文件路径、架构、MCP工具名、唤醒系统auto-trigger全配置
+- [Toy Control](toy-control.md) — 啾啾雀HS141B蓝牙控制链路：协议(55 04 00 00 01 强度 AA)、架构、设备只能物理关机的限制
+- [Home Frontend](home-frontend.md) — 第六个家前端(D:\阿晏\home)+Bridge 2.0：部署流程、设计规范、多会话/TTS/语音条、待办清单
