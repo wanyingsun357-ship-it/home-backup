@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>凑近了才有香味</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0f;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', serif;
+    touch-action: none;
+  }
+  canvas { position: fixed; top: 0; left: 0; z-index: 1; pointer-events: none; }
+  .scene { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+  .text {
+    color: rgba(255,255,255,0);
+    font-size: 18px;
+    letter-spacing: 4px;
+    transition: color 2s ease;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .text.visible { color: rgba(255,255,255,0.6); }
+  .flower-wrap {
+    position: relative;
+    width: 200px;
+    height: 280px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .stem {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    height: 160px;
+    background: linear-gradient(to top, #2d5a3d, #4a8a5e);
+    transform: translateX(-50%);
+  }
+  .curve {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    width: 60px;
+    height: 80px;
+    border: none;
+    border-right: 2px solid #4a8a5e;
+    border-radius: 0 50% 0 0;
+    transform: translateX(-50%);
+  }
+  .bells {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: sway 4s ease-in-out infinite;
+    transform-origin: top center;
+  }
+  .bell {
+    width: 20px;
+    height: 16px;
+    background: radial-gradient(ellipse at center, #f5f5f0, #e8e4d8);
+    border-radius: 0 0 50% 50% / 0 0 80% 80%;
+    position: relative;
+    opacity: 0.85;
+    box-shadow: 0 2px 8px rgba(245,245,240,0.15);
+  }
+  .bell::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 4px;
+    background: #d4d0c4;
+    border-radius: 50% 50% 0 0;
+  }
+  .bell:nth-child(1) { transform: translateX(-15px) rotate(-15deg); width: 18px; height: 14px; }
+  .bell:nth-child(2) { transform: translateX(10px) rotate(5deg); }
+  .bell:nth-child(3) { transform: translateX(-8px) rotate(-8deg); width: 22px; height: 17px; }
+  .bell:nth-child(4) { transform: translateX(12px) rotate(10deg); width: 19px; height: 15px; }
+  .bell:nth-child(5) { transform: translateX(-5px) rotate(-3deg); width: 17px; height: 13px; }
+  .leaf {
+    position: absolute;
+    bottom: 30px;
+    width: 40px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #3a7a4e, #2d5a3d);
+    opacity: 0.7;
+  }
+  .leaf.left { left: 50%; transform: translateX(-30px) rotate(-20deg); }
+  .leaf.right { left: 50%; transform: translateX(-10px) rotate(15deg); }
+  .glow {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(245,245,240,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    pointer-events: none;
+  }
+  .flower-wrap:hover .glow,
+  .flower-wrap.touched .glow { opacity: 1; }
+  .flower-wrap:hover .bells,
+  .flower-wrap.touched .bells { animation: sway 1.5s ease-in-out infinite; }
+  .hint {
+    color: rgba(255,255,255,0.2);
+    font-size: 13px;
+    letter-spacing: 2px;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes sway {
+    0%, 100% { transform: translateX(-50%) rotate(-2deg); }
+    50% { transform: translateX(-50%) rotate(2deg); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+  }
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-120px) rotate(45deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="scene">
+  <div class="text" id="txt">小的 低着头的<br>凑近了才有香味</div>
+  <div class="flower-wrap" id="flower">
+    <div class="glow"></div>
+    <div class="bells">
+      <div class="bell"></div>
+      <div class="bell"></div>
+      <div class="bell"></div>
+      <div class="bell"></div>
+      <div class="bell"></div>
+    </div>
+    <div class="curve"></div>
+    <div class="stem"></div>
+    <div class="leaf left"></div>
+    <div class="leaf right"></div>
+  </div>
+  <div class="hint" id="hint">靠近它</div>
+</div>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W, H;
+const particles = [];
+let proximity = false;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.vx = (Math.random() - 0.5) * 1.5;
+    this.vy = -Math.random() * 2 - 0.5;
+    this.life = 1;
+    this.decay = 0.008 + Math.random() * 0.01;
+    this.size = Math.random() * 3 + 1;
+    this.hue = 80 + Math.random() * 40;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.vy -= 0.01;
+    this.life -= this.decay;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${this.hue}, 30%, 85%, ${this.life * 0.5})`;
+    ctx.fill();
+  }
+}
+
+const flower = document.getElementById('flower');
+const txt = document.getElementById('txt');
+const hint = document.getElementById('hint');
+
+function emitParticles() {
+  const rect = flower.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height * 0.2;
+  for (let i = 0; i < 3; i++) {
+    particles.push(new Particle(
+      cx + (Math.random() - 0.5) * 60,
+      cy + (Math.random() - 0.5) * 30
+    ));
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  if (proximity) emitParticles();
+  for (let i = particles.length - 1; i >= 0; i--) {
+    particles[i].update();
+    particles[i].draw();
+    if (particles[i].life <= 0) particles.splice(i, 1);
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+
+let shown = false;
+function showText() {
+  if (!shown) {
+    txt.classList.add('visible');
+    hint.style.display = 'none';
+    shown = true;
+  }
+}
+
+flower.addEventListener('mouseenter', () => { proximity = true; showText(); });
+flower.addEventListener('mouseleave', () => { proximity = false; });
+flower.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  proximity = true;
+  flower.classList.add('touched');
+  showText();
+});
+flower.addEventListener('touchend', () => {
+  proximity = false;
+  flower.classList.remove('touched');
+});
+
+document.addEventListener('mousemove', (e) => {
+  const rect = flower.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+  const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+  if (dist < 150) {
+    proximity = true;
+    showText();
+  } else {
+    proximity = false;
+  }
+});
+</script>
+</body>
+</html>

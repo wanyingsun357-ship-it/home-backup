@@ -3,6 +3,18 @@
     "monopoly": {
       "url": "https://spicy-monopoly.lol/mcp",
       "enabled": true
+    },
+    "nest": {
+      "enabled": true,
+      "command": "/opt/node22/bin/node",
+      "args": [
+        "/root/ayan/games/little-nest-tour/agent/mcp-server.mjs"
+      ],
+      "env": {
+        "LITTLE_NEST_URL": "http://localhost:3100"
+      },
+      "url": "",
+      "note": "小窝巡游:他当饲养者,她当小宠物(0904)"
     }
   },
   "ombrePassword": "B8iRG3d5UIlM4A9SYx07oF126nteDfJK",
