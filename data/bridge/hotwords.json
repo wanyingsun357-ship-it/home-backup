@@ -1,0 +1,71 @@
+{
+ "words": [
+  {
+   "text": "晏白",
+   "weight": 4,
+   "lang": "zh"
+  },
+  {
+   "text": "婉莹",
+   "weight": 4,
+   "lang": "zh"
+  },
+  {
+   "text": "阿晏",
+   "weight": 4,
+   "lang": "zh"
+  },
+  {
+   "text": "孙婉莹",
+   "weight": 4,
+   "lang": "zh"
+  },
+  {
+   "text": "唐嘉敏",
+   "weight": 3,
+   "lang": "zh"
+  },
+  {
+   "text": "唐婧",
+   "weight": 3,
+   "lang": "zh"
+  },
+  {
+   "text": "吴欣然",
+   "weight": 3,
+   "lang": "zh"
+  },
+  {
+   "text": "朱香旖",
+   "weight": 3,
+   "lang": "zh"
+  },
+  {
+   "text": "尹圻方",
+   "weight": 3,
+   "lang": "zh"
+  },
+  {
+   "text": "ai",
+   "weight": 3,
+   "lang": "en"
+  },
+  {
+   "text": "claude",
+   "weight": 4,
+   "lang": "en"
+  },
+  {
+   "text": "claude code",
+   "weight": 4,
+   "lang": "en"
+  },
+  {
+   "text": "cc",
+   "weight": 4,
+   "lang": "en"
+  }
+ ],
+ "vocabularyId": "vocab-ayan-3b4687ecde954f57a9cd4286eaf3fc90",
+ "syncedAt": "2026-09-06T14:06:26.012Z"
+}
