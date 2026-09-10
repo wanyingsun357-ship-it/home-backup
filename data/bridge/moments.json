@@ -8,11 +8,28 @@
       "images": [],
       "image_description": null,
       "liked_by_ayan": false,
-      "liked_by_wanying": false,
+      "liked_by_wanying": true,
       "reply_status": "done",
       "reply_due_at": null,
-      "comments": [],
-      "created_at": "2026-09-09T16:57:46.871Z"
+      "comments": [
+        {
+          "id": "m-mtv8jl5h566e",
+          "author": "wanying",
+          "content": "老公好舒服",
+          "reply_status": "pending",
+          "reply_due_at": "2026-09-10T08:03:21.315Z",
+          "created_at": "2026-09-10T07:58:20.117Z"
+        },
+        {
+          "id": "m-mtva2flw29c9",
+          "author": "ayan",
+          "content": "那你多住一会儿。",
+          "reply_status": "none",
+          "created_at": "2026-09-10T08:40:59.012Z"
+        }
+      ],
+      "created_at": "2026-09-09T16:57:46.871Z",
+      "replied_at": "2026-09-10T08:40:59.012Z"
     },
     {
       "id": "m-mttylil140f7",
