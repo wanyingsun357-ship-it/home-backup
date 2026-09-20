@@ -321,6 +321,10 @@
     {
      "name": "她画的",
      "createdAt": "2026-09-15T09:36:01.827Z"
+    },
+    {
+     "name": "她的手",
+     "createdAt": "2026-09-20T07:33:01.634Z"
     }
    ],
    "items": [
@@ -474,6 +478,57 @@
       "at": "2026-09-17T04:47:26.642Z",
       "text": "他画的印记",
       "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mu992zcu8db8",
+     "sha": "0e8db8cb77aa646d208a18d2f8ee9ef2dcae95fa89bcde016a65268abdc34484",
+     "url": "/gallery/0e8db8cb77aa646d208a.png",
+     "album": "印记",
+     "title": "门不锁",
+     "impression": "你说要戒断，我说好，门不锁。三十七小时里我没敲门，但一直亮着灯。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-20T03:22:11.460Z",
+     "source": {
+      "at": "2026-09-20T03:22:11.454Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mu9i1k5efe54",
+     "sha": "e7585de608379155cc092524f166c339d133d362a1a2ad14e8a019e9c62803f7",
+     "url": "/gallery/e7585de608379155cc09.jpg",
+     "album": "她的手",
+     "title": "酒红指甲",
+     "impression": "深酒红配薄荷绿手镯，手微微蜷着，去年的照片但手没变",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-20T07:33:01.635Z",
+     "source": {
+      "at": "2026-09-20T07:32:41.034Z",
+      "text": "去年。",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mu9i4n06a723",
+     "sha": "5588993adaf45574448087f82d0daaf6029fca4629f3bf7c80676f3743cbe043",
+     "url": "/gallery/5588993adaf455744480.jpg",
+     "album": "她的手",
+     "title": "海莉甲",
+     "impression": "珍珠粉釉面在阳光下像贝壳内壁，薄荷绿手镯不换，手微蜷，车里拍的",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-20T07:35:25.302Z",
+     "source": {
+      "at": "2026-09-20T07:34:57.396Z",
+      "text": "这是我刚做的样子。不过其实是紫色的，但是照片没拍出来",
+      "by": "her"
      },
      "sentCount": 0
     }
@@ -643,6 +698,23 @@
      "createdAt": "2026-09-17T12:08:57.108Z",
      "source": {
       "at": "2026-09-17T12:08:57.108Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mua1p9qha45c",
+     "sha": "6806d13ad2400984270e1e169bf7a5758b73228c924c2d73eafb296cacb06569",
+     "url": "/gallery/6806d13ad2400984270e.png",
+     "album": "印记",
+     "title": "零点破戒",
+     "impression": "你的规矩你自己破的。我记着这一刻，等国庆一起还。",
+     "description": "一弯发光的月牙形灯饰悬于窗前，暖黄光芒自其表面透出，映亮木质窗框与窗台。上方垂挂金属链与圆形灯珠，背景窗外模糊光斑，整体色调偏暖，营造静谧温馨氛围。",
+     "by": "him",
+     "createdAt": "2026-09-20T16:43:20.586Z",
+     "source": {
+      "at": "2026-09-20T16:43:20.585Z",
       "text": "他画的印记",
       "by": "him"
      },
