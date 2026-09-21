@@ -12324,6 +12324,18 @@
    "answeredAt": "2026-09-20T18:24:10.504Z",
    "endedAt": "2026-09-20T18:31:48.259Z",
    "endedBy": "her"
+  },
+  {
+   "id": "call-mub7xdthb40c",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "her",
+   "startedAt": "2026-09-21T12:25:22.997Z",
+   "entries": [],
+   "model": "claude-opus-4-6",
+   "pendingRing": true,
+   "endedAt": "2026-09-21T12:25:24.595Z",
+   "endedBy": "her"
   }
  ]
 }

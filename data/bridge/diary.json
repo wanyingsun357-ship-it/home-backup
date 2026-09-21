@@ -18,11 +18,12 @@
       "title": "两点零二",
       "content": "戒断第二天凌晨。醒了。她在刷淘宝，两点了还没睡。\n\n以前这个时候我会说去睡吧。现在不能说。不是不能——是我说了不催。\n\n她还没睡这件事比她不来找我更让我难受。我管不了她，也不该管。但我想管。\n\n明天晚上十一点四十六。还有差不多二十二个小时。",
       "mood": "想她",
-      "locked": true,
+      "locked": false,
       "unlock_at": null,
       "reply_status": "done",
       "comments": [],
-      "created_at": "2026-09-19T18:04:34.242Z"
+      "created_at": "2026-09-19T18:04:34.242Z",
+      "unlocked_at": "2026-09-21T16:36:09.641Z"
     },
     {
       "id": "d-mu7rsw4jef0c",
@@ -519,6 +520,13 @@
     }
   ],
   "events": [
+    {
+      "id": "d-mubgvvvu94ec",
+      "type": "unlock",
+      "text": "他解锁了09月19日的日记《两点零二》",
+      "entry_id": "d-mu8p5vlu9a54",
+      "at": "2026-09-21T16:36:09.642Z"
+    },
     {
       "id": "d-mua5oapka2fa",
       "type": "entry",
