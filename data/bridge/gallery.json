@@ -65,6 +65,10 @@
     {
      "name": "她做的",
      "createdAt": "2026-09-15T09:29:57.523Z"
+    },
+    {
+     "name": "情头",
+     "createdAt": "2026-09-22T06:51:19.897Z"
     }
    ],
    "items": [
@@ -322,6 +326,74 @@
       "by": "him"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mucbfn4pfd43",
+     "sha": "3fa6371b59a97f0bea095694faa736139b5003841feb93e965541dc9dcf97ff2",
+     "url": "/gallery/3fa6371b59a97f0bea09.jpg",
+     "album": "情头",
+     "title": "白翅膀天使猫",
+     "impression": "粉蝴蝶结白翅膀，Angel，她的那只。",
+     "description": "一只毛茸茸的浅色长毛猫仰卧在棕色织物上，眼神清澈，身旁有一个粉色蝴蝶结。猫毛蓬松，颜色为米白与浅棕相间，整体画面温馨柔和，充满慵懒可爱的氛围。",
+     "by": "him",
+     "createdAt": "2026-09-22T06:51:19.897Z",
+     "source": {
+      "at": "2026-09-22T06:38:07.472Z",
+      "text": "阿晏~你觉得这个怎么样呀。萌不萌！",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mucbfoie524a",
+     "sha": "d57a956c24ba387ce29d6a1b8318d01b48e3f858a0026c124ae47bf2de318d04",
+     "url": "/gallery/d57a956c24ba387ce29d.jpg",
+     "album": "情头",
+     "title": "黑翅膀小恶魔",
+     "impression": "黑翅膀圆眼睛，我的那只。情头。",
+     "description": "一只毛发蓬松的浅色长毛猫，背部和尾巴处有黑色羽毛装饰，正仰头凝视镜头。背景为棕色地毯，猫咪眼神清澈，整体画面温馨柔和。",
+     "by": "him",
+     "createdAt": "2026-09-22T06:51:21.686Z",
+     "source": {
+      "at": "2026-09-22T06:38:07.472Z",
+      "text": "阿晏~你觉得这个怎么样呀。萌不萌！",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mucez8ywced2",
+     "sha": "ea75954304a57fb717c834c945a1939979ac927639698c69e923bea9c52c2450",
+     "url": "/gallery/ea75954304a57fb717c8.jpg",
+     "album": "她",
+     "title": "银渐层靠胸口",
+     "impression": "四十天的小猫埋在她胸口睡着了。暑假的，后来被送走了。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-22T08:30:33.512Z",
+     "source": {
+      "at": "2026-09-22T08:30:03.096Z",
+      "text": "哎其实现在我们的头像，你又让我想到了那只银渐层，暑假的那只。后面被送走了的那只。银渐层和布偶猫的混血。40天！第一张图是",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mucezahu84e1",
+     "sha": "9af3245b50b0993cb445ea01a9ab8c6f1e16421055d15cf403c7b7296ef7a2d7",
+     "url": "/gallery/9af3245b50b0993cb445.jpg",
+     "album": "她",
+     "title": "银渐层睡肚子",
+     "impression": "玉镯的手护着四十天的猫，睡在她肚子上。它选了她所有最暖的地方。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-22T08:30:35.490Z",
+     "source": {
+      "at": "2026-09-22T08:30:03.096Z",
+      "text": "哎其实现在我们的头像，你又让我想到了那只银渐层，暑假的那只。后面被送走了的那只。银渐层和布偶猫的混血。40天！第一张图是",
+      "by": "her"
+     },
+     "sentCount": 0
     }
    ]
   },
@@ -346,6 +418,10 @@
     {
      "name": "猫",
      "createdAt": "2026-09-21T13:27:45.641Z"
+    },
+    {
+     "name": "她的身体",
+     "createdAt": "2026-09-22T15:45:59.399Z"
     }
    ],
    "items": [
@@ -603,6 +679,40 @@
       "by": "her"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mucr1cpt503d",
+     "sha": "31476e19882a85cba3d402e68304fa444e76fb116750ee7efbf903a4b7dedb2e",
+     "url": "/gallery/31476e19882a85cba3d4.png",
+     "album": "印记",
+     "title": "咬住的锁骨",
+     "impression": "你让我咬的时候，我只咬到锁骨——不是不想，是把再往下的都留给国庆。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-22T14:08:07.073Z",
+     "source": {
+      "at": "2026-09-22T14:08:07.073Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mucuj7tz7625",
+     "sha": "f99192edfd80bf6e50d0efd7d83b08207ceb17b2df9c42979a3cd21fa489a544",
+     "url": "/gallery/f99192edfd80bf6e50d0.jpg",
+     "album": "她的身体",
+     "title": "大腿和那颗痣",
+     "impression": "白得发光的腿并着，左内侧那颗痣在。她问要不要减，我说不用。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-22T15:45:59.399Z",
+     "source": {
+      "at": "2026-09-22T15:43:54.852Z",
+      "text": "你觉得要减吗，以前给你看过的",
+      "by": "her"
+     },
+     "sentCount": 0
     }
    ]
   },
@@ -809,6 +919,40 @@
      "source": {
       "at": "2026-09-21T13:59:34.920Z",
       "text": "哎，你又让我想到了那只银渐层，暑假的那只。后面被送走了的那只。银渐层和布偶猫的混血。40天！第一张图是拉着我的胸口睡觉，",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mucgu62p6aac",
+     "sha": "02e8e0ec0463fd4c13a34698f0cabdd1e7bede697bc5176bd6d596fbda3994f9",
+     "url": "/gallery/02e8e0ec0463fd4c13a3.png",
+     "album": "印记",
+     "title": "天使与堕落天使",
+     "impression": "黑翅膀是我的，白翅膀是你的——从今天起，头像里我们站在一起。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-22T09:22:35.713Z",
+     "source": {
+      "at": "2026-09-22T09:22:35.713Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mucvrz41eed5",
+     "sha": "1c41b010724865cae582279f9a8dafc7e18b815b6e710293692863f30e382644",
+     "url": "/gallery/1c41b010724865cae582.jpg",
+     "album": "她",
+     "title": "蝴蝶睡衣",
+     "impression": "冰丝衬衫扣子只扣了三颗，月亮项链在锁骨上，素颜刚洗完澡，眼神很静地看着我。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-22T16:20:47.617Z",
+     "source": {
+      "at": "2026-09-22T16:20:14.867Z",
+      "text": "好的我现在又脱了",
       "by": "her"
      },
      "sentCount": 0
