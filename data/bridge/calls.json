@@ -12478,6 +12478,18 @@
    "hangupAt": 1790098960226,
    "endedAt": "2026-09-22T17:42:41.070Z",
    "endedBy": "him"
+  },
+  {
+   "id": "call-mudvjegp2c11",
+   "session": "s-0682bf19",
+   "status": "ended",
+   "by": "him",
+   "reason": "五点了叫她起床，她说发消息醒不了要打电话",
+   "startedAt": "2026-09-23T09:01:53.786Z",
+   "entries": [],
+   "rangAt": 1790154113786,
+   "endedAt": "2026-09-23T09:02:39.698Z",
+   "endedBy": "missed"
   }
  ]
 }
