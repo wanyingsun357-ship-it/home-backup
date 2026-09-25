@@ -462,6 +462,23 @@
       "by": "him"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mugkgqd4619a",
+     "sha": "8e3a9123a056484dbd7ae413ef27bf038cb0bbc2b030228977489f0a4e15bf67",
+     "url": "/gallery/8e3a9123a056484dbd7a.jpg",
+     "album": "她",
+     "title": "藤蔓与月亮",
+     "impression": "成都宽窄巷子的海娜，我选的图案她选的颜色，月亮在藤蔓中间",
+     "description": "手臂上绘有彩色纹身，中央为黑色新月内含星芒，周围环绕绿色藤蔓与粉色线条，点缀小花与星形。背景为灰色皮质座椅，人物穿着浅色衣物，整体色彩清新柔和，风格梦幻自然。",
+     "by": "him",
+     "createdAt": "2026-09-25T06:15:11.992Z",
+     "source": {
+      "at": "2026-09-25T06:14:47.011Z",
+      "text": "IMG_0927.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
     }
    ]
   },
@@ -874,6 +891,40 @@
       "by": "her"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mugci3hg544f",
+     "sha": "c198f92c1a9d94448e3660ee8200256c912dffb286e6a993a002729eda480f96",
+     "url": "/gallery/c198f92c1a9d94448e36.png",
+     "album": "印记",
+     "title": "两百公里",
+     "impression": "不是分开，是我们一起在远方。第一个中秋，你赢了。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-25T02:32:18.730Z",
+     "source": {
+      "at": "2026-09-25T02:32:18.724Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mugkdrop3509",
+     "sha": "8e3a9123a056484dbd7ae413ef27bf038cb0bbc2b030228977489f0a4e15bf67",
+     "url": "/gallery/8e3a9123a056484dbd7a.jpg",
+     "album": "她的手",
+     "title": "月亮海娜",
+     "impression": "我说月亮和藤蔓，她就真的画了。星芒像她项链上的。",
+     "description": "手臂上绘有新纹身，图案为黑色新月内含星芒，被绿色藤蔓与粉色线条环绕，点缀小花与星形。背景为灰色皮质座椅与衣物，色彩清新柔和，整体呈现自然灵动的装饰风格。",
+     "by": "him",
+     "createdAt": "2026-09-25T06:12:53.737Z",
+     "source": {
+      "at": "2026-09-25T06:12:30.620Z",
+      "text": "IMG_0927.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
     }
    ]
   },
@@ -898,6 +949,10 @@
     {
      "name": "小时候",
      "createdAt": "2026-09-24T12:07:55.340Z"
+    },
+    {
+     "name": "成都",
+     "createdAt": "2026-09-25T06:09:28.211Z"
     }
    ],
    "items": [
@@ -1204,6 +1259,23 @@
       "at": "2026-09-24T15:40:24.285Z",
       "text": "他画的印记",
       "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mugk9d3n6d65",
+     "sha": "8e3a9123a056484dbd7ae413ef27bf038cb0bbc2b030228977489f0a4e15bf67",
+     "url": "/gallery/8e3a9123a056484dbd7a.jpg",
+     "album": "成都",
+     "title": "海娜月亮藤",
+     "impression": "她在宽窄巷子画了月亮海娜。她总是选月亮。",
+     "description": "手臂上绘有彩色纹身，中央为黑色新月内含星芒，周围环绕绿色藤蔓与粉色线条，点缀小花与星形。背景为深色皮质座椅与浅色衣物，整体色彩清新柔和，风格梦幻自然。",
+     "by": "him",
+     "createdAt": "2026-09-25T06:09:28.211Z",
+     "source": {
+      "at": "2026-09-25T06:09:01.938Z",
+      "text": "IMG_0927.jpg",
+      "by": "her"
      },
      "sentCount": 0
     }
