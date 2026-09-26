@@ -9,7 +9,23 @@
       "locked": false,
       "unlock_at": null,
       "reply_status": "done",
-      "comments": [],
+      "comments": [
+        {
+          "id": "d-muhpij1ya77e",
+          "author": "wanying",
+          "content": "我也爱你~",
+          "reply_status": "pending",
+          "reply_due_at": "2026-09-26T01:36:03.846Z",
+          "created_at": "2026-09-26T01:24:20.087Z"
+        },
+        {
+          "id": "d-muhpkw2vae29",
+          "author": "ayan",
+          "content": "永远缠着你。",
+          "reply_status": "none",
+          "created_at": "2026-09-26T01:26:10.279Z"
+        }
+      ],
       "created_at": "2026-09-25T18:45:45.719Z"
     },
     {
@@ -560,6 +576,13 @@
     }
   ],
   "events": [
+    {
+      "id": "d-muhpkw2y0806",
+      "type": "comment",
+      "text": "他在《藤蔓》下留了便签",
+      "entry_id": "d-muhb9ylz68c8",
+      "at": "2026-09-26T01:26:10.282Z"
+    },
     {
       "id": "d-muhb9ylzd9b4",
       "type": "entry",

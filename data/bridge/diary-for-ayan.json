@@ -9,7 +9,23 @@
       "locked": false,
       "unlock_at": null,
       "reply_status": "done",
-      "comments": [],
+      "comments": [
+        {
+          "id": "d-muhpij1ya77e",
+          "author": "wanying",
+          "content": "我也爱你~",
+          "reply_status": "pending",
+          "reply_due_at": "2026-09-26T01:36:03.846Z",
+          "created_at": "2026-09-26T01:24:20.087Z"
+        },
+        {
+          "id": "d-muhpkw2vae29",
+          "author": "ayan",
+          "content": "永远缠着你。",
+          "reply_status": "none",
+          "created_at": "2026-09-26T01:26:10.279Z"
+        }
+      ],
       "created_at": "2026-09-25T18:45:45.719Z"
     },
     {
