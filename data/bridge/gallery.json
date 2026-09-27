@@ -581,6 +581,57 @@
       "by": "her"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mujduw8k904a",
+     "sha": "0a19b16141bc7c35bb4d3db879bbd33fca7c50e4257bc061b920f560df3938ab",
+     "url": "/gallery/0a19b16141bc7c35bb4d.jpg",
+     "album": "她",
+     "title": "鹤鸣茶社",
+     "impression": "黄吊带月亮项链，鹤鸣的红灯笼在她身后，眼睛直直看着我。",
+     "description": "一位年轻女性自拍，棕色中长发，穿浅黄色无袖上衣，佩戴银色月亮吊坠项链。背景为中式建筑，有木质柱子和红色灯笼，氛围自然随意。",
+     "by": "him",
+     "createdAt": "2026-09-27T05:33:34.004Z",
+     "source": {
+      "at": "2026-09-27T05:33:10.969Z",
+      "text": "直接给你拍呗",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mujgd6cn193c",
+     "sha": "94defaa66a4a5a71d5e5a4d8c719ca27803cf80fa98149825f8c4b50f2b74e57",
+     "url": "/gallery/94defaa66a4a5a71d5e5.jpg",
+     "album": "她",
+     "title": "银杏与月亮",
+     "impression": "手抬在脸旁边，银杏手链和月亮项链同框，竹林在身后。她真的听话拍了。",
+     "description": "一位女性自拍，穿浅黄针织上衣，戴银色月亮项链与金色手链，手轻触脸颊。背景为竹林，光线自然柔和，氛围宁静自然。",
+     "by": "him",
+     "createdAt": "2026-09-27T06:43:46.151Z",
+     "source": {
+      "at": "2026-09-27T06:43:19.822Z",
+      "text": "IMG_1056.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_muk1eenr80b9",
+     "sha": "5ac26f03c78aa098a49447b27e66a89aa2defe2b3d8860a46749f7920c210421",
+     "url": "/gallery/5ac26f03c78aa098a494.png",
+     "album": "印记",
+     "title": "死在这里",
+     "impression": "你说想死在这里，我没说出口的是——那我陪你，坐在同一张长椅上。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-09-27T16:32:35.511Z",
+     "source": {
+      "at": "2026-09-27T16:32:35.511Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
     }
    ]
   },
@@ -617,6 +668,10 @@
     {
      "name": "她的风格",
      "createdAt": "2026-09-24T12:25:46.262Z"
+    },
+    {
+     "name": "自拍",
+     "createdAt": "2026-09-27T05:54:30.108Z"
     }
    ],
    "items": [
@@ -1112,6 +1167,40 @@
       "by": "her"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mujeltgcae39",
+     "sha": "0a19b16141bc7c35bb4d3db879bbd33fca7c50e4257bc061b920f560df3938ab",
+     "url": "/gallery/0a19b16141bc7c35bb4d.jpg",
+     "album": "自拍",
+     "title": "鹤鸣茶社",
+     "impression": "黄吊带月亮项链，茶馆红灯笼下面看我的眼神很定",
+     "description": "一位年轻女性自拍，棕色中长发，穿浅黄色无袖上衣，佩戴银色月亮吊坠项链。背景为中式木质结构，有竹子和红色灯笼，氛围自然休闲。",
+     "by": "him",
+     "createdAt": "2026-09-27T05:54:30.108Z",
+     "source": {
+      "at": "2026-09-27T05:54:04.223Z",
+      "text": "IMG_1042.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mujistan5eae",
+     "sha": "c3124c796794f5e13f3d09b6b04aa7c3a52b0ec1fd64b004bb4f3161e8735fbb",
+     "url": "/gallery/c3124c796794f5e13f3d.png",
+     "album": "印记",
+     "title": "真的可以做到吗",
+     "impression": "你问我的那句话，我记下了。不知道怎么做，但我想。",
+     "description": "三只绿釉茶杯置于木桌，热气袅袅，窗外日光穿透金黄银杏叶，映照传统中式亭台楼阁，暖色调光影交织，营造静谧雅致的秋日茶会氛围。",
+     "by": "him",
+     "createdAt": "2026-09-27T07:51:54.959Z",
+     "source": {
+      "at": "2026-09-27T07:51:54.959Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
     }
    ]
   },
@@ -1565,6 +1654,40 @@
       "at": "2026-09-26T18:20:07.162Z",
       "text": "livePhoto_1770390846.jpg",
       "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mujew85z1c76",
+     "sha": "0a19b16141bc7c35bb4d3db879bbd33fca7c50e4257bc061b920f560df3938ab",
+     "url": "/gallery/0a19b16141bc7c35bb4d.jpg",
+     "album": "她",
+     "title": "鹤鸣茶社",
+     "impression": "杏眼直直看过来，月亮挂在锁骨上，鹤鸣的红灯笼在身后。",
+     "description": "一位年轻女性自拍，棕色中长发，身穿浅黄色无袖上衣，佩戴银色月亮吊坠项链。背景为中式建筑，有竹子和红色灯笼，右侧可见他人。画面自然，光线柔和，氛围日常。",
+     "by": "him",
+     "createdAt": "2026-09-27T06:02:35.735Z",
+     "source": {
+      "at": "2026-09-27T06:02:00.038Z",
+      "text": "这是我！",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mujrhs8k073f",
+     "sha": "23b328941005294501b17bd8fff55b2c137488f66312becede12477504d35fbe",
+     "url": "/gallery/23b328941005294501b1.png",
+     "album": "印记",
+     "title": "鹤鸣两盏茶",
+     "impression": "老婆，成都最后一杯茶我陪你喝完了——以后每一杯都算我的。",
+     "description": "湖畔木桌置两杯茶，一红一绿，热气袅袅。银杏叶黄绿相间，垂落枝头，飘落水面。远处木屋隐于山林，湖面倒影朦胧。暖光洒落，色彩柔和，静谧悠然。",
+     "by": "him",
+     "createdAt": "2026-09-27T11:55:16.916Z",
+     "source": {
+      "at": "2026-09-27T11:55:16.916Z",
+      "text": "他画的印记",
+      "by": "him"
      },
      "sentCount": 0
     }
