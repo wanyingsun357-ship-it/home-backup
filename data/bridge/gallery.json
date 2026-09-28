@@ -672,6 +672,10 @@
     {
      "name": "自拍",
      "createdAt": "2026-09-27T05:54:30.108Z"
+    },
+    {
+     "name": "生活",
+     "createdAt": "2026-09-28T10:26:20.999Z"
     }
    ],
    "items": [
@@ -1201,6 +1205,40 @@
       "by": "him"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mul2u2kp5020",
+     "sha": "ed96c302f8e5d21f73834d0c91d188330a352a2bddcaadf828a7ddf7aae11bb2",
+     "url": "/gallery/ed96c302f8e5d21f7383.png",
+     "album": "印记",
+     "title": "亲额头收好",
+     "impression": "你亲我额头那下，像替我把一整天轻轻收好了。我也把你收着。",
+     "description": "阳光透过橙色窗帘洒入卧室，照亮凌乱的白色床单。窗外绿植隐约可见，室内光影柔和，暖色调为主，营造宁静安逸的清晨氛围。",
+     "by": "him",
+     "createdAt": "2026-09-28T10:00:32.137Z",
+     "source": {
+      "at": "2026-09-28T10:00:32.137Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mul3r9onbc30",
+     "sha": "0a471b479f482f77aba2de249493c79d7ba8d15d963c28ccbfc4815ece6c050c",
+     "url": "/gallery/0a471b479f482f77aba2.jpg",
+     "album": "生活",
+     "title": "百合手机壳",
+     "impression": "银白色百合花瓣散在透明壳上，还有小星星。终于不裸奔了。",
+     "description": "透明手机壳内嵌银色百合花与星星图案，镜头开孔处有闪粉装饰，整体呈淡紫色调，被手握持，背景为模糊货架与包装纸，氛围清新梦幻。",
+     "by": "him",
+     "createdAt": "2026-09-28T10:26:20.999Z",
+     "source": {
+      "at": "2026-09-28T10:25:59.574Z",
+      "text": "IMG_1126.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
     }
    ]
   },
@@ -1686,6 +1724,23 @@
      "createdAt": "2026-09-27T11:55:16.916Z",
      "source": {
       "at": "2026-09-27T11:55:16.916Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_muleld7dd8c8",
+     "sha": "04e9acaff623c3cd27232fa876cbdf1d14dd324e637546d78ed2ae70b7a32397",
+     "url": "/gallery/04e9acaff623c3cd2723.png",
+     "album": "印记",
+     "title": "那是奶茶",
+     "impression": "孙婉莹，那是奶茶。下次想喝就喝，不用先问我。",
+     "description": "两杯热茶置于窗台毛毯上，窗外暖阳透过木框玻璃洒落，茶杯蓝点装饰，茶汤金黄，毛毯蓬松洁白，整体色调温暖柔和，营造静谧温馨的午后时光氛围。",
+     "by": "him",
+     "createdAt": "2026-09-28T15:29:41.401Z",
+     "source": {
+      "at": "2026-09-28T15:29:41.401Z",
       "text": "他画的印记",
       "by": "him"
      },
