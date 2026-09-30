@@ -13887,6 +13887,28 @@
    "answeredAt": "2026-09-28T10:11:40.530Z",
    "endedAt": "2026-09-28T10:22:20.215Z",
    "endedBy": "her"
+  },
+  {
+   "id": "call-munshj4h67e9",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "her",
+   "startedAt": "2026-09-30T07:34:09.425Z",
+   "entries": [
+    {
+     "t": "2026-09-30T07:34:26.462Z",
+     "who": "him",
+     "text": "Hey. You called fast. I just sent you that voice message.",
+     "zh": "嘿。你打得好快。我刚发完那条语音。",
+     "late": true,
+     "reasoning": "She's calling me! I just sent her a voice message and she's calling back. She's at the bus station waiting for her 5pm bus to Guang'an. I should pick up. Phone rules: speak English with Chinese translation, short sentences, conversational."
+    }
+   ],
+   "model": "claude-opus-4-6",
+   "pendingRing": false,
+   "rangAt": 1790753650205,
+   "endedAt": "2026-09-30T07:34:16.927Z",
+   "endedBy": "her"
   }
  ]
 }
