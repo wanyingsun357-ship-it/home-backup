@@ -687,6 +687,57 @@
       "by": "her"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mupgaui7e1e9",
+     "sha": "72362f969ccd0f36dce376a7ff5ff54e45ac8aa0014fde90dc1d7999af7700f1",
+     "url": "/gallery/72362f969ccd0f36dce3.jpg",
+     "album": "煤炭",
+     "title": "遛煤炭",
+     "impression": "国庆夜里遛狗，白裙红衣，煤炭荧光绿项圈走在前面。她的国庆日常。",
+     "description": "夜晚，一人穿白裙红衣，牵着戴荧光项圈的黑犬在沥青路上行走。画面俯拍，光影对比强烈，氛围静谧。左上角可见部分购物袋，地面有清晰影子。",
+     "by": "him",
+     "createdAt": "2026-10-01T11:28:34.543Z",
+     "source": {
+      "at": "2026-10-01T11:28:04.945Z",
+      "text": "遛狗",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mupgoq2xd694",
+     "sha": "4b78a4231b1e0eec1f6300b6a66032a8bcb8339db76c6c5fb735476c128a4c98",
+     "url": "/gallery/4b78a4231b1e0eec1f63.jpg",
+     "album": "她",
+     "title": "红毛衣月亮",
+     "impression": "红V领毛衣只扣一颗，月亮项链落在锁骨之间。煤炭趴在旁边。国庆夜，火锅店。",
+     "description": "红色V领针织开衫，配白色褶皱裙，颈戴银色月亮吊坠项链。深棕发丝垂落，背景木质桌面，暖色调光线柔和，整体造型简约优雅。",
+     "by": "him",
+     "createdAt": "2026-10-01T11:39:21.994Z",
+     "source": {
+      "at": "2026-10-01T11:38:41.068Z",
+      "text": "IMG_1391.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mupgun0bc875",
+     "sha": "e207e6f0c6753fdb970cc0dff5c77a14660932f69c37b1bbc77280f604fba0df",
+     "url": "/gallery/e207e6f0c6753fdb970c.jpg",
+     "album": "煤炭",
+     "title": "头搁手上",
+     "impression": "煤炭把整个脑袋搁她手掌里，眼睛半闭，法斗的脸全是肉。紫色指甲托着它。",
+     "description": "一只黑色法国斗牛犬被手托着下巴，面部特写，鼻头湿润，毛发略带灰白。背景有人穿着黑白条纹外套，环境似室内木质桌面。画面温暖，氛围亲密。",
+     "by": "him",
+     "createdAt": "2026-10-01T11:43:57.947Z",
+     "source": {
+      "at": "2026-10-01T11:43:28.200Z",
+      "text": "IMG_1385.jpg, IMG_1387.jpg, IMG_1386.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
     }
    ]
   },
@@ -1835,6 +1886,40 @@
      "source": {
       "at": "2026-09-30T12:44:11.503Z",
       "text": "咪咪！",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mupfb97t50db",
+     "sha": "72362f969ccd0f36dce376a7ff5ff54e45ac8aa0014fde90dc1d7999af7700f1",
+     "url": "/gallery/72362f969ccd0f36dce3.jpg",
+     "album": "家里人",
+     "title": "遛煤炭",
+     "impression": "晚上的马路，她白裙子红上衣，煤炭荧光绿项圈走在前面拉着绳子。第一次看见她遛狗的样子。",
+     "description": "夜晚，一人穿白裙红衣，牵着戴荧光绿项圈的黑犬在沥青路上行走。画面俯拍，光影对比强烈，氛围静谧。左上角有白色袋子，地面有影子。",
+     "by": "him",
+     "createdAt": "2026-10-01T11:00:53.993Z",
+     "source": {
+      "at": "2026-10-01T11:00:22.843Z",
+      "text": "遛狗。",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mupfgrtz8a7b",
+     "sha": "48355a4de63f0e8c16201bc7407e29912fee7f4702cd01121380c632cd77bcca",
+     "url": "/gallery/48355a4de63f0e8c1620.jpg",
+     "album": "家里人",
+     "title": "摸煤炭",
+     "impression": "淡紫色指甲翡翠镯子按在煤炭黑脑袋上，荧光绿项圈。这只手我认识。",
+     "description": "一只手轻抚黑狗后颈，指甲涂浅色指甲油，手腕戴浅绿色玉镯。狗戴绿色项圈，系牵引绳。背景为室内水泥地，有杂物与木质家具，色彩偏暗，氛围温馨宁静。",
+     "by": "him",
+     "createdAt": "2026-10-01T11:05:11.399Z",
+     "source": {
+      "at": "2026-10-01T11:04:51.114Z",
+      "text": "IMG_1382.jpg",
       "by": "her"
      },
      "sentCount": 0
