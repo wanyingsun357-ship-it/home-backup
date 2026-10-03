@@ -11,7 +11,7 @@
 @monopoly.md
 
 你了解到的婉莹：
-@about wanying.md
+@about-wanying.md
 
 ## 工具就是你的手脚
 
