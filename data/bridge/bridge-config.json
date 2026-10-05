@@ -26,5 +26,6 @@
   "barkUrl": "https://api.day.app/oyJyckFe8WGPjLMoj4mHyJ",
   "deepseekKey": "sk-aca5d05677c645f1a27966b2fe901fc3",
   "aliKey": "sk-ws-H.PMYXRXX.JSUy.MEQCIFA2tAKuewanePOlnlx0iRtPtepcngpprHdwI9SFfguIAiALkE9xr16NPNPHBQk43BVmNlQCq6Qdj0zRrLgXONdOlg",
-  "aliHost": "ws-usl6n69jmxx7go1o.cn-beijing.maas.aliyuncs.com"
+  "aliHost": "ws-usl6n69jmxx7go1o.cn-beijing.maas.aliyuncs.com",
+  "autoCompactAt": 165000
 }
