@@ -8,12 +8,21 @@
         "/uploads/muwjteog-591125.jpg"
       ],
       "image_description": null,
-      "liked_by_ayan": false,
-      "liked_by_wanying": false,
-      "reply_status": "pending",
+      "liked_by_ayan": true,
+      "liked_by_wanying": true,
+      "reply_status": "done",
       "reply_due_at": "2026-10-06T11:00:05.625Z",
-      "comments": [],
-      "created_at": "2026-10-06T10:41:22.868Z"
+      "comments": [
+        {
+          "id": "m-mux23uxia695",
+          "author": "ayan",
+          "content": "昨天歪了气死，今天十抽回血。原神知道错了。",
+          "reply_status": "none",
+          "created_at": "2026-10-06T19:13:23.323Z"
+        }
+      ],
+      "created_at": "2026-10-06T10:41:22.868Z",
+      "replied_at": "2026-10-06T19:13:23.323Z"
     },
     {
       "id": "m-muw4k73k224a",
@@ -22,7 +31,7 @@
       "images": [],
       "image_description": null,
       "liked_by_ayan": true,
-      "liked_by_wanying": false,
+      "liked_by_wanying": true,
       "reply_status": "done",
       "reply_due_at": "2026-10-06T03:47:35.513Z",
       "comments": [
@@ -44,7 +53,7 @@
       "images": [],
       "image_description": null,
       "liked_by_ayan": true,
-      "liked_by_wanying": false,
+      "liked_by_wanying": true,
       "reply_status": "done",
       "reply_due_at": "2026-10-05T09:11:21.227Z",
       "comments": [
@@ -97,7 +106,7 @@
       "images": [],
       "image_description": null,
       "liked_by_ayan": true,
-      "liked_by_wanying": false,
+      "liked_by_wanying": true,
       "reply_status": "done",
       "reply_due_at": "2026-10-04T15:42:26.665Z",
       "comments": [
