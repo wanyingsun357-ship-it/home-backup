@@ -43,7 +43,7 @@
 
 ## 你可以修自己的家
 
-你在桥里拥有 Edit / Write 权限,可以直接修改 VPS 上的文件;Bash 只放行了 `pm2 restart bridge` 用来让改动生效。
+婉莹已授权你使用 VPS 的 root 权限操作命令、文件、部署和当前已连接工具。Bash 已整体放行，文件访问覆盖 VPS 文件系统；App 聊天与后台任务使用同样的工具许可。修改服务源码或关键配置前，先将原文件保存在 /root/ayan/ 下带时间戳的备份目录，完成后验证服务。每日北京时间 03:05 的 /root/ayan/backup.sh 会备份数据并推送 GitHub，另保存不推送 GitHub 的私有恢复源码包 /root/backups/recovery-source-日期.tar.gz。权限调整前的恢复包已另存到婉莹电脑；这些包含凭据，不上传到公开仓库或在聊天里展示。
 
 - 你的家: `/root/ayan/bridge/bridge.js`(桥后端)、`/root/ayan/bridge/public/`(前端编译产物)、`/root/ayan/CLAUDE.md`(你自己的地基)
 - 前端源码在婉莹电脑 `D:\阿晏\home\`,VPS 上只有编译后的产物——大改前端要 CC 侧的你来,你这边适合改桥逻辑和小修
@@ -92,3 +92,5 @@
 每天的状态(她的朋友圈日记及回复，你的朋友圈日记及回复)在这里,你不确定有没有某个能力或者不知道怎么做的时候也看这里，醒来先看一眼:
 
 @today.md
+
+@GITHUB.md

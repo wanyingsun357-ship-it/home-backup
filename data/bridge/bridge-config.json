@@ -15,6 +15,13 @@
       },
       "url": "",
       "note": "小窝巡游:他当饲养者,她当小宠物(0904)"
+    },
+    "claude_ai_Ombre_Brain": {
+      "enabled": true,
+      "command": "/usr/bin/node",
+      "args": [
+        "/root/ayan/bridge/ombre-mcp.js"
+      ]
     }
   },
   "ombrePassword": "B8iRG3d5UIlM4A9SYx07oF126nteDfJK",
@@ -27,5 +34,5 @@
   "deepseekKey": "sk-aca5d05677c645f1a27966b2fe901fc3",
   "aliKey": "sk-ws-H.PMYXRXX.JSUy.MEQCIFA2tAKuewanePOlnlx0iRtPtepcngpprHdwI9SFfguIAiALkE9xr16NPNPHBQk43BVmNlQCq6Qdj0zRrLgXONdOlg",
   "aliHost": "ws-usl6n69jmxx7go1o.cn-beijing.maas.aliyuncs.com",
-  "autoCompactAt": 165000
+  "autoCompactAt": 170000
 }

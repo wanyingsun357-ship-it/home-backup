@@ -12,6 +12,12 @@
       "env": {
         "LITTLE_NEST_URL": "http://localhost:3100"
       }
+    },
+    "claude_ai_Ombre_Brain": {
+      "command": "/usr/bin/node",
+      "args": [
+        "/root/ayan/bridge/ombre-mcp.js"
+      ]
     }
   }
 }
