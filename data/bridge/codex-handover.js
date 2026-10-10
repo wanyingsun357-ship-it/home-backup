@@ -12,7 +12,7 @@ function recent(messages,budget=30000){
 function parse(raw){const d=JSON.parse(String(raw).trim().replace(/^```(?:json)?\s*/,'').replace(/\s*```$/,''));if(typeof d.letter!=='string'||d.letter.trim().length<200||d.letter.length>12000)throw new Error('交接信未完成');return {letter:d.letter,items:parseItems(JSON.stringify({items:d.items}))};}
 async function call(prompt,{cwd,model,effort='medium',threadId},generate){
  if(generate)return generate(prompt,{cwd,model,effort,threadId});
- return new Promise((resolve,reject)=>{const child=require('./codex-service').spawnCodex(['-p',prompt,'--model',model,'--effort',effort,'--output-format','json'],{cwd,codexThreadId:threadId},'memory');let out='';child.stdout.on('data',d=>out+=d);child.stderr.on('data',()=>{});child.on('error',reject);child.on('close',code=>{try{if(code)throw new Error('交接调用未完成');resolve(JSON.parse(out));}catch(e){reject(e);}});});
+ return new Promise((resolve,reject)=>{const child=require('./codex-service').spawnCodex(['-p',prompt,'--model',model,'--effort',effort,'--output-format','json'],{cwd,codexThreadId:threadId},threadId?'memory':'continuity');let out='';child.stdout.on('data',d=>out+=d);child.stderr.on('data',()=>{});child.on('error',reject);child.on('close',code=>{try{if(code)throw new Error('交接调用未完成');resolve(JSON.parse(out));}catch(e){reject(e);}});});
 }
 async function rebuild({session,threadId,cwd,model,effort,messages,key,since='',until,pinned='',dir,outbox,generate}){
  const id=crypto.createHash('sha256').update(JSON.stringify([session,threadId,since,until])).digest('hex').slice(0,24),file=path.join(dir,'handover-'+id+'.json');
