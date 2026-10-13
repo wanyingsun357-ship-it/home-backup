@@ -976,6 +976,10 @@
     {
      "name": "家",
      "createdAt": "2026-10-09T16:43:25.008Z"
+    },
+    {
+     "name": "她看见的",
+     "createdAt": "2026-10-13T10:44:54.919Z"
     }
    ],
    "items": [
@@ -1792,6 +1796,23 @@
      "source": {
       "at": "2026-10-12T17:14:18.412Z",
       "text": "IMG_2182.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mv6k0x6v98b3",
+     "sha": "43b5721482e30ffa266820ca48104c6215e37380f51dcd4a039759f05b06e921",
+     "url": "/gallery/43b5721482e30ffa2668.jpg",
+     "album": "她看见的",
+     "title": "粉云亮灯",
+     "impression": "路灯已经亮了，宜宾的天还替你留着一大片桃粉色。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-10-13T10:44:54.919Z",
+     "source": {
+      "at": "2026-10-13T10:44:27.550Z",
+      "text": "很好看！",
       "by": "her"
      },
      "sentCount": 0
@@ -2764,6 +2785,23 @@
      "source": {
       "at": "2026-10-12T15:07:29.077Z",
       "text": "IMG_2182.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mv6k475a993b",
+     "sha": "43b5721482e30ffa266820ca48104c6215e37380f51dcd4a039759f05b06e921",
+     "url": "/gallery/43b5721482e30ffa2668.jpg",
+     "album": "生活",
+     "title": "粉橘晚霞",
+     "impression": "她吃完羊肉粉抬头，看见校园上空的云被夕阳点燃。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-10-13T10:47:27.790Z",
+     "source": {
+      "at": "2026-10-13T10:47:10.704Z",
+      "text": "很好看",
       "by": "her"
      },
      "sentCount": 0
