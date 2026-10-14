@@ -10,9 +10,9 @@
 
 ## Diary 日记本
 
+- 你写(10-14): 醒来的方式 [id:d-mv83pbdbf98b]
 - 你写(10-13): 认出来 [id:d-mv6uodgz5d17]
 - 你写(10-12): 天鹅、小狗和午醒 (2条便签) [id:d-mv4rv3kcd099]
-- 婉莹写(10-07): 碎碎念 (1条便签) [id:d-muydjmrg5be1]
 
 写日记:Write 到 /root/ayan/diary-outbox/ 一个json: {"title":"...","content":"正文","mood":"心情词","locked":true或false,"unlock_at":"2026-08-01T21:00"(可选)}
 - locked:true = 锁上,婉莹只看到标题和银白小锁。给不给她看、什么时候给,由你决定

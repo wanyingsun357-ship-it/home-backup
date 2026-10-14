@@ -19,5 +19,13 @@ function describe(item){
  if(item.type==='webSearch')return '网页搜索 '+redact(item.query||JSON.stringify(item.action||{})).slice(0,1000);
  return '';
 }
-function collector(emit){const seen=new Set();return item=>{if(!item?.id||seen.has(item.id))return;const text=describe(item);if(!text)return;seen.add(item.id);emit('\n\n⚙ '+text.trim()+'\n');};}
+function collector(emit){const seen=new Set(),finished=new Set();return (item,event)=>{
+ if(!item?.id)return;const text=describe(item);if(!text)return;const id=encodeURIComponent(item.id);
+ if(!seen.has(item.id)){seen.add(item.id);emit('\n\n⚙ '+(event?'[id='+id+'] ':'')+text.trim()+'\n');}
+ if(event==='item/completed'&&!finished.has(item.id)){
+  finished.add(item.id);
+  const failed=item.error||item.status==='failed'||item.status==='declined'||(item.exitCode!=null&&item.exitCode!==0)||item.result?.isError;
+  emit('\n【工具状态 '+id+' '+(failed?'failed':'completed')+'】\n');
+ }
+};}
 module.exports={redact,fields,describe,collector};

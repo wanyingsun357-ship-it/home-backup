@@ -18,6 +18,7 @@ async function main(spec){
  const ended=new Promise((r,j)=>{finish=r;fail=j;});ended.catch(()=>{});
  const foot=e=>{if(spec.role==='wake')process.stderr.write('__AYAN_FOOTPRINT__'+JSON.stringify(e)+'\n');};
  const emit=e=>{if(format==='stream-json')process.stdout.write(JSON.stringify(e)+'\n');};
+ const messages=require('./codex-message-stream').create(text=>{output+=text;emit({type:'content_block_delta',delta:{text}});});
  const heartEnabled=spec.role==='chat'||spec.role==='wake';
  let collectedReasoning='';
  const heart=require('./heart-voice');
@@ -30,20 +31,21 @@ async function main(spec){
  rpc.on('notification',m=>{
   const p=m.params||{};
   if(p.threadId&&threadId&&p.threadId!==threadId)return;
-  if(m.method==='item/agentMessage/delta'){output+=p.delta||'';emit({type:'content_block_delta',delta:{text:p.delta||''}});}
+  if(m.method==='item/agentMessage/delta')messages.delta(p.delta||'',p.itemId);
   if(m.method==='item/reasoning/summaryTextDelta')voice.summary(p.delta||'');
   if(heartEnabled&&['item/started','item/completed'].includes(m.method)&&voice.item(p.item))return;
   if(m.method==='thread/tokenUsage/updated')usage=p.tokenUsage;
   if(m.method==='item/completed'&&p.item?.type==='contextCompaction'){nativeCompacted=true;emit({type:'system',subtype:'compact_boundary'});}
   if(['item/started','item/completed'].includes(m.method)){
-   trace(p.item);
+   trace(p.item,m.method);
    const detail=require('./tool-trace').describe(p.item||{});
+   if(detail)messages.tool();
    if(detail)foot({kind:'activity',id:p.item.id,detail,status:m.method==='item/started'?'running':(p.item.error||p.item.status==='failed'||(p.item.exitCode!=null&&p.item.exitCode!==0))?'failed':'completed',at:new Date().toISOString()});
   }
   if(m.method==='item/started'&&p.item?.type==='mcpToolCall')emit({type:'assistant',codex_tool_trace:true,message:{content:[{type:'tool_use',id:p.item.id,name:'mcp__'+p.item.server+'__'+p.item.tool,input:p.item.arguments||{}}]}});
   if(m.method==='item/completed'&&p.item?.type==='mcpToolCall')emit({type:'user',message:{content:[{type:'tool_result',tool_use_id:p.item.id,content:JSON.stringify(p.item.result||p.item.error||{})}]}});
   if(m.method==='item/started'&&p.item?.type==='commandExecution')emit({type:'assistant',codex_tool_trace:true,message:{content:[{type:'tool_use',id:p.item.id,name:'Bash',input:{command:p.item.command}}]}});
-  if(m.method==='item/completed'&&p.item?.type==='agentMessage'&&!output){output=p.item.text||'';emit({type:'assistant',message:{content:[{type:'text',text:output}]}});}
+  if(m.method==='item/completed'&&p.item?.type==='agentMessage')messages.complete(p.item);
   if(m.method==='turn/completed'){p.turn?.status==='completed'?finish():fail(new Error(p.turn?.error?.message||'本轮没有完成'));}
   if(m.method==='error'&&!p.willRetry)fail(new Error(p.error?.message||'Codex 请求失败'));
  });
