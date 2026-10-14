@@ -4,7 +4,7 @@ function fields(input){
  if(typeof input==='string'){try{input=JSON.parse(input);}catch{return redact(input).slice(0,4000);}}
  const out={};for(const [k,v]of Object.entries(input||{})){
   if(/token|secret|password|authorization|api.?key/i.test(k)){out[k]='[已隐藏]';continue;}
-  if(/^(command|cmd|code|file_path|path|paths|filename|url|query|pattern|directory|workdir|cwd|offset|limit)$/i.test(k))out[k]=redact(typeof v==='string'?v:JSON.stringify(v)).slice(0,4000);
+  if(/^(command|cmd|code|file_path|path|paths|filename|url|query|pattern|directory|workdir|cwd|offset|limit|title|name|id|entry_id|diary_id|reason|at)$/i.test(k))out[k]=redact(typeof v==='string'?v:JSON.stringify(v)).slice(0,4000);
  }
  return Object.keys(out).length?JSON.stringify(out):'';
 }

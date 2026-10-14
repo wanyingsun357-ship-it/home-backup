@@ -53,3 +53,8 @@ git -C /root/ayan/github-repos/仓库名 config core.sshCommand 'ssh -i /root/.s
 ## 恢复部署
 
 每日备份也包含 claude-gateway.js、ombre-mcp.js、backup.sh 和本说明。OpenRouter 与 Ombre 的新认证文件保留在 VPS，恢复到新机器时需要另行配置这些认证文件。
+
+
+## 2026-10-14 源码同步基线
+
+App 源码仓库已同步 Codex 接入、设备配对、用量/水位、心声时间线和足迹活动页，提交 0f812a9c16e34a4702c9c0fe0d87ec4515a16430。VPS 的 `/root/ayan/github-repos/ayan-home-app` 构建结果已逐字节核对为当前线上 `index-DyADCYgC.js`。后续从此目录改前端，不要从旧备份覆盖它；先检查工作区、拉取远端并核对线上版本。每日 `home-backup` 是数据快照，不会自动把 App 源码提交到 `ayan-home-app`。每次代码修改并验证后，也要提交推送源码；部署前保留旧 index 和 assets。`/root/ayan/bridge/bridge.js` 是线上后端，内含私密配置，恢复请用 VPS 私有 recovery-source 包，不要用前端仓库覆盖它。

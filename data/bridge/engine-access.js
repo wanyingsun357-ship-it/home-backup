@@ -30,7 +30,11 @@ function registerAccess(app,{express,isCodex}){
  });
  app.use('/api',(req,res,next)=>{
   const publicMetadata=['GET','HEAD'].includes(req.method)&&['/models','/engine','/health'].includes(req.path);
-  const mustProtect=req.method!=='OPTIONS'&&!publicMetadata;
+  // iOS Shortcuts reports app open/close events outside the paired Home app,
+  // so it cannot carry the app's HttpOnly ayan_device cookie. Keep only this
+  // write-only activity route public; all other API routes remain paired.
+  const publicActivity=req.method==='GET'&&/^\/a\/[^/]+(?:\/(?:open|close))?$/.test(req.path);
+  const mustProtect=req.method!=='OPTIONS'&&!publicMetadata&&!publicActivity;
   if(mustProtect&&!authorized(req))return res.status(401).json({error:'device_pairing_required'});
   next();
  });

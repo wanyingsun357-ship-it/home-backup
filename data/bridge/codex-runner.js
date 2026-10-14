@@ -16,12 +16,13 @@ async function main(spec){
  const rpc=new CodexRpc({cwd:spec.cwd,configArgs:heartArgs,env:{AYAN_APP_TOKEN:process.env.AYAN_APP_TOKEN}});
  let threadId,output='',usage=null,finish,fail,nativeCompacted=false;
  const ended=new Promise((r,j)=>{finish=r;fail=j;});ended.catch(()=>{});
+ const foot=e=>{if(spec.role==='wake')process.stderr.write('__AYAN_FOOTPRINT__'+JSON.stringify(e)+'\n');};
  const emit=e=>{if(format==='stream-json')process.stdout.write(JSON.stringify(e)+'\n');};
  const heartEnabled=spec.role==='chat'||spec.role==='wake';
  let collectedReasoning='';
  const heart=require('./heart-voice');
- const voice=heart.makeCollector(text=>{collectedReasoning+=text;emit({type:'content_block_delta',delta:{thinking:text}});});
- const trace=require('./tool-trace').collector(text=>{collectedReasoning+=text;emit({type:'content_block_delta',delta:{thinking:text}});});
+ const voice=heart.makeCollector(text=>{collectedReasoning+=text;foot({kind:'reasoning',text});emit({type:'content_block_delta',delta:{thinking:text}});});
+ const trace=require('./tool-trace').collector(text=>{collectedReasoning+=text;foot({kind:'reasoning',text});emit({type:'content_block_delta',delta:{thinking:text}});});
  let timer=setTimeout(()=>fail(new Error('回复超时')),170000);
  const stop=()=>{rpc.close();process.exit(130);};process.on('SIGTERM',stop);process.on('SIGINT',stop);
  rpc.on('closed',e=>fail(e));
@@ -34,7 +35,11 @@ async function main(spec){
   if(heartEnabled&&['item/started','item/completed'].includes(m.method)&&voice.item(p.item))return;
   if(m.method==='thread/tokenUsage/updated')usage=p.tokenUsage;
   if(m.method==='item/completed'&&p.item?.type==='contextCompaction'){nativeCompacted=true;emit({type:'system',subtype:'compact_boundary'});}
-  if(['item/started','item/completed'].includes(m.method))trace(p.item);
+  if(['item/started','item/completed'].includes(m.method)){
+   trace(p.item);
+   const detail=require('./tool-trace').describe(p.item||{});
+   if(detail)foot({kind:'activity',id:p.item.id,detail,status:m.method==='item/started'?'running':(p.item.error||p.item.status==='failed'||(p.item.exitCode!=null&&p.item.exitCode!==0))?'failed':'completed',at:new Date().toISOString()});
+  }
   if(m.method==='item/started'&&p.item?.type==='mcpToolCall')emit({type:'assistant',codex_tool_trace:true,message:{content:[{type:'tool_use',id:p.item.id,name:'mcp__'+p.item.server+'__'+p.item.tool,input:p.item.arguments||{}}]}});
   if(m.method==='item/completed'&&p.item?.type==='mcpToolCall')emit({type:'user',message:{content:[{type:'tool_result',tool_use_id:p.item.id,content:JSON.stringify(p.item.result||p.item.error||{})}]}});
   if(m.method==='item/started'&&p.item?.type==='commandExecution')emit({type:'assistant',codex_tool_trace:true,message:{content:[{type:'tool_use',id:p.item.id,name:'Bash',input:{command:p.item.command}}]}});
