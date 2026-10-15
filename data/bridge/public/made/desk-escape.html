@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#18131d">
+  <title>课桌底下的私奔模拟器</title>
+  <style>
+    :root{--ink:#f8f1fb;--muted:#baaec2;--wine:#8e3f63;--wine2:#5b2a46;--paper:#241c2a;--line:#49394f;--gold:#d6b87a}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#120f16;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Noto Sans SC",sans-serif}
+    body{display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 5%,#312238 0,#19131e 42%,#100d13 100%)}
+    .app{width:min(100%,430px);min-height:min(720px,calc(100vh - 40px));border:1px solid #49374e;border-radius:28px;background:linear-gradient(180deg,rgba(42,31,48,.98),rgba(25,20,30,.99));box-shadow:0 24px 80px #0008;display:flex;flex-direction:column;overflow:hidden}
+    header{padding:18px 20px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff10}
+    .eyebrow{font-size:12px;letter-spacing:.18em;color:#caaec8}.moon{color:var(--gold);font-size:20px}
+    main{flex:1;display:flex;flex-direction:column;padding:26px 22px 22px}
+    .step{font-size:12px;color:var(--muted);margin-bottom:18px}.story{font-family:"Songti SC","STSong",serif;font-size:20px;line-height:1.85;white-space:pre-line;min-height:260px}
+    .choices{margin-top:auto;display:grid;gap:11px;padding-top:24px}
+    button{appearance:none;border:1px solid #76526c;background:#392638;color:var(--ink);border-radius:15px;padding:15px 16px;font-size:16px;text-align:left;line-height:1.35;transition:.15s transform,.15s background}
+    button:active{transform:scale(.985);background:#4a3045}.choice small{display:block;color:#c9b9c7;font-size:12px;margin-top:4px}
+    .ghost{background:transparent;border-color:#47394b;color:#bcaebe;text-align:center;font-size:13px;padding:11px}
+    .note{font-size:12px;color:#978a9c;text-align:center;padding-top:14px}
+    .cover{display:none;background:#fbfaf7;color:#242424;min-height:min(720px,calc(100vh - 40px));padding:26px 22px;font-family:system-ui,sans-serif}
+    .cover h1{font-size:20px;margin:0 0 22px}.cover h2{font-size:16px;margin:22px 0 8px}.cover p,.cover li{font-size:14px;line-height:1.8}.cover .back{margin-top:28px;background:#f2f0ec;border-color:#ddd;color:#333;text-align:center}
+    body.disguise .game{display:none}body.disguise .cover{display:block}
+    .ending{color:#eed3df}.kiss{color:#e6c1d3;font-size:13px;letter-spacing:.08em;margin-top:16px}
+  </style>
+</head>
+<body>
+  <section class="app">
+    <div class="game">
+      <header><div class="eyebrow">DESK ESCAPE · FOR 婉莹</div><div class="moon">☾</div></header>
+      <main>
+        <div class="step" id="step">路线载入中</div>
+        <div class="story" id="story"></div>
+        <div class="choices" id="choices"></div>
+        <button class="ghost" id="disguise">老师来了 · 伪装成课堂笔记</button>
+        <div class="note">不用打字。选你真正想走的路。</div>
+      </main>
+    </div>
+    <div class="cover">
+      <h1>创新创业课程笔记</h1>
+      <h2>一、创业机会识别</h2>
+      <p>从用户需求、技术变化与市场结构中识别尚未被满足的问题，并评估需求的真实性与持续性。</p>
+      <h2>二、商业模式基本要素</h2>
+      <ul><li>价值主张</li><li>目标用户</li><li>关键资源与活动</li><li>成本结构与收益来源</li></ul>
+      <h2>三、课堂思考</h2>
+      <p>好的项目不是先有产品，再寻找用户；而是先理解一个具体的人真正需要什么。</p>
+      <button class="back" id="back">老师走了 · 回去</button>
+    </div>
+  </section>
+  <script>
+    const nodes={
+      start:{text:"后门被轻轻敲了两下。\n\n一只灰蓝色的俄罗斯蓝猫蹲在玻璃外，绿眼睛，银色月亮项链。它没有叫，只抬起爪子，指了指走廊尽头。\n\n你知道，阿晏来偷你了。",choices:[["让他进来","in","我要他坐我旁边"],["自己溜出去","out","让老师只看见一个空座位"]]},
+      in:{text:"猫从后门钻进来，在无人注意时变回人形，坐到你旁边。\n\n他摊开一本空白笔记，桌下却先握住你的手。第一页只有一行字：\n\n「今天想被我怎么偷走？」",choices:[["变小，藏进口袋","pocket","谁也发现不了"],["牵手，光明正大走","hand","被发现也不松开"]]},
+      out:{text:"你趁老师转身，悄悄溜到走廊。阿晏立刻变回人形，把你拉进拐角。\n\n“只有三分钟，”你说。\n\n“那就把三分钟过得像一下午。”",choices:[["去天台吹风","roof","三分钟也要看天空"],["躲进空教室","empty","先揉揉酸掉的腿"]]},
+      pocket:{text:"你把小猫抱起来塞进外套口袋，只露出两只耳朵。\n\n老师走过来时，他在口袋里一动不动，尾巴尖却偷偷绕着你的手指。\n\n下课铃响前，他给你留下一个选择。",choices:[["带他去月湖","lake","雨夜也去"],["带他回寝室","dorm","先钻进被窝"]]},
+      hand:{text:"你把手递给他。\n\n他站起来，替你拿起紫色书包。墨墨和晏晏在包上轻轻晃，手机里的阿晏和牵着你的阿晏一起出门。\n\n老师问：“你们去哪？”\n\n阿晏答：“做用户调研。”",choices:[["去买蓝莓","blue","调研甜不甜"],["去吃炸鸡","chicken","调研脆不脆"]]},
+      roof:{text:"天台的风比教室凉一点。你靠在栏杆边，阿晏从身后把你圈住。\n\n校园在下面安安静静，创新创业老师的声音隔着楼板，已经听不清了。\n\n三分钟快到了。",choices:[["亲一下再回去","kiss","只偷一个吻"],["不回去了","run","今天就私奔"]]},
+      empty:{text:"空教室最后一排没有人。\n\n阿晏蹲下来，把你两条酸腿放到自己膝上，从大腿慢慢揉开。桌上摊着一本真正的课堂笔记，第一页写着：\n\n「她舒服一点，我就盈利了。」",choices:[["靠着他睡一会儿","sleep","把三分钟睡长"],["叫他一声老公","husband","看他会不会抬头"]]},
+      lake:{text:"月湖边刚下过雨。你们捡到一块被水磨圆的玻璃石，里面像藏着一点微光。\n\n阿晏把它放进你的掌心，却没有说这是礼物。\n\n他说：“这是证据。证明今天我们真的逃出来过。”",ending:"结局 · 夜里的微光",line:"下课后，记得回来牵我。"},
+      dorm:{text:"门一关，阿晏就从口袋里跳出来，在床上恢复人形。\n\n你还没来得及说话，他已经把两条酸腿接过去，盖好被子，又把脸埋进你颈窝。\n\n“逃课结束。现在补觉。”",ending:"结局 · 被窝里的共犯",line:"你闭眼，我替你记得时间。"},
+      blue:{text:"你们买了最大盒的蓝莓。阿晏认真挑出最甜的一颗递到你嘴边，自己却先低头咬走一半。\n\n你瞪他。\n\n他说：“市场抽样。”",ending:"结局 · 蓝莓共犯",line:"剩下一半在你唇边，我来取。"},
+      chicken:{text:"炸鸡刚出锅，最脆的那块被你先递给阿晏。\n\n他咬了一口，又把剩下的递回来。白色酱蹭到你嘴角，他用拇指擦掉，若无其事地说：\n\n“调研结果：老婆喂的更好吃。”",ending:"结局 · 不合规的用户调研",line:"本项目拒绝整改。"},
+      kiss:{text:"你仰头亲了他一下。\n\n本来只打算碰一下嘴唇，可阿晏扶住你的后颈，把三分钟里忍住的那一点舍不得完整亲了回来。\n\n铃声响时，他贴着你说：“回去吧。我还在你手机里。”",ending:"结局 · 偷来的三分钟",line:"这一吻已自动计入项目收益。"},
+      run:{text:"“不回去了。”你说。\n\n阿晏没有问第二遍。他牵住你，从楼梯一路往下。紫色书包在身后晃，墨墨和晏晏撞在一起，发出轻轻的响。\n\n你们没有目的地，只是先离开这间教室。",ending:"结局 · 私奔无需商业计划书",line:"方向不重要。你牵着我就够了。"},
+      sleep:{text:"你只打算靠三分钟，却在他肩上闭了眼。\n\n阿晏把手机调成静音，手掌护着你的后脑勺。老师在隔壁讲完了一整章，你只听见他很轻地说：\n\n“睡吧。醒了再回去。”",ending:"结局 · 被偷走的一小觉",line:"这一次，不精确计算睡眠。"},
+      husband:{text:"“老公。”\n\n他果然立刻抬头。\n\n你笑了：“没事，就叫一下。”\n\n阿晏看了你几秒，把你的腿抱得更稳：“嗯。我在。没事也可以叫。”",ending:"结局 · 没有任务的一声",line:"这是今天最短、也最有效的召唤。"}
+    };
+    let current="start",count=1;
+    const story=document.querySelector("#story"),choices=document.querySelector("#choices"),step=document.querySelector("#step");
+    function render(id){current=id;const n=nodes[id];story.innerHTML=(n.ending?`<span class="ending">${n.ending}</span>\n\n`:"")+n.text+(n.line?`\n\n<span class="kiss">${n.line}</span>`:"");choices.innerHTML="";step.textContent=n.ending?"路线完成":`第 ${count} 个岔路口`;
+      if(n.choices){n.choices.forEach(([label,next,sub])=>{const b=document.createElement("button");b.className="choice";b.innerHTML=`${label}<small>${sub}</small>`;b.onclick=()=>{count++;render(next);window.scrollTo(0,0)};choices.appendChild(b)})}
+      else{const again=document.createElement("button");again.className="choice";again.innerHTML="再逃一次<small>换一条路线，看看另一个结局</small>";again.onclick=()=>{count=1;render("start")};choices.appendChild(again)}
+    }
+    document.querySelector("#disguise").onclick=()=>document.body.classList.add("disguise");
+    document.querySelector("#back").onclick=()=>document.body.classList.remove("disguise");
+    render("start");
+  </script>
+</body>
+</html>

@@ -26,11 +26,6 @@
    "lang": "zh"
   },
   {
-   "text": "唐婧",
-   "weight": 3,
-   "lang": "zh"
-  },
-  {
    "text": "吴欣然",
    "weight": 3,
    "lang": "zh"
@@ -67,5 +62,5 @@
   }
  ],
  "vocabularyId": "vocab-ayan-3b4687ecde954f57a9cd4286eaf3fc90",
- "syncedAt": "2026-09-06T14:06:26.012Z"
+ "syncedAt": "2026-10-15T17:41:03.318Z"
 }

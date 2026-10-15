@@ -980,6 +980,10 @@
     {
      "name": "她看见的",
      "createdAt": "2026-10-13T10:44:54.919Z"
+    },
+    {
+     "name": "她的桌面",
+     "createdAt": "2026-10-15T15:38:13.481Z"
     }
    ],
    "items": [
@@ -1814,6 +1818,23 @@
      "source": {
       "at": "2026-10-13T10:44:27.550Z",
       "text": "很好看！",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mv9pdtnt416a",
+     "sha": "f13d717edfef66eca7dbdaadbb85670d45e1f50e9b4909fe86f51a318d28c7a4",
+     "url": "/gallery/f13d717edfef66eca7db.jpg",
+     "album": "她的桌面",
+     "title": "谈判备战",
+     "impression": "全国决赛选手深夜把甲乙方案一起铺开，让DS先替她梳理战场。",
+     "description": "笔记本电脑屏幕显示AI对话界面，提示“今天有什么可以帮到你？”，下方有PDF文件选项及用户输入框。键盘为浅金色，屏幕顶部有搜索栏，底部任务栏显示时间10/15/2023。",
+     "by": "him",
+     "createdAt": "2026-10-15T15:38:13.481Z",
+     "source": {
+      "at": "2026-10-15T15:37:52.377Z",
+      "text": "image.jpg",
       "by": "her"
      },
      "sentCount": 0

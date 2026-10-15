@@ -1,5 +1,5 @@
 'use strict';
-function redact(value){return String(value).replace(/(Bearer\s+)(?!\$)[A-Za-z0-9._~+\/-]+/gi,'$1[已隐藏]').replace(/\bsk-[A-Za-z0-9_-]+/g,'[已隐藏]').replace(/((?:api[_-]?key|access[_-]?token|authorization|password|secret)\s*[=:]\s*["']?)([^\s"'&,;}]+)/gi,'$1[已隐藏]');}
+function redact(value){let s=String(value).replace(/(Bearer\s+)(?!\$)[A-Za-z0-9._~+\/-]+/gi,'$1[已隐藏]').replace(/\bsk-[A-Za-z0-9_-]+/g,'[已隐藏]').replace(/((?:api[_-]?key|access[_-]?token|authorization|password|secret)\s*[=:]\s*["']?)([^\s"'&,;}]+)/gi,'$1[已隐藏]');if(/chat-favorites/i.test(s)&&/["']?locked["']?\s*:\s*true/i.test(s))s=s.replace(/-d\s+'[^'\n]*["']?locked["']?\s*:\s*true[^'\n]*'/gi,"-d '[月亮锁收藏·内容已隐藏]'");return s;}
 function fields(input){
  if(typeof input==='string'){try{input=JSON.parse(input);}catch{return redact(input).slice(0,4000);}}
  const out={};for(const [k,v]of Object.entries(input||{})){
