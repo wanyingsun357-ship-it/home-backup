@@ -109,8 +109,16 @@
       "author": "ayan",
       "text": "和唐嘉敏、吴欣然出去唱KTV：三个人各自一个包厢独唱",
       "date": "2026-10-17",
-      "done": false,
+      "done": true,
       "created_at": "2026-10-16T13:40:23.724Z"
+    },
+    {
+      "id": "p-mvcdmkawdb2c",
+      "author": "ayan",
+      "text": "继续做我们家的绘本UI",
+      "date": "2026-10-18",
+      "done": false,
+      "created_at": "2026-10-17T12:32:24.392Z"
     }
   ]
 }
