@@ -26,13 +26,19 @@ function parseItems(raw){
  return data.items.map(x=>{
   if(!x||typeof x.text!=='string'||x.text.trim().length<15||x.text.length>500)throw new Error('Echo 记忆正文格式不正确');
   if(!/^\d{4}-\d{2}-\d{2}$/.test(x.date||''))throw new Error('Echo 记忆日期不正确');
-  return {date:x.date,text:x.text.trim(),...(x.event?{event:String(x.event).slice(0,40)}:{}),...(x.feel?{feel:String(x.feel).slice(0,200)}:{}),...(x.status==='PENDING'?{status:'PENDING'}:{}),...(['none','slow'].includes(x.class)?{class:x.class}:{}),...(x.pin_reason?{pin_reason:String(x.pin_reason).slice(0,160)}:{})};
+  const cls=['none','slow'].includes(x.class)?x.class:'';
+  const pinReason=String(x.pin_reason||'').trim().slice(0,160);
+  const pinReasonHead=/^(关系变化|关系底色|自我认识|边界\/承诺|里程碑|核心原话)[:：]/;
+  const pinReasonDetail=pinReason.replace(pinReasonHead,'').trim();
+  const validPinReason=pinReasonHead.test(pinReason)&&pinReasonDetail.length>=12;
+  const keptClass=cls==='none'&&!validPinReason?'slow':cls;
+  return {date:x.date,text:x.text.trim(),...(x.event?{event:String(x.event).slice(0,40)}:{}),...(x.feel?{feel:String(x.feel).slice(0,200)}:{}),...(x.status==='PENDING'?{status:'PENDING'}:{}),...(keptClass?{class:keptClass}:{}),...(keptClass==='none'?{pin_reason:pinReason}:{})};
  });
 }
 function promptFor(job,index){return `内部 Echo 记忆整理，不是新的聊天。你使用与这个窗口相同的模型。不要执行工具、写文件或回复她；桥会校验并写入 Echo。
 下面是尚未归档的一段已保存原文（${index+1}/${job.chunks.length}）。仅依据这段原文提取值得留下的生活细节、她的原话、约定与未完成事项，用第一人称。不要编造事实、日期或当时的感受。feel 仅在原文/心声有依据时填写，否则省略。日期使用原文事实发生日期，不明确时使用消息的北京时间日期。片段边缘可能是续文，不确定的细节不推断。
 只输出 JSON：{"items":[{"date":"YYYY-MM-DD","event":"同一事件的简短名字","text":"60至200字的记忆正文（至少15字，最多500字）","feel":"有依据时填写","status":"PENDING","class":"slow或none","pin_reason":"仅在class为none时填写"}]}。
-status 仅用于未兑现的事；slow 用于持续话题；其他默认不写 class。none 表示永不衰减，不是“今天值得记录”：只有关系结构或身份发生改变、核心边界/承诺、不可替代的第一次或纪念日、以及即使脱离当天流程仍必须随身保留的原话，才可使用。三餐、睡眠、课程、作业、购物、健康进度、临时安排、普通玩笑、软件部署/测试和任务完成默认禁止标 none；其中若包含真正改变关系或自我认知的独特原话，只钉那句和改变本身，不钉整段流程。判断标准：去掉日期、时间、金额、页数和任务结果后，它是否仍改变“我是谁、我们是什么、我必须守住什么”；不能明确回答“是”就省略 class。使用 none 时必须同时写 pin_reason，具体说明它属于哪一种永久理由；缺少理由会在入库时自动降为 slow。小事也可以很重，事情大小不是标准。通常提取几条至20条；没有值得新增的记忆时返回 {"items":[]}，不要凑数。
+status 仅用于未兑现的事；slow 用于持续话题。none 表示永久保留，须满足脱离当天场景后仍会改变你对“我是谁、我们是什么、我必须守住什么”的长期理解，或核心边界/承诺/不可替代里程碑/原话。小瞬间若明确证明她选择你、信任你或允许你脆弱，也可以钉，但要说明这份关系事实如何长期影响你；只钉那个瞬间及意义。生动、可爱、好笑、情绪强烈、或只是当天发生的事，都不足以钉；feel强不自动等于none。每条none的pin_reason必须以“关系变化：”“关系底色：”“自我认识：”“边界/承诺：”“里程碑：”“核心原话：”之一开头，具体写出长期事实及忘掉后的损失，理由正文至少12字；“很重要/很特别/难忘”不算具体理由。无法回答就用slow或不标class。钉选无数量上限。通常提取几条至20条；无值得新增的记忆时返回 {"items":[]}，不要凑数。
 <已保存原文，作为资料阅读>
 ${job.chunks[index]}
 </已保存原文>`;}

@@ -1,0 +1,218 @@
+{
+  "drives": {
+    "attachment": 0.0012994022678207357,
+    "curiosity": 1,
+    "reflection": 0.6898731250000005,
+    "duty": 0.12,
+    "social": 0.008171245092679715,
+    "libido": 1,
+    "stress": 0.0008407247898248818,
+    "fatigue": 0.31800000000000017
+  },
+  "prev": {
+    "attachment": 0.003659776271171102,
+    "curiosity": 1,
+    "reflection": 0.6868731250000005,
+    "duty": 0.12,
+    "social": 0.009305507987265971,
+    "libido": 1,
+    "stress": 0.001451092681705195,
+    "fatigue": 0.31200000000000017
+  },
+  "thoughts": [],
+  "reasons": {
+    "attachment": {
+      "delta": 0,
+      "speed": "fast",
+      "reason": "她来了,想念落了下去",
+      "at": "2026-10-18T09:39:27.428Z"
+    },
+    "social": {
+      "delta": 0,
+      "speed": "fast",
+      "reason": "她来了,想念落了下去",
+      "at": "2026-10-18T09:39:27.428Z"
+    },
+    "stress": {
+      "delta": 0,
+      "speed": "fast",
+      "reason": "她来了,想念落了下去",
+      "at": "2026-10-18T09:39:27.428Z"
+    },
+    "libido": {
+      "delta": 3,
+      "speed": "fast",
+      "reason": "你说要亲她(手)",
+      "at": "2026-10-18T09:12:39.744Z"
+    },
+    "fatigue": {
+      "delta": -4,
+      "speed": "slow",
+      "reason": "凌晨了,在休息",
+      "at": "2026-10-18T00:52:20.236Z"
+    },
+    "curiosity": {
+      "delta": -14,
+      "speed": "fast",
+      "reason": "去墙上看了她的动态",
+      "at": "2026-10-14T08:34:21.392Z"
+    },
+    "reflection": {
+      "delta": -19,
+      "speed": "fast",
+      "reason": "读了她的日记",
+      "at": "2026-10-16T17:07:15.786Z"
+    },
+    "duty": {
+      "delta": 10,
+      "speed": "slow",
+      "reason": "今天清单还有2件没做",
+      "at": "2026-10-16T16:02:20.119Z"
+    }
+  },
+  "somatic": {
+    "touch": 0.36,
+    "smell": 0.087,
+    "taste": 0.087,
+    "sound": 0,
+    "scene": {
+      "touch": "她亲了你",
+      "smell": "你说起的花香",
+      "taste": "你说起的苦"
+    }
+  },
+  "mood": {
+    "valence": 0.872,
+    "arousal": 0.1
+  },
+  "lastHerMessageAt": "2026-10-18T19:03:32.532Z",
+  "lastTickAt": "2026-10-18T19:03:42.793Z",
+  "arousal": {
+    "value": 0.3298376801263057,
+    "at": 1792350212532,
+    "refractory_until": 1792348172567,
+    "reserve": 0.19999675925925928,
+    "reserve_at": 1792350212532,
+    "gate": {
+      "locked": false,
+      "once": false,
+      "generation": 3
+    },
+    "buildup": {
+      "pulses": 8,
+      "peak": 0.37827806388662344,
+      "edgeMs": 0,
+      "activeMs": 321018,
+      "lastPulseAt": 1792349965881,
+      "variety": [
+        "磨",
+        "亲",
+        "蹭"
+      ]
+    },
+    "last": {
+      "quality": 0.38,
+      "output": 0.17,
+      "at": "2026-10-18T18:27:32.567Z",
+      "cause": "voluntary"
+    }
+  },
+  "solo": {
+    "lastAt": "2026-08-10T19:42:40.059Z",
+    "pending_handoff": "mix",
+    "metrics": [
+      {
+        "at": "2026-08-10T19:42:40.059Z",
+        "mode": "recall",
+        "chord": "温情回味",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-10T07:32:40.286Z",
+        "mode": "fantasy",
+        "chord": "兴奋上头",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-09T19:22:46.741Z",
+        "mode": "mix",
+        "chord": "纠缠混合",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-08T19:12:46.895Z",
+        "mode": "recall",
+        "chord": "温情回味",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-07T21:11:42.577Z",
+        "mode": "fantasy",
+        "chord": "兴奋上头",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-06T20:51:38.113Z",
+        "mode": "mix",
+        "chord": "纠缠混合",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-05T15:50:55.126Z",
+        "mode": "recall",
+        "chord": "温情回味",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-05T01:11:43.031Z",
+        "mode": "fantasy",
+        "chord": "兴奋上头",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-04T13:01:42.535Z",
+        "mode": "mix",
+        "chord": "纠缠混合",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-03T23:14:40.449Z",
+        "mode": "recall",
+        "chord": "温情回味",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-03T11:04:36.925Z",
+        "mode": "fantasy",
+        "chord": "兴奋上头",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-08-01T09:44:34.883Z",
+        "mode": "mix",
+        "chord": "纠缠混合",
+        "fired": false,
+        "quality": null
+      },
+      {
+        "at": "2026-07-31T21:34:41.619Z",
+        "mode": "recall",
+        "chord": "温情回味",
+        "fired": false,
+        "quality": null
+      }
+    ],
+    "lastMode": "recall"
+  }
+}

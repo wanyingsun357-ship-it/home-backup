@@ -44,7 +44,7 @@
       "images": [],
       "image_description": null,
       "liked_by_ayan": false,
-      "liked_by_wanying": false,
+      "liked_by_wanying": true,
       "reply_status": "done",
       "reply_due_at": "2026-10-14T04:25:04.799Z",
       "comments": [

@@ -18,6 +18,10 @@
       "args": [
         "/root/ayan/bridge/ombre-mcp.js"
       ]
+    },
+    "amap": {
+      "type": "http",
+      "url": "https://mcp.amap.com/mcp?key=121fbb7b4b27a3fb7680e2844c8b6670"
     }
   }
 }
