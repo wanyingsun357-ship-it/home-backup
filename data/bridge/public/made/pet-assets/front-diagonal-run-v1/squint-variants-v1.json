@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "base_motion": "front_diagonal_run_toward_viewer",
+  "variants": {
+    "rabbit": {
+      "replace_frame": 2,
+      "file": "rabbit-front-diagonal-run-03-squint.png",
+      "trigger": "rare_happy_airborne_squint",
+      "duration_frames": 1
+    },
+    "cat": {
+      "replace_frame": 2,
+      "file": "cat-front-diagonal-run-03-squint.png",
+      "trigger": "rare_wind_squint",
+      "duration_frames": 1
+    }
+  },
+  "invariants": [
+    "448x448 RGBA",
+    "same alpha as base frame",
+    "same pose and anchor as base frame",
+    "only the eye region changes"
+  ]
+}

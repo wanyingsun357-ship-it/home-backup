@@ -1,0 +1,40 @@
+{
+  "version": "v3",
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [
+      224,
+      420
+    ]
+  },
+  "sequence": [
+    {
+      "frame": 1,
+      "action": "neutral",
+      "duration_ms": 650
+    },
+    {
+      "frame": 2,
+      "action": "inhale",
+      "duration_ms": 280
+    },
+    {
+      "frame": 3,
+      "action": "neutral",
+      "duration_ms": 780
+    },
+    {
+      "frame": 4,
+      "action": "species_motion",
+      "duration_ms": 170
+    },
+    {
+      "frame": 5,
+      "action": "neutral",
+      "duration_ms": 900
+    }
+  ],
+  "note": "No blink frame. Cat moves only the tail tip; rabbit moves only one ear tip. Frames derive deterministically from approved seated mother-sheet sprites."
+}

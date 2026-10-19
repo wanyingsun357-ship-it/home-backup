@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#eee8f6" />
+  <title>猫兔基础坐姿待机 v1</title>
+  <style>
+    :root { color-scheme: light; font-family: ui-rounded, "SF Pro Rounded", "PingFang SC", system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100svh; color: #40394d; background: linear-gradient(180deg,#eee9f7 0%,#f8f4f0 62%,#e9dfd8 100%); overflow: hidden; }
+    main { min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding: max(18px,env(safe-area-inset-top)) 16px max(18px,env(safe-area-inset-bottom)); }
+    header { text-align: center; }
+    h1 { margin: 0; font-size: 18px; font-weight: 720; letter-spacing: .04em; }
+    p { margin: 7px 0 0; color: #746d7e; font-size: 12px; }
+    .room { position: relative; display: flex; align-items: end; justify-content: center; gap: clamp(0px,1vw,12px); min-height: 0; padding-bottom: 5vh; }
+    .room::before { content: ""; position: absolute; left: -16px; right: -16px; bottom: 0; height: 34%; background: linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.42)); border-top: 1px solid rgba(89,74,102,.08); }
+    .pet-wrap { position: relative; width: min(48vw,330px); aspect-ratio: 1; display: grid; place-items: end center; transition: width .3s, opacity .25s, transform .3s; }
+    .pet-wrap::after { content: ""; position: absolute; z-index: 0; bottom: 3%; width: 43%; height: 5%; border-radius: 50%; background: rgba(59,48,65,.13); filter: blur(7px); }
+    .pet { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; }
+    .room[data-show="cat"] .rabbit, .room[data-show="rabbit"] .cat { display: none; }
+    .room[data-show="cat"] .cat, .room[data-show="rabbit"] .rabbit { width: min(72vw,390px); }
+    .panel { position: relative; padding: 12px; border: 1px solid rgba(100,83,114,.13); border-radius: 22px; background: rgba(255,255,255,.58); box-shadow: 0 12px 42px rgba(72,56,82,.12); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+    .row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .row + .row { margin-top: 8px; }
+    button { appearance: none; border: 0; border-radius: 14px; min-height: 42px; padding: 8px 6px; color: #5f5669; background: rgba(104,87,119,.08); font: inherit; font-size: 13px; }
+    button.active { color: #fff; background: linear-gradient(135deg,#817098,#a88399); box-shadow: 0 7px 18px rgba(117,91,124,.22); }
+    .status { text-align: center; margin-top: 9px; min-height: 17px; color: #7d7384; font-size: 11px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>基础坐姿待机 · v1</h1>
+      <p>原母库正坐格 · 轻呼吸／眨眼／耳尾小动</p>
+    </header>
+
+    <section class="room" data-show="both" aria-label="猫兔待机预览">
+      <div class="pet-wrap cat"><img class="pet" id="cat" alt="灰蓝猫猫待机" /></div>
+      <div class="pet-wrap rabbit"><img class="pet" id="rabbit" alt="浅桂花奶兔兔待机" /></div>
+    </section>
+
+    <section class="panel">
+      <div class="row" id="who">
+        <button data-show="cat">只看猫猫</button>
+        <button data-show="both" class="active">一起待着</button>
+        <button data-show="rabbit">只看兔兔</button>
+      </div>
+      <div class="row" id="actions">
+        <button data-action="breathe">看呼吸</button>
+        <button data-action="blink">看眨眼</button>
+        <button data-action="twitch">看耳尾</button>
+      </div>
+      <div class="status" id="status">自然待机中：两只会按自己的节奏动</div>
+    </section>
+  </main>
+
+  <script>
+    const base = './pet-assets/basic-idle-v1/';
+    const pets = {
+      cat: document.querySelector('#cat'),
+      rabbit: document.querySelector('#rabbit')
+    };
+    const src = (name, n) => `${base}${name}-basic-idle-${String(n).padStart(2,'0')}.png`;
+    const preload = [];
+    for (const name of Object.keys(pets)) {
+      for (let n = 1; n <= 7; n += 1) { const image = new Image(); image.src = src(name,n); preload.push(image); }
+      pets[name].src = src(name,1);
+    }
+
+    const timers = [];
+    const later = (fn, ms) => { const timer = setTimeout(fn,ms); timers.push(timer); return timer; };
+    const frame = (name,n) => { pets[name].src = src(name,n); };
+    const both = fn => Object.keys(pets).forEach(fn);
+
+    function breathe(name) {
+      frame(name,2);
+      later(() => frame(name,3),280);
+    }
+    function blink(name) {
+      frame(name,4);
+      later(() => frame(name,5),125);
+    }
+    function twitch(name) {
+      frame(name,6);
+      later(() => frame(name,7),170);
+    }
+    function schedule(name) {
+      const loop = () => {
+        breathe(name);
+        later(() => Math.random() < .58 ? blink(name) : twitch(name),900 + Math.random()*1000);
+        later(loop,3900 + Math.random()*2500);
+      };
+      later(loop,name === 'cat' ? 650 : 1150);
+    }
+    schedule('cat'); schedule('rabbit');
+
+    document.querySelector('#who').addEventListener('click', event => {
+      const button = event.target.closest('button'); if (!button) return;
+      document.querySelector('.room').dataset.show = button.dataset.show;
+      document.querySelectorAll('#who button').forEach(item => item.classList.toggle('active',item === button));
+    });
+    document.querySelector('#actions').addEventListener('click', event => {
+      const button = event.target.closest('button'); if (!button) return;
+      const action = button.dataset.action;
+      both(name => ({ breathe,blink,twitch })[action](name));
+      const labels = { breathe:'刚刚一起轻轻呼吸了一下', blink:'刚刚一起眨了眼', twitch:'刚刚一起动了动耳朵和尾巴' };
+      document.querySelector('#status').textContent = labels[action];
+      document.querySelectorAll('#actions button').forEach(item => item.classList.toggle('active',item === button));
+      later(() => {
+        button.classList.remove('active');
+        document.querySelector('#status').textContent = '自然待机中：两只会按自己的节奏动';
+      },650);
+    });
+  </script>
+</body>
+</html>

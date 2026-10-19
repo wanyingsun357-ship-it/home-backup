@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [224, 420]
+  },
+  "note": "Cat frames share one byte-identical fixed body layer; only one separate tail layer rotates behind the right hip. Rabbit frames are byte-identical copies of connected v1.",
+  "cat": {
+    "action": "tail_sway",
+    "bodySource": "sources/cat-body-fixed-448.png",
+    "tailSource": "sources/cat-tail-fixed.png",
+    "tailRoot": [282, 346],
+    "angles": [-10, -3, 5, 12],
+    "frames": [
+      "cat-tail_sway-01.png",
+      "cat-tail_sway-02.png",
+      "cat-tail_sway-03.png",
+      "cat-tail_sway-04.png"
+    ]
+  },
+  "rabbit": {
+    "action": "ear_sway",
+    "copiedByteForByteFrom": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/",
+    "frames": [
+      "rabbit-ear_sway-01.png",
+      "rabbit-ear_sway-02.png",
+      "rabbit-ear_sway-03.png",
+      "rabbit-ear_sway-04.png"
+    ]
+  }
+}

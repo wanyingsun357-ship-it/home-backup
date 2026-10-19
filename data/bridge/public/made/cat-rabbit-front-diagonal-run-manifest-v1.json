@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "motion": "front_diagonal_run_toward_viewer",
+  "frame_count": 6,
+  "frame_size": [
+    448,
+    448
+  ],
+  "anchor": [
+    224,
+    438
+  ],
+  "atlas": "cat-rabbit-front-diagonal-run-atlas-v1.png",
+  "rows": {
+    "rabbit": 0,
+    "cat": 1
+  },
+  "direction": "down_right",
+  "mirrored_direction": "down_left",
+  "frames": {
+    "rabbit": [
+      {
+        "index": 0,
+        "file": "pet-assets/front-diagonal-run-v1/rabbit-front-diagonal-run-01.png",
+        "alpha_bbox": [
+          53,
+          194,
+          395,
+          417
+        ]
+      },
+      {
+        "index": 1,
+        "file": "pet-assets/front-diagonal-run-v1/rabbit-front-diagonal-run-02.png",
+        "alpha_bbox": [
+          47,
+          151,
+          400,
+          417
+        ]
+      },
+      {
+        "index": 2,
+        "file": "pet-assets/front-diagonal-run-v1/rabbit-front-diagonal-run-03.png",
+        "alpha_bbox": [
+          50,
+          108,
+          398,
+          394
+        ]
+      },
+      {
+        "index": 3,
+        "file": "pet-assets/front-diagonal-run-v1/rabbit-front-diagonal-run-04.png",
+        "alpha_bbox": [
+          64,
+          125,
+          383,
+          420
+        ]
+      },
+      {
+        "index": 4,
+        "file": "pet-assets/front-diagonal-run-v1/rabbit-front-diagonal-run-05.png",
+        "alpha_bbox": [
+          43,
+          174,
+          405,
+          438
+        ]
+      },
+      {
+        "index": 5,
+        "file": "pet-assets/front-diagonal-run-v1/rabbit-front-diagonal-run-06.png",
+        "alpha_bbox": [
+          56,
+          188,
+          392,
+          426
+        ]
+      }
+    ],
+    "cat": [
+      {
+        "index": 0,
+        "file": "pet-assets/front-diagonal-run-v1/cat-front-diagonal-run-01.png",
+        "alpha_bbox": [
+          69,
+          115,
+          378,
+          416
+        ]
+      },
+      {
+        "index": 1,
+        "file": "pet-assets/front-diagonal-run-v1/cat-front-diagonal-run-02.png",
+        "alpha_bbox": [
+          56,
+          123,
+          391,
+          434
+        ]
+      },
+      {
+        "index": 2,
+        "file": "pet-assets/front-diagonal-run-v1/cat-front-diagonal-run-03.png",
+        "alpha_bbox": [
+          16,
+          130,
+          431,
+          406
+        ]
+      },
+      {
+        "index": 3,
+        "file": "pet-assets/front-diagonal-run-v1/cat-front-diagonal-run-04.png",
+        "alpha_bbox": [
+          85,
+          125,
+          362,
+          412
+        ]
+      },
+      {
+        "index": 4,
+        "file": "pet-assets/front-diagonal-run-v1/cat-front-diagonal-run-05.png",
+        "alpha_bbox": [
+          49,
+          124,
+          398,
+          437
+        ]
+      },
+      {
+        "index": 5,
+        "file": "pet-assets/front-diagonal-run-v1/cat-front-diagonal-run-06.png",
+        "alpha_bbox": [
+          71,
+          128,
+          376,
+          438
+        ]
+      }
+    ]
+  },
+  "source": "cat-rabbit-front-diagonal-locomotion-study-v4.png",
+  "source_baselines": {
+    "rabbit": 381,
+    "cat": 693
+  },
+  "notes": [
+    "Twelve complete subjects are isolated as connected alpha components across the full sheet; no equal-width slicing is used.",
+    "Each species uses one constant source baseline, preserving rabbit jump height and cat body bobbing.",
+    "All frames are native source scale on 448x448 RGBA canvases with anchor (224,438); no subject is independently resized.",
+    "The approved pale osmanthus-milk rabbit RGB and the cat pixels come directly from the accepted v4 sheet."
+  ]
+}

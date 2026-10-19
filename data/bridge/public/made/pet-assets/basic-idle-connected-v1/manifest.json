@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [
+      224,
+      420
+    ]
+  },
+  "note": "Each motion frame is a complete connected character drawing. No rectangular body part is shifted.",
+  "studies": [
+    {
+      "species": "cat",
+      "action": "tail_sway",
+      "source": "/root/ayan/bridge/public/made/cat-seated-tail-connected-study-v1.png",
+      "targetHeight": 273,
+      "frames": [
+        {
+          "index": 1,
+          "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/cat-tail_sway-01.png",
+          "bounds": {
+            "left": 53,
+            "top": 79,
+            "right": 253,
+            "bottom": 352,
+            "width": 200,
+            "height": 273
+          },
+          "placement": {
+            "left": 74,
+            "top": 68
+          },
+          "scale": 0.5548780487804879
+        },
+        {
+          "index": 2,
+          "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/cat-tail_sway-02.png",
+          "bounds": {
+            "left": 49,
+            "top": 78,
+            "right": 290,
+            "bottom": 351,
+            "width": 241,
+            "height": 273
+          },
+          "placement": {
+            "left": 74,
+            "top": 69
+          },
+          "scale": 0.5548780487804879
+        },
+        {
+          "index": 3,
+          "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/cat-tail_sway-03.png",
+          "bounds": {
+            "left": 45,
+            "top": 78,
+            "right": 282,
+            "bottom": 352,
+            "width": 237,
+            "height": 274
+          },
+          "placement": {
+            "left": 74,
+            "top": 68
+          },
+          "scale": 0.5548780487804879
+        },
+        {
+          "index": 4,
+          "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/cat-tail_sway-04.png",
+          "bounds": {
+            "left": 40,
+            "top": 78,
+            "right": 273,
+            "bottom": 352,
+            "width": 233,
+            "height": 274
+          },
+          "placement": {
+            "left": 74,
+            "top": 68
+          },
+          "scale": 0.5548780487804879
+        }
+      ]
+    },
+    {
+      "species": "rabbit",
+      "action": "ear_sway",
+      "source": "/root/ayan/bridge/public/made/rabbit-seated-ear-connected-study-v1.png",
+      "targetHeight": 262,
+      "frames": [
+        {
+          "index": 1,
+          "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/rabbit-ear_sway-01.png",
+          "bounds": {
+            "left": 26,
+            "top": 81,
+            "right": 301,
+            "bottom": 343,
+            "width": 275,
+            "height": 262
+          },
+          "placement": {
+            "left": 70,
+            "top": 77
+          },
+          "scale": 0.5670995670995671
+        },
+        {
+          "index": 2,
+          "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/rabbit-ear_sway-02.png",
+          "bounds": {
+            "left": 36,
+            "top": 81,
+            "right": 301,
+            "bottom": 343,
+            "width": 265,
+            "height": 262
+          },
+          "placement": {
+            "left": 70,
+            "top": 77
+          },
+          "scale": 0.5670995670995671
+        },
+        {
+          "index": 3,
+          "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/rabbit-ear_sway-03.png",
+          "bounds": {
+            "left": 2,
+            "top": 81,
+            "right": 301,
+            "bottom": 343,
+            "width": 299,
+            "height": 262
+          },
+          "placement": {
+            "left": 70,
+            "top": 77
+          },
+          "scale": 0.5670995670995671
+        },
+        {
+          "index": 4,
+          "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/rabbit-ear_sway-04.png",
+          "bounds": {
+            "left": 32,
+            "top": 81,
+            "right": 301,
+            "bottom": 343,
+            "width": 269,
+            "height": 262
+          },
+          "placement": {
+            "left": 70,
+            "top": 77
+          },
+          "scale": 0.5670995670995671
+        }
+      ]
+    }
+  ]
+}

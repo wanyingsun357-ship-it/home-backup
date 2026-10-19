@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "canvas": {
+    "width": 2172,
+    "height": 724,
+    "format": "RGBA"
+  },
+  "source_mother_sheets": {
+    "cat": "/root/ayan/bridge/public/made/ayan-cat-sprite-concept-v1.png",
+    "rabbit": "/root/ayan/bridge/public/made/wanying-rabbit-sprite-concept-v8.png"
+  },
+  "note": "Exact mother-sheet artwork is extracted and rearranged; no character is regenerated or recolored.",
+  "poses": [
+    {
+      "species": "cat",
+      "name": "sit",
+      "row": 0,
+      "col": 0,
+      "left": 87,
+      "top": 62,
+      "width": 188,
+      "height": 273
+    },
+    {
+      "species": "cat",
+      "name": "head_tilt",
+      "row": 0,
+      "col": 1,
+      "left": 432,
+      "top": 39,
+      "width": 223,
+      "height": 296
+    },
+    {
+      "species": "cat",
+      "name": "show_paw",
+      "row": 0,
+      "col": 2,
+      "left": 779,
+      "top": 45,
+      "width": 253,
+      "height": 290
+    },
+    {
+      "species": "cat",
+      "name": "lick_paw",
+      "row": 0,
+      "col": 3,
+      "left": 1146,
+      "top": 70,
+      "width": 242,
+      "height": 265
+    },
+    {
+      "species": "cat",
+      "name": "wash_face",
+      "row": 0,
+      "col": 4,
+      "left": 1513,
+      "top": 68,
+      "width": 232,
+      "height": 267
+    },
+    {
+      "species": "cat",
+      "name": "belly_up",
+      "row": 0,
+      "col": 5,
+      "left": 1835,
+      "top": 156,
+      "width": 313,
+      "height": 179
+    },
+    {
+      "species": "rabbit",
+      "name": "sit",
+      "row": 1,
+      "col": 0,
+      "left": 45,
+      "top": 435,
+      "width": 273,
+      "height": 262
+    },
+    {
+      "species": "rabbit",
+      "name": "head_tilt",
+      "row": 1,
+      "col": 1,
+      "left": 407,
+      "top": 442,
+      "width": 272,
+      "height": 255
+    },
+    {
+      "species": "rabbit",
+      "name": "wink_rest",
+      "row": 1,
+      "col": 2,
+      "left": 736,
+      "top": 521,
+      "width": 339,
+      "height": 176
+    },
+    {
+      "species": "rabbit",
+      "name": "show_paw",
+      "row": 1,
+      "col": 3,
+      "left": 1125,
+      "top": 448,
+      "width": 284,
+      "height": 249
+    },
+    {
+      "species": "rabbit",
+      "name": "happy_pounce",
+      "row": 1,
+      "col": 4,
+      "left": 1481,
+      "top": 441,
+      "width": 297,
+      "height": 256
+    },
+    {
+      "species": "rabbit",
+      "name": "belly_up",
+      "row": 1,
+      "col": 5,
+      "left": 1826,
+      "top": 435,
+      "width": 330,
+      "height": 262
+    }
+  ]
+}

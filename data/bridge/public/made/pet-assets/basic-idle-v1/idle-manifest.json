@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [
+      224,
+      420
+    ]
+  },
+  "sequence": [
+    {
+      "frame": 1,
+      "action": "neutral",
+      "duration_ms": 650
+    },
+    {
+      "frame": 2,
+      "action": "inhale",
+      "duration_ms": 280
+    },
+    {
+      "frame": 3,
+      "action": "neutral",
+      "duration_ms": 520
+    },
+    {
+      "frame": 4,
+      "action": "blink",
+      "duration_ms": 125
+    },
+    {
+      "frame": 5,
+      "action": "neutral",
+      "duration_ms": 780
+    },
+    {
+      "frame": 6,
+      "action": "ear_tail_twitch",
+      "duration_ms": 170
+    },
+    {
+      "frame": 7,
+      "action": "neutral",
+      "duration_ms": 900
+    }
+  ],
+  "note": "Frames are derived deterministically from the exact approved seated mother-sheet sprites. Generated redraws are excluded."
+}

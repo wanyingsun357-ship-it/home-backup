@@ -1,0 +1,153 @@
+{
+  "version": 3,
+  "motion": "back_run_away_from_viewer",
+  "frame_count": 6,
+  "frame_size": [
+    448,
+    448
+  ],
+  "anchor": [
+    224,
+    438
+  ],
+  "atlas": "cat-rabbit-back-run-atlas-v3.png",
+  "rows": {
+    "rabbit": 0,
+    "cat": 1
+  },
+  "direction": "up",
+  "frames": {
+    "rabbit": [
+      {
+        "index": 0,
+        "file": "pet-assets/back-run-v3/rabbit-back-run-01.png",
+        "alpha_bbox": [
+          71,
+          152,
+          404,
+          412
+        ]
+      },
+      {
+        "index": 1,
+        "file": "pet-assets/back-run-v3/rabbit-back-run-02.png",
+        "alpha_bbox": [
+          68,
+          120,
+          405,
+          423
+        ]
+      },
+      {
+        "index": 2,
+        "file": "pet-assets/back-run-v3/rabbit-back-run-03.png",
+        "alpha_bbox": [
+          53,
+          65,
+          414,
+          383
+        ]
+      },
+      {
+        "index": 3,
+        "file": "pet-assets/back-run-v3/rabbit-back-run-04.png",
+        "alpha_bbox": [
+          70,
+          119,
+          404,
+          406
+        ]
+      },
+      {
+        "index": 4,
+        "file": "pet-assets/back-run-v3/rabbit-back-run-05.png",
+        "alpha_bbox": [
+          57,
+          120,
+          411,
+          435
+        ]
+      },
+      {
+        "index": 5,
+        "file": "pet-assets/back-run-v3/rabbit-back-run-06.png",
+        "alpha_bbox": [
+          54,
+          133,
+          384,
+          414
+        ]
+      }
+    ],
+    "cat": [
+      {
+        "index": 0,
+        "file": "pet-assets/back-run-v3/cat-back-run-01.png",
+        "alpha_bbox": [
+          123,
+          70,
+          321,
+          435
+        ]
+      },
+      {
+        "index": 1,
+        "file": "pet-assets/back-run-v3/cat-back-run-02.png",
+        "alpha_bbox": [
+          124,
+          82,
+          345,
+          436
+        ]
+      },
+      {
+        "index": 2,
+        "file": "pet-assets/back-run-v3/cat-back-run-03.png",
+        "alpha_bbox": [
+          149,
+          65,
+          344,
+          416
+        ]
+      },
+      {
+        "index": 3,
+        "file": "pet-assets/back-run-v3/cat-back-run-04.png",
+        "alpha_bbox": [
+          118,
+          65,
+          328,
+          420
+        ]
+      },
+      {
+        "index": 4,
+        "file": "pet-assets/back-run-v3/cat-back-run-05.png",
+        "alpha_bbox": [
+          135,
+          109,
+          341,
+          438
+        ]
+      },
+      {
+        "index": 5,
+        "file": "pet-assets/back-run-v3/cat-back-run-06.png",
+        "alpha_bbox": [
+          136,
+          89,
+          331,
+          438
+        ]
+      }
+    ]
+  },
+  "source": "cat-rabbit-back-locomotion-study-v3-color.png",
+  "notes": [
+    "Twelve full-image alpha components are isolated before row windows are applied.",
+    "Rabbit airborne height and cat body bobbing are preserved across the cycle.",
+    "Each species uses one constant vertical correction; frames are never fitted independently.",
+    "Rabbit RGB uses the approved pale osmanthus-milk mapping; alpha, frame geometry, and anchor are unchanged from v2.",
+    "Cat frame files are exact copies of v2."
+  ]
+}

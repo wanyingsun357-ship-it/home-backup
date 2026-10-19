@@ -1,0 +1,37 @@
+{
+  "version": 4,
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [224, 420]
+  },
+  "note": "Final seated-tail candidate: one byte-identical fixed cat body in all four frames, with four separately extracted v2 tail poses preserving the curled-front to rear-sway motion and original thick silhouette. Rabbit frames are byte-identical copies of connected v1.",
+  "cat": {
+    "action": "tail_sway",
+    "bodySource": "sources/cat-body-fixed-448.png",
+    "tailSources": [
+      "sources/tail-01-placed-source.png",
+      "sources/tail-02-placed-source.png",
+      "sources/tail-03-placed-source.png",
+      "sources/tail-04-placed-source.png"
+    ],
+    "layerOrder": ["front", "back", "back", "back"],
+    "frames": [
+      "cat-tail_sway-01.png",
+      "cat-tail_sway-02.png",
+      "cat-tail_sway-03.png",
+      "cat-tail_sway-04.png"
+    ]
+  },
+  "rabbit": {
+    "action": "ear_sway",
+    "copiedByteForByteFrom": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/",
+    "frames": [
+      "rabbit-ear_sway-01.png",
+      "rabbit-ear_sway-02.png",
+      "rabbit-ear_sway-03.png",
+      "rabbit-ear_sway-04.png"
+    ]
+  }
+}

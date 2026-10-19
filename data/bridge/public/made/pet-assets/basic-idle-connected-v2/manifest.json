@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [224, 420]
+  },
+  "note": "Every frame is a complete character. Cat frames contain exactly one tail; rabbit frames are byte-identical copies of connected v1.",
+  "studies": [
+    {
+      "species": "cat",
+      "action": "tail_sway",
+      "source": "/root/ayan/bridge/public/made/cat-seated-tail-connected-study-v2.png",
+      "targetHeight": 316,
+      "frames": [
+        {"index": 1, "output": "cat-tail_sway-01.png"},
+        {"index": 2, "output": "cat-tail_sway-02.png"},
+        {"index": 3, "output": "cat-tail_sway-03.png"},
+        {"index": 4, "output": "cat-tail_sway-04.png"}
+      ]
+    },
+    {
+      "species": "rabbit",
+      "action": "ear_sway",
+      "source": "/root/ayan/bridge/public/made/rabbit-seated-ear-connected-study-v1.png",
+      "copiedByteForByteFrom": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/",
+      "frames": [
+        {"index": 1, "output": "rabbit-ear_sway-01.png"},
+        {"index": 2, "output": "rabbit-ear_sway-02.png"},
+        {"index": 3, "output": "rabbit-ear_sway-03.png"},
+        {"index": 4, "output": "rabbit-ear_sway-04.png"}
+      ]
+    }
+  ]
+}

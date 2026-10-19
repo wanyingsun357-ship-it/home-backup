@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [
+      224,
+      420
+    ]
+  },
+  "note": "Exact seated mother-sheet artwork, isolated without regeneration or recoloring.",
+  "sprites": [
+    {
+      "species": "cat",
+      "source": "/root/ayan/bridge/public/made/ayan-cat-sprite-concept-v1.png",
+      "source_rect": {
+        "left": 73,
+        "top": 528,
+        "width": 188,
+        "height": 273
+      },
+      "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-v1/cat-basic-idle-base.png",
+      "placement": {
+        "left": 130,
+        "top": 147,
+        "width": 188,
+        "height": 273
+      }
+    },
+    {
+      "species": "rabbit",
+      "source": "/root/ayan/bridge/public/made/wanying-rabbit-sprite-concept-v8.png",
+      "source_rect": {
+        "left": 1094,
+        "top": 24,
+        "width": 273,
+        "height": 262
+      },
+      "output": "/root/ayan/bridge/public/made/pet-assets/basic-idle-v1/rabbit-basic-idle-base.png",
+      "placement": {
+        "left": 88,
+        "top": 158,
+        "width": 273,
+        "height": 262
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "version": 5,
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [224, 420]
+  },
+  "note": "Final seated-tail candidate: v4 is preserved, with only a short antialiased tail-root bridge added behind the fixed body in cat frame 1 so the curled foreground tail connects naturally to the right hip. Cat frames 2-4 and every rabbit frame are byte-identical to v4.",
+  "cat": {
+    "action": "tail_sway",
+    "bodySource": "sources/cat-body-fixed-448.png",
+    "tailSources": [
+      "sources/tail-01-placed-source.png",
+      "sources/tail-02-placed-source.png",
+      "sources/tail-03-placed-source.png",
+      "sources/tail-04-placed-source.png"
+    ],
+    "layerOrder": ["front", "back", "back", "back"],
+    "frames": [
+      "cat-tail_sway-01.png",
+      "cat-tail_sway-02.png",
+      "cat-tail_sway-03.png",
+      "cat-tail_sway-04.png"
+    ]
+  },
+  "rabbit": {
+    "action": "ear_sway",
+    "copiedByteForByteFrom": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/",
+    "frames": [
+      "rabbit-ear_sway-01.png",
+      "rabbit-ear_sway-02.png",
+      "rabbit-ear_sway-03.png",
+      "rabbit-ear_sway-04.png"
+    ]
+  }
+}

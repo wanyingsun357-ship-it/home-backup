@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "motion": "side_run_right",
+  "frame_count": 6,
+  "frame_size": [
+    448,
+    448
+  ],
+  "anchor": [
+    224,
+    438
+  ],
+  "atlas": "cat-rabbit-side-run-atlas-v1.png",
+  "rows": {
+    "rabbit": 0,
+    "cat": 1
+  },
+  "direction": "right",
+  "left_facing": "mirror_x",
+  "frames": {
+    "rabbit": [
+      {
+        "index": 0,
+        "file": "pet-assets/side-run-v1/rabbit-side-run-01.png",
+        "alpha_bbox": [
+          82,
+          192,
+          388,
+          434
+        ]
+      },
+      {
+        "index": 1,
+        "file": "pet-assets/side-run-v1/rabbit-side-run-02.png",
+        "alpha_bbox": [
+          78,
+          143,
+          386,
+          432
+        ]
+      },
+      {
+        "index": 2,
+        "file": "pet-assets/side-run-v1/rabbit-side-run-03.png",
+        "alpha_bbox": [
+          55,
+          86,
+          385,
+          404
+        ]
+      },
+      {
+        "index": 3,
+        "file": "pet-assets/side-run-v1/rabbit-side-run-04.png",
+        "alpha_bbox": [
+          35,
+          130,
+          408,
+          390
+        ]
+      },
+      {
+        "index": 4,
+        "file": "pet-assets/side-run-v1/rabbit-side-run-05.png",
+        "alpha_bbox": [
+          60,
+          173,
+          373,
+          438
+        ]
+      },
+      {
+        "index": 5,
+        "file": "pet-assets/side-run-v1/rabbit-side-run-06.png",
+        "alpha_bbox": [
+          43,
+          131,
+          424,
+          438
+        ]
+      }
+    ],
+    "cat": [
+      {
+        "index": 0,
+        "file": "pet-assets/side-run-v1/cat-side-run-01.png",
+        "alpha_bbox": [
+          81,
+          162,
+          399,
+          431
+        ]
+      },
+      {
+        "index": 1,
+        "file": "pet-assets/side-run-v1/cat-side-run-02.png",
+        "alpha_bbox": [
+          52,
+          129,
+          400,
+          430
+        ]
+      },
+      {
+        "index": 2,
+        "file": "pet-assets/side-run-v1/cat-side-run-03.png",
+        "alpha_bbox": [
+          15,
+          153,
+          432,
+          416
+        ]
+      },
+      {
+        "index": 3,
+        "file": "pet-assets/side-run-v1/cat-side-run-04.png",
+        "alpha_bbox": [
+          66,
+          130,
+          384,
+          405
+        ]
+      },
+      {
+        "index": 4,
+        "file": "pet-assets/side-run-v1/cat-side-run-05.png",
+        "alpha_bbox": [
+          56,
+          157,
+          394,
+          438
+        ]
+      },
+      {
+        "index": 5,
+        "file": "pet-assets/side-run-v1/cat-side-run-06.png",
+        "alpha_bbox": [
+          36,
+          147,
+          367,
+          437
+        ]
+      }
+    ]
+  },
+  "source": "cat-rabbit-locomotion-atlas-v1.png",
+  "notes": [
+    "Rabbit airborne height and cat body bobbing are preserved across the cycle.",
+    "Cat frames share one constant vertical correction; frames are never fitted individually.",
+    "Ten transparent pixels surround the approved motion art for safe filtering."
+  ]
+}

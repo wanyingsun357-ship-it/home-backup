@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#eee8f6" />
+  <title>猫尾与兔耳完整连帧候选 v1</title>
+  <style>
+    :root { font-family: ui-rounded,"SF Pro Rounded","PingFang SC",system-ui,sans-serif; color:#41394c; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100svh; background:linear-gradient(180deg,#eee9f7,#f9f5f0 62%,#e9dfd8); overflow:hidden; }
+    main { min-height:100svh; display:grid; grid-template-rows:auto 1fr auto; padding:max(18px,env(safe-area-inset-top)) 16px max(18px,env(safe-area-inset-bottom)); }
+    header { text-align:center; }
+    h1 { margin:0; font-size:18px; letter-spacing:.03em; }
+    p { margin:7px 0 0; color:#756d7e; font-size:12px; }
+    .room { position:relative; display:flex; align-items:end; justify-content:center; gap:0; min-height:0; padding-bottom:5vh; }
+    .room::before { content:""; position:absolute; left:-16px; right:-16px; bottom:0; height:34%; border-top:1px solid rgba(89,74,102,.08); background:linear-gradient(180deg,transparent,rgba(255,255,255,.42)); }
+    .pet-wrap { position:relative; width:min(49vw,340px); aspect-ratio:1; display:grid; place-items:end center; }
+    .pet-wrap::after { content:""; position:absolute; z-index:0; bottom:3%; width:44%; height:5%; border-radius:50%; background:rgba(59,48,65,.13); filter:blur(7px); }
+    .pet { position:relative; z-index:1; width:100%; height:100%; object-fit:contain; user-select:none; -webkit-user-drag:none; }
+    .panel { padding:12px; border:1px solid rgba(100,83,114,.13); border-radius:22px; background:rgba(255,255,255,.6); box-shadow:0 12px 42px rgba(72,56,82,.12); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+    .buttons { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    button { appearance:none; border:0; border-radius:14px; min-height:44px; color:#5f5669; background:rgba(104,87,119,.08); font:inherit; font-size:13px; }
+    button.active { color:white; background:linear-gradient(135deg,#817098,#a88399); }
+    .status { min-height:17px; margin-top:9px; text-align:center; color:#7d7384; font-size:11px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>完整连帧动作 · v1</h1>
+      <p>每一格都是完整角色 · 不剪屁股，不剪脸颊</p>
+    </header>
+    <section class="room">
+      <div class="pet-wrap"><img class="pet" id="cat" alt="猫猫完整尾巴摆动" /></div>
+      <div class="pet-wrap"><img class="pet" id="rabbit" alt="兔兔完整耳朵晃动" /></div>
+    </section>
+    <section class="panel">
+      <div class="buttons">
+        <button data-action="cat">只看猫尾</button>
+        <button data-action="both">一起播放</button>
+        <button data-action="rabbit">只看兔耳</button>
+      </div>
+      <div class="status" id="status">点按钮播放一轮完整动作</div>
+    </section>
+  </main>
+  <script>
+    const base='./pet-assets/basic-idle-connected-v1/';
+    const pets={cat:document.querySelector('#cat'),rabbit:document.querySelector('#rabbit')};
+    const action={cat:'tail_sway',rabbit:'ear_sway'};
+    const src=(name,n)=>`${base}${name}-${action[name]}-${String(n).padStart(2,'0')}.png`;
+    for(const name of Object.keys(pets)){for(let n=1;n<=4;n+=1){const image=new Image();image.src=src(name,n)}pets[name].src=src(name,1)}
+    const timers=[];
+    function play(name){
+      const sequence=[1,2,3,4,3,2,1];
+      sequence.forEach((frame,index)=>timers.push(setTimeout(()=>{pets[name].src=src(name,frame)},index*155)));
+    }
+    document.querySelector('.buttons').addEventListener('click',event=>{
+      const button=event.target.closest('button');if(!button)return;
+      const selected=button.dataset.action;
+      if(selected==='cat'||selected==='both')play('cat');
+      if(selected==='rabbit'||selected==='both')play('rabbit');
+      document.querySelectorAll('button').forEach(item=>item.classList.toggle('active',item===button));
+      const text={cat:'猫猫：完整尾巴从尾根摆到尾尖',rabbit:'兔兔：完整耳朵从耳根晃到耳尖',both:'猫尾与兔耳各自播放一轮'};
+      document.querySelector('#status').textContent=text[selected];
+      setTimeout(()=>{button.classList.remove('active');document.querySelector('#status').textContent='点按钮播放一轮完整动作'},1200);
+    });
+  </script>
+</body>
+</html>

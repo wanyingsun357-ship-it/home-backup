@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f7eeeb" />
+  <title>猫兔侧向试跑场 v4 · 浅桂花奶校色</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #514449;
+      --muted: #8f7d84;
+      --wine: #944e60;
+      --paper: rgba(255, 253, 250, .82);
+      --line: rgba(110, 77, 87, .13);
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; margin: 0; }
+    body {
+      font-family: ui-rounded, "SF Pro Rounded", "PingFang SC", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 8%, rgba(220, 183, 199, .36), transparent 32%),
+        radial-gradient(circle at 88% 22%, rgba(207, 195, 231, .38), transparent 34%),
+        linear-gradient(160deg, #fbf4f0 0%, #f5efed 48%, #efe9f1 100%);
+      padding: max(22px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+    }
+    main { width: min(720px, 100%); margin: 0 auto; }
+    header { padding: 4px 6px 14px; }
+    h1 { margin: 0; font-size: clamp(23px, 7vw, 32px); font-weight: 760; letter-spacing: .02em; }
+    header p { margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .stage-shell {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.76);
+      border-radius: 28px;
+      background: var(--paper);
+      box-shadow: 0 18px 50px rgba(88, 54, 67, .12), inset 0 1px 0 rgba(255,255,255,.8);
+      backdrop-filter: blur(14px);
+    }
+    canvas { display: block; width: 100%; aspect-ratio: 760 / 620; }
+    .labels { position: absolute; inset: 0; pointer-events: none; }
+    .lane {
+      position: absolute;
+      left: 17px;
+      color: rgba(83, 68, 74, .5);
+      font-size: 11px;
+      letter-spacing: .12em;
+    }
+    .lane.rabbit { top: 5%; }
+    .lane.cat { top: 51%; }
+    .controls {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.76);
+      border-radius: 24px;
+      background: rgba(255,253,250,.7);
+      box-shadow: 0 10px 32px rgba(88,54,67,.08);
+    }
+    .row { display: flex; gap: 9px; flex-wrap: wrap; }
+    .row + .row { margin-top: 10px; }
+    button {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      color: var(--ink);
+      min-height: 42px;
+      padding: 9px 15px;
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .16s ease, background .16s ease, color .16s ease;
+    }
+    button:active { transform: scale(.96); }
+    button.active, button.primary { background: var(--wine); color: #fff; border-color: transparent; }
+    .run { flex: 1 1 28%; }
+    .pace { flex: 1 1 27%; }
+    .note { margin: 13px 4px 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .status { color: var(--wine); font-weight: 650; }
+    @media (prefers-reduced-motion: reduce) {
+      button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>猫兔侧向试跑场 v4</h1>
+      <p>侧向动作已经整理成十二张独立透明帧；这一页专门核对统一锚点、手机尺寸清晰度和原有节奏。</p>
+    </header>
+
+    <section class="stage-shell" aria-label="猫兔侧向运动动画预览">
+      <canvas id="stage"></canvas>
+      <div class="labels">
+        <span class="lane rabbit">兔兔 · 蹦跳</span>
+        <span class="lane cat">猫猫 · 奔跑</span>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="row" aria-label="播放对象">
+        <button class="run" data-run="rabbit">兔兔跑</button>
+        <button class="run" data-run="cat">猫猫跑</button>
+        <button class="run primary active" data-run="both">一起跑</button>
+      </div>
+      <div class="row" aria-label="速度">
+        <button class="pace" data-pace="slow">慢慢来</button>
+        <button class="pace active" data-pace="normal">正常</button>
+        <button class="pace" data-pace="fast">快一点</button>
+      </div>
+      <p class="note"><span class="status" id="status">正常速度 · 两只一起</span><br />动作与 v3 完全一致；兔兔只校回浅桂花奶配色，猫猫逐帧保持原样。</p>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.querySelector('#stage');
+    const ctx = canvas.getContext('2d');
+    const source = new Image();
+    source.src = './cat-rabbit-side-run-atlas-v2.png';
+
+    const FRAME_SIZE = 448;
+    const ANCHOR_Y = 438;
+
+    const WORLD = { w: 760, h: 620 };
+    const paceMap = {
+      slow:   { px: 70,  frame: 210, fade: 3400, label: '慢慢来' },
+      normal: { px: 118, frame: 135, fade: 2700, label: '正常速度' },
+      fast:   { px: 205, frame: 82,  fade: 1900, label: '快一点' }
+    };
+    let pace = 'normal';
+    let mode = 'both';
+    let lastTime = performance.now();
+    let footprints = [];
+    let ready = false;
+
+    const pets = {
+      rabbit: { row: 0, x: -130, ground: 285, size: 210, frame: 0, prevFrame: -1, active: true, delay: 0, alt: 0 },
+      cat:    { row: 1, x: -250, ground: 552, size: 210, frame: 0, prevFrame: -1, active: true, delay: 520, alt: 0 }
+    };
+
+    function resize() {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.round(WORLD.w * dpr);
+      canvas.height = Math.round(WORLD.h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function reset(which = mode) {
+      footprints = [];
+      pets.rabbit.x = -130;
+      pets.rabbit.delay = 0;
+      pets.rabbit.frame = 0;
+      pets.rabbit.prevFrame = -1;
+      pets.cat.x = -250;
+      pets.cat.delay = which === 'both' ? 520 : 0;
+      pets.cat.frame = 0;
+      pets.cat.prevFrame = -1;
+      pets.rabbit.active = which === 'rabbit' || which === 'both';
+      pets.cat.active = which === 'cat' || which === 'both';
+    }
+
+    function addRabbitTrack(p) {
+      footprints.push({ type: 'rabbit', x: p.x - 58, y: p.ground + 3, born: performance.now(), ttl: paceMap[pace].fade });
+    }
+
+    function addCatTrack(p) {
+      p.alt = 1 - p.alt;
+      footprints.push({ type: 'cat', x: p.x - 58, y: p.ground + (p.alt ? -4 : 5), born: performance.now(), ttl: paceMap[pace].fade, flip: p.alt });
+    }
+
+    function drawRabbitTrack(f, alpha) {
+      ctx.save();
+      ctx.translate(f.x, f.y);
+      ctx.fillStyle = `rgba(169, 128, 197, ${.24 * alpha})`;
+      // Moving right: the two long hind-foot prints land ahead, while the two
+      // smaller front-foot prints remain behind them.
+      ctx.beginPath(); ctx.ellipse(21, -6, 10, 4.6, .08, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(24, 7, 10, 4.6, -.06, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(-3, -4, 5.2, 3.7, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(-7, 6, 5.2, 3.7, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+
+    function drawCatTrack(f, alpha) {
+      ctx.save();
+      ctx.translate(f.x, f.y);
+      ctx.fillStyle = `rgba(91, 105, 145, ${.24 * alpha})`;
+      // The pad stays behind and the four toe beans point in the travel
+      // direction (right), alternating a small vertical offset per step.
+      const lift = f.flip ? -3 : 3;
+      ctx.beginPath(); ctx.ellipse(-2, lift, 6.5, 7.2, 0, 0, Math.PI * 2); ctx.fill();
+      [[7,-7],[11,-2],[11,4],[7,9]].forEach(([x,y]) => {
+        ctx.beginPath(); ctx.ellipse(x, y + lift, 3.5, 2.7, 0, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.restore();
+    }
+
+    function drawBackground() {
+      ctx.clearRect(0, 0, WORLD.w, WORLD.h);
+      const grad = ctx.createLinearGradient(0, 0, WORLD.w, WORLD.h);
+      grad.addColorStop(0, 'rgba(255,250,247,.94)');
+      grad.addColorStop(1, 'rgba(245,239,246,.96)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, WORLD.w, WORLD.h);
+      ctx.strokeStyle = 'rgba(116,81,94,.09)';
+      ctx.lineWidth = 1.2;
+      [299, 566].forEach(y => {
+        ctx.beginPath(); ctx.moveTo(28, y); ctx.lineTo(WORLD.w - 28, y); ctx.stroke();
+      });
+    }
+
+    function drawPet(p) {
+      if (!ready || !p.active || p.delay > 0) return;
+      const cellW = source.naturalWidth / 6;
+      const cellH = source.naturalHeight / 2;
+      const sx = p.frame * cellW;
+      const sy = p.row * cellH;
+      const top = p.ground - p.size * (ANCHOR_Y / FRAME_SIZE);
+      ctx.drawImage(source, sx, sy, cellW, cellH, p.x - p.size / 2, top, p.size, p.size);
+    }
+
+    function updatePet(name, p, dt, now) {
+      if (!p.active) return;
+      if (p.delay > 0) { p.delay -= dt; return; }
+      const config = paceMap[pace];
+      p.x += config.px * dt / 1000;
+      p.frame = Math.floor(now / config.frame) % 6;
+      if (p.frame !== p.prevFrame) {
+        if (name === 'rabbit' && (p.frame === 0 || p.frame === 5)) addRabbitTrack(p);
+        if (name === 'cat' && (p.frame === 0 || p.frame === 4)) addCatTrack(p);
+        p.prevFrame = p.frame;
+      }
+      if (p.x > WORLD.w + 130) {
+        p.x = -130;
+        p.delay = mode === 'both' && name === 'cat' ? 420 : 180;
+        p.prevFrame = -1;
+      }
+    }
+
+    function frame(now) {
+      const dt = Math.min(now - lastTime, 50);
+      lastTime = now;
+      updatePet('rabbit', pets.rabbit, dt, now);
+      updatePet('cat', pets.cat, dt, now);
+      footprints = footprints.filter(f => now - f.born < f.ttl).slice(-12);
+
+      drawBackground();
+      for (const f of footprints) {
+        const alpha = 1 - (now - f.born) / f.ttl;
+        f.type === 'rabbit' ? drawRabbitTrack(f, alpha) : drawCatTrack(f, alpha);
+      }
+      drawPet(pets.rabbit);
+      drawPet(pets.cat);
+      requestAnimationFrame(frame);
+    }
+
+    function setActive(group, value) {
+      document.querySelectorAll(group).forEach(el => el.classList.toggle('active', el.dataset.run === value || el.dataset.pace === value));
+    }
+
+    document.querySelectorAll('[data-run]').forEach(button => {
+      button.addEventListener('click', () => {
+        mode = button.dataset.run;
+        setActive('[data-run]', mode);
+        reset(mode);
+        updateStatus();
+      });
+    });
+
+    document.querySelectorAll('[data-pace]').forEach(button => {
+      button.addEventListener('click', () => {
+        pace = button.dataset.pace;
+        setActive('[data-pace]', pace);
+        reset(mode);
+        updateStatus();
+      });
+    });
+
+    function updateStatus() {
+      const who = mode === 'both' ? '两只一起' : mode === 'rabbit' ? '兔兔' : '猫猫';
+      document.querySelector('#status').textContent = `${paceMap[pace].label} · ${who}`;
+    }
+
+    source.addEventListener('load', () => { ready = true; reset('both'); });
+    source.addEventListener('error', () => {
+      document.querySelector('#status').textContent = '动作图加载失败，请刷新一次';
+    });
+    resize();
+    addEventListener('resize', resize);
+    requestAnimationFrame(frame);
+  </script>
+</body>
+</html>
