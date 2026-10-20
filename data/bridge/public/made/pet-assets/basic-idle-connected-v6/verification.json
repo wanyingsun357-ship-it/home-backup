@@ -1,0 +1,73 @@
+{
+  "base": "basic-idle-connected-v4",
+  "result": "basic-idle-connected-v6",
+  "locked_frames": [
+    {
+      "file": "cat-tail_sway-02.png",
+      "v4_sha256": "b00cb11b6ad180ec5a676bb516c3972baedd55d59ad1a1012c5f0aac07b04df0",
+      "v6_sha256": "b00cb11b6ad180ec5a676bb516c3972baedd55d59ad1a1012c5f0aac07b04df0",
+      "byte_identical": true
+    },
+    {
+      "file": "cat-tail_sway-03.png",
+      "v4_sha256": "0dab65cf9a70ffe3d44aa0cef950e024b872e2138094162da8cb2dbd99205092",
+      "v6_sha256": "0dab65cf9a70ffe3d44aa0cef950e024b872e2138094162da8cb2dbd99205092",
+      "byte_identical": true
+    },
+    {
+      "file": "cat-tail_sway-04.png",
+      "v4_sha256": "867ca674fd5cdcc07b4b321cb46096213ff545c6d3a22473176f4189cf9d4d68",
+      "v6_sha256": "867ca674fd5cdcc07b4b321cb46096213ff545c6d3a22473176f4189cf9d4d68",
+      "byte_identical": true
+    },
+    {
+      "file": "rabbit-ear_sway-01.png",
+      "v4_sha256": "f157f241e25d15c0af361cf82d277a9d29cadbd469fe32d05c279d0cceea28b1",
+      "v6_sha256": "f157f241e25d15c0af361cf82d277a9d29cadbd469fe32d05c279d0cceea28b1",
+      "byte_identical": true
+    },
+    {
+      "file": "rabbit-ear_sway-02.png",
+      "v4_sha256": "38857732bde13099c39ccc0e62a3656bdb2bbb89351ade938bc7b818f327a8c2",
+      "v6_sha256": "38857732bde13099c39ccc0e62a3656bdb2bbb89351ade938bc7b818f327a8c2",
+      "byte_identical": true
+    },
+    {
+      "file": "rabbit-ear_sway-03.png",
+      "v4_sha256": "6cb2e3468bdf6a818c55f80e758360971c116b901ea6056d5f3bffb2bc7e2aa0",
+      "v6_sha256": "6cb2e3468bdf6a818c55f80e758360971c116b901ea6056d5f3bffb2bc7e2aa0",
+      "byte_identical": true
+    },
+    {
+      "file": "rabbit-ear_sway-04.png",
+      "v4_sha256": "f236ed781396ddeb599ffccb6d47b09840a1768085c5f29ebe5aac76afed0d19",
+      "v6_sha256": "f236ed781396ddeb599ffccb6d47b09840a1768085c5f29ebe5aac76afed0d19",
+      "byte_identical": true
+    }
+  ],
+  "modified_frame": {
+    "file": "cat-tail_sway-01.png",
+    "v4_sha256": "ebb39ca275321f4d39a3ceea205e7da03e4b2f482de5bfeb6968ff9e1288d452",
+    "v6_sha256": "181045650108809231cc2b2b8c63ac304f0503ae9c7d5ba059138859065638ef",
+    "changed_pixels": 628,
+    "changed_bbox_xyxy_exclusive": [
+      284,
+      331,
+      325,
+      366
+    ],
+    "alpha_byte_identical": true,
+    "outside_bbox_pixel_identical": true
+  },
+  "v4_all_files_unchanged": true,
+  "all_original_sources_byte_identical": true,
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [
+      224,
+      420
+    ]
+  }
+}

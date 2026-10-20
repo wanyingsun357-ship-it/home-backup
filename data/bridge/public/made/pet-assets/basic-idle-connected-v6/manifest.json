@@ -1,0 +1,45 @@
+{
+  "version": 6,
+  "frame": {
+    "width": 448,
+    "height": 448,
+    "format": "RGBA",
+    "anchor": [
+      224,
+      420
+    ]
+  },
+  "note": "Based only on v4. Frame 01 root seam locally repaired; original alpha, canvas and anchor preserved. Cat frames 02–04, all rabbit frames, and all original sources copied byte-for-byte. See verification.json and review/.",
+  "cat": {
+    "action": "tail_sway",
+    "bodySource": "sources/cat-body-fixed-448.png",
+    "tailSources": [
+      "sources/tail-01-placed-source.png",
+      "sources/tail-02-placed-source.png",
+      "sources/tail-03-placed-source.png",
+      "sources/tail-04-placed-source.png"
+    ],
+    "layerOrder": [
+      "front",
+      "back",
+      "back",
+      "back"
+    ],
+    "frames": [
+      "cat-tail_sway-01.png",
+      "cat-tail_sway-02.png",
+      "cat-tail_sway-03.png",
+      "cat-tail_sway-04.png"
+    ]
+  },
+  "rabbit": {
+    "action": "ear_sway",
+    "copiedByteForByteFrom": "/root/ayan/bridge/public/made/pet-assets/basic-idle-connected-v1/",
+    "frames": [
+      "rabbit-ear_sway-01.png",
+      "rabbit-ear_sway-02.png",
+      "rabbit-ear_sway-03.png",
+      "rabbit-ear_sway-04.png"
+    ]
+  }
+}

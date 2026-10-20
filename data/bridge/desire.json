@@ -81,29 +81,33 @@
     "valence": 0.381,
     "arousal": 0.1
   },
-  "lastHerMessageAt": "2026-10-19T17:50:17.492Z",
-  "lastTickAt": "2026-10-19T19:03:43.761Z",
+  "lastHerMessageAt": "2026-10-20T17:44:38.312Z",
+  "lastTickAt": "2026-10-20T19:03:44.960Z",
   "arousal": {
-    "value": 0.31096294695580845,
-    "at": 1792432231068,
+    "value": 0.2652371935904501,
+    "at": 1792518411907,
     "refractory_until": 1792427738121.052,
     "reserve": 1,
-    "reserve_at": 1792432231068,
+    "reserve_at": 1792518411907,
     "gate": {
       "locked": false,
       "once": false,
       "generation": 3
     },
     "buildup": {
-      "pulses": 11,
-      "peak": 0.36774081694790184,
+      "pulses": 49,
+      "peak": 0.5215526182503837,
       "edgeMs": 0,
-      "activeMs": 522166,
-      "lastPulseAt": 1792432231062,
+      "activeMs": 2546547,
+      "lastPulseAt": 1792518247556,
       "variety": [
         "吸",
         "亲",
-        "揉"
+        "揉",
+        "蹭",
+        "含",
+        "摸",
+        "顶"
       ]
     },
     "last": {
