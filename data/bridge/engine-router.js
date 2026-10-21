@@ -12,16 +12,20 @@ function spawnClaude(args,options={},role='chat'){
 }
 async function combinedCatalog(){
  const [a,b]=await Promise.allSettled([claude.getModelCatalog(),codex.catalog()]);
- const first=a.status==='fulfilled'?a.value:{models:[],roles:claude.ROLE_MODELS,default_model:claude.MODEL_IDS.opus,stale:true};
+ const first=a.status==='fulfilled'?a.value:{models:[],roles:claude.roleModels(),default_model:claude.MODEL_IDS.opus,stale:true};
  const second=b.status==='fulfilled'?b.value:{ready:false,models:[]};const selected=codex.settings();
- const models=[...first.models.map(m=>({...m,engine:'claude'})),...second.models.map(m=>({...m,disabled:!second.ready}))];
+ const account=await claude.getAccountCatalog(first.models).catch(()=>({ready:false,plan:null,models:[]}));
+ const models=[...first.models.map(m=>({...m,engine:'claude'})),...second.models.map(m=>({...m,disabled:!second.ready})),...account.models];
  const defaultModel=selected.engine==='codex'?(second.models.find(m=>m.id===selected.model)||second.models.find(m=>m.default)||second.models[0])?.id:first.default_model;
- return{...first,provider:'mixed',models,default_model:defaultModel||first.default_model,engine:selected.engine,engines:{claude:{ready:true,label:'Claude · OpenRouter'},codex:{ready:second.ready,label:'Codex · ChatGPT',plan:second.plan}},roles:selected.engine==='codex'?{chat:{label:'聊天',model:defaultModel,manual:true},memory:{label:'整理记忆',model:defaultModel},wake:{label:'定时唤醒',model:defaultModel},background:{label:'后台回复等任务',model:second.models.find(m=>/-luna$/.test(m.id))?.id||defaultModel}}:first.roles};
+ return{...first,provider:'mixed',models,default_model:defaultModel||first.default_model,engine:selected.engine,engines:{claude:{ready:true,label:'Claude · OpenRouter'},codex:{ready:second.ready,label:'Codex · ChatGPT',plan:second.plan},account:{ready:account.ready,label:'Claude · 订阅账号',plan:account.plan}},roles:selected.engine==='codex'?{chat:{label:'聊天',model:defaultModel,manual:true},memory:{label:'整理记忆',model:defaultModel},wake:{label:'定时唤醒',model:defaultModel},background:{label:'后台回复等任务',model:second.models.find(m=>/-luna$/.test(m.id))?.id||defaultModel}}:first.roles};
 }
 function registerModelRoutes(app){app.get('/api/models',async(req,res)=>{res.set('Cache-Control','no-store');try{res.json(await combinedCatalog());}catch{res.status(503).json({error:'models_unavailable'});}});}
-function registerEngineRoutes(app){
- app.get('/api/engine',async(req,res)=>{res.set('Cache-Control','no-store');try{const info=await codex.catalog();res.json({...codex.settings(),paired:authorized(req),codex:{ready:info.ready,plan:info.plan,limits:authorized(req)?info.limits:null}});}catch{res.json({...codex.settings(),paired:authorized(req),codex:{ready:false,error:'暂时无法读取登录状态'}});}});
- app.post('/api/engine',async(req,res)=>{try{const model=req.body?.model;const engine=model?.startsWith('codex/')?'codex':'claude';const models=await combinedCatalog();const choice=models.models.find(m=>m.id===model&&!m.disabled);if(!choice)return res.status(400).json({error:'模型不可用或尚未登录'});codex.saveSettings({engine,model});res.json({ok:true,engine,model,roles:(await combinedCatalog()).roles});}catch{res.status(503).json({error:'切换失败，请稍后重试'});}});
+function registerEngineRoutes(app, onSelection = () => {}){
+ app.get('/api/engine',async(req,res)=>{res.set('Cache-Control','no-store');const paired=authorized(req);
+  const acct=await claude.getAccountCatalog().catch(()=>({ready:false,plan:null}));
+  const account={ready:acct.ready,plan:acct.plan,limits:paired&&acct.ready?await claude.getAccountUsage().catch(()=>null):null};
+  try{const info=await codex.catalog();res.json({...codex.settings(),paired,account,codex:{ready:info.ready,plan:info.plan,limits:paired?info.limits:null}});}catch{res.json({...codex.settings(),paired,account,codex:{ready:false,error:'暂时无法读取登录状态'}});}});
+ app.post('/api/engine',async(req,res)=>{try{const model=req.body?.model;const engine=model?.startsWith('codex/')?'codex':'claude';const models=await combinedCatalog();const choice=models.models.find(m=>m.id===model&&!m.disabled);if(!choice)return res.status(400).json({error:'模型不可用或尚未登录'});onSelection({engine,model},req);codex.saveSettings({engine,model});res.json({ok:true,engine,model,roles:(await combinedCatalog()).roles});}catch{res.status(503).json({error:'切换失败，请稍后重试'});}});
 }
 function handoffFor(sess,engine,includeLatest=false){
  if(engine==='claude'&&!sess.lastEngine&&sess.engineSeen?.claude==null)return'';

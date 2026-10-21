@@ -2,7 +2,7 @@
 const fs=require('fs'),path=require('path');
 function normalize(model){
  if(typeof model!=='string')return null;
- if(model.startsWith('codex/')||model.startsWith('anthropic/'))return model;
+ if(model.startsWith('codex/')||model.startsWith('anthropic/')||model.startsWith('account/'))return model;
  if(model.startsWith('gpt-'))return 'codex/'+model;
  const m=model.match(/^claude-(opus|sonnet|haiku|fable)-(\d+)[.-](\d+)/);
  return m?`anthropic/claude-${m[1]}-${m[2]}.${m[3]}`:null;
@@ -17,11 +17,13 @@ function findRollout(dir,id){
  return null;
 }
 function profile(sess,cwd,root='/root'){
- const engine=sess.lastEngine||(sess.codexThreadId&&!sess.claudeSessionId?'codex':'claude');
+ // Preserve the selected billing route separately from transcript model names.
+ const selected=normalize(sess.selectedChatModel);
+ const engine=selected?(selected.startsWith('codex/')?'codex':'claude'):(sess.lastEngine||(sess.codexThreadId&&!sess.claudeSessionId?'codex':'claude'));
  const threadId=engine==='codex'?sess.codexThreadId:sess.claudeSessionId;
  if(!threadId)throw new Error('目标窗口没有可续接的原会话，跳过唤醒');
- let model=normalize(sess.chatModel),effort=sess.chatEffort||null;
- if(model&&!model.startsWith(engine==='codex'?'codex/':'anthropic/'))model=null;
+ let model=selected||normalize(sess.chatModel),effort=sess.chatEffort||null;
+ if(model&&!(engine==='codex'?model.startsWith('codex/'):/^(anthropic|account)\//.test(model)))model=null;
  if(!model){
   const file=engine==='codex'?findRollout(path.join(root,'.codex/sessions'),threadId):path.join(root,'.claude/projects',cwd.replace(/[^a-zA-Z0-9]/g,'-'),threadId+'.jsonl');
   if(file&&fs.existsSync(file)){

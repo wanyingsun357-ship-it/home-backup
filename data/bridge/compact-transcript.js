@@ -46,9 +46,8 @@ function recordTokens(event) {
   if (event.type === 'attachment') return estimateText(JSON.stringify(event.attachment || {}));
   return 0;
 }
-function buildTranscript(events, newId, memoryText, { budget = 30000, cwd = '/root/ayan', now = Date.now() } = {}) {
+function buildTranscript(events, newId, memoryText, { budget = 20000, cwd = '/root/ayan', now = Date.now() } = {}) {
   if (!events.length) throw new Error('transcript为空');
-  const snapshot = [...events].reverse().find(e => e.type === 'attachment' && e.attachment?.type === 'prompt_snapshot');
   let internal = false;
   const candidates = [];
   for (const original of events) {
@@ -96,14 +95,14 @@ function buildTranscript(events, newId, memoryText, { budget = 30000, cwd = '/ro
   const memory = { type: 'user', message: { role: 'user', content: memoryText },
     isSidechain: false, userType: 'external', cwd, version: retained[0].version || '2.1.289',
     gitBranch: retained[0].gitBranch || 'HEAD', timestamp: new Date(now - 60000).toISOString() };
-  const chain = [memory, ...(snapshot ? [fold(snapshot)] : []), ...primer, ...retained];
+  const chain = [memory, ...primer, ...retained];
   for (let i = 0; i < chain.length; i++) {
     chain[i].uuid = crypto.randomUUID(); chain[i].parentUuid = i ? chain[i - 1].uuid : null; chain[i].sessionId = newId;
   }
-  const prefix = snapshot ? estimateText(JSON.stringify(snapshot.attachment.systemPrompt || [])) + estimateText(JSON.stringify(snapshot.attachment.tools || [])) : 0;
-  const history = chain.filter(e => e !== chain[1] || !snapshot).reduce((n, e) => n + recordTokens(e), 0);
+  const prefix = 0;
+  const history = chain.reduce((n, e) => n + recordTokens(e), 0);
   return { chain, stats: { estTokens: history + prefix, estimated: true, historyEstTokens: history,
     prefixEstTokens: prefix, kept: retained.length, total: events.length, primer: primer.length > 0,
-    snapshots: snapshot ? 1 : 0, retainedConversationTokens: historyTokens, oversizedTurn: historyTokens > budget } };
+    snapshots: 0, retainedConversationTokens: historyTokens, oversizedTurn: historyTokens > budget } };
 }
 module.exports = { buildTranscript, priorMemory, isInternal, isUserTurn, recordTokens };

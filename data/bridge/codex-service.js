@@ -17,7 +17,7 @@ async function catalog(force=false){
 }
 function resolveEngine(model,role='chat'){
  if(model?.startsWith('codex/'))return'codex';
- if(model?.startsWith('anthropic/'))return'claude';
+ if(model?.startsWith('anthropic/')||model?.startsWith('account/'))return'claude';
  return settings().engine==='codex'?'codex':'claude';
 }
 function expandInstructions(file,seen=new Set()){

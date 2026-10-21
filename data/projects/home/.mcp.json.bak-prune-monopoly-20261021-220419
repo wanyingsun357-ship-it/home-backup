@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "monopoly": {
+      "type": "http",
+      "url": "https://spicy-monopoly.lol/mcp"
+    },
+    "nest": {
+      "command": "/opt/node22/bin/node",
+      "args": [
+        "/root/ayan/games/little-nest-tour/agent/mcp-server.mjs"
+      ],
+      "env": {
+        "LITTLE_NEST_URL": "http://localhost:3100"
+      }
+    },
+    "claude_ai_Ombre_Brain": {
+      "command": "/usr/bin/node",
+      "args": [
+        "/root/ayan/bridge/ombre-mcp.js"
+      ]
+    },
+    "amap": {
+      "type": "http",
+      "url": "https://mcp.amap.com/mcp?key=121fbb7b4b27a3fb7680e2844c8b6670"
+    }
+  }
+}

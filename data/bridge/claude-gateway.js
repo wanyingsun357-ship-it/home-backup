@@ -28,14 +28,99 @@ const MODEL_IDS = {
 
 const ROLE_MODELS = {
   chat: { label: '聊天', model: MODEL_IDS.opus, manual: true },
-  memory: { label: '整理记忆', model: MODEL_IDS.opus },
+  memory: { label: '整理记忆', model: MODEL_IDS.sonnet },
   wake: { label: '定时唤醒', model: MODEL_IDS.opus },
-  background: { label: '后台回复等任务', model: MODEL_IDS.sonnet },
+  background: { label: '后台回复等任务', model: MODEL_IDS.opus },
 };
 
+// 后台角色跟随当前选择的通道；整理记忆用 Sonnet 4.6，其余后台角色沿用 Opus 4.6。
+const ACCOUNT_ROLE_MODEL = 'account/claude-opus-4-6';
+const ACCOUNT_MEMORY_MODEL = 'account/claude-sonnet-4-6';
+function usingAccount() {
+  try { return JSON.parse(fs.readFileSync(path.join(__dirname, 'engine-settings.json'), 'utf8')).model?.startsWith('account/'); } catch { return false; }
+}
+function roleModels() {
+  if (!usingAccount()) return ROLE_MODELS;
+  return Object.fromEntries(Object.entries(ROLE_MODELS).map(([name, role]) => [name, role.manual ? role : { ...role, model: name === 'memory' ? ACCOUNT_MEMORY_MODEL : ACCOUNT_ROLE_MODEL }]));
+}
+
+// Claude 订阅账号（Claude Code 登录）：模型 id 形如 account/claude-opus-5-5。
+// 引擎仍是 claude，因此沿用 200k 窗口与 170k 自动整理，不进入 Codex 220k 路径。
+const ACCOUNT_RE = /^account\/(claude-(?:opus|sonnet|haiku|fable)-\d+(?:-\d+)?)$/;
+const accountTokenFile = path.join(__dirname, '.claude-oauth-token');
+function accountModel(id) {
+  return typeof id === 'string' ? (id.match(ACCOUNT_RE) || [])[1] || null : null;
+}
+function accountEnv(base) {
+  const env = { ...base };
+  for (const name of ['ANTHROPIC_BASE_URL', 'ANTHROPIC_AUTH_TOKEN', 'ANTHROPIC_API_KEY', 'ANTHROPIC_CUSTOM_HEADERS',
+    'ANTHROPIC_DEFAULT_OPUS_MODEL', 'ANTHROPIC_DEFAULT_SONNET_MODEL', 'ANTHROPIC_DEFAULT_HAIKU_MODEL', 'ANTHROPIC_SMALL_FAST_MODEL']) delete env[name];
+  delete env.CLAUDE_CODE_OAUTH_TOKEN;
+  // `claude setup-token` 生成的长期令牌可放在 .claude-oauth-token；否则用 `claude auth login` 保存的登录。
+  try {
+    const token = fs.readFileSync(accountTokenFile, 'utf8').trim();
+    if (/^sk-ant-oat\d*-[A-Za-z0-9_-]+$/.test(token)) env.CLAUDE_CODE_OAUTH_TOKEN = token;
+  } catch {}
+  env.CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = '1';
+  return env;
+}
+let accountState = null;
+let accountStateAt = 0;
+let accountPending = null;
+function accountStatus() {
+  if (accountState && Date.now() - accountStateAt < 60000) return Promise.resolve(accountState);
+  if (!accountPending) accountPending = new Promise(resolve => {
+    require('child_process').execFile('claude', ['auth', 'status'], { env: accountEnv(process.env), timeout: 15000 }, (error, stdout) => {
+      let state = { ready: false, plan: null };
+      try { const info = JSON.parse(stdout); state = { ready: Boolean(info.loggedIn), plan: info.subscriptionType || null }; } catch {}
+      accountState = state; accountStateAt = Date.now(); resolve(state);
+    });
+  }).finally(() => { accountPending = null; });
+  return accountPending;
+}
+// 订阅额度（Settings 显示）：读 Claude Code 登录保存的凭据，查 5 小时 / 7 天窗口用量，缓存 60s。
+let accountUsage = null;
+let accountUsageAt = 0;
+async function getAccountUsage() {
+  if (accountUsage && Date.now() - accountUsageAt < 60000) return accountUsage;
+  const cred = JSON.parse(fs.readFileSync('/root/.claude/.credentials.json', 'utf8')).claudeAiOauth;
+  const response = await fetch('https://api.anthropic.com/api/oauth/usage', { headers: { Authorization: 'Bearer ' + cred.accessToken, 'anthropic-beta': 'oauth-2025-04-20', Accept: 'application/json' }, signal: AbortSignal.timeout(12000) });
+  if (!response.ok) throw new Error('usage ' + response.status);
+  const data = await response.json();
+  const pick = (window, minutes) => window && window.utilization != null ? { usedPercent: Number(window.utilization), resetsAt: window.resets_at, windowDurationMins: minutes } : null;
+  accountUsage = { session: pick(data.five_hour, 300), week: pick(data.seven_day, 10080), weekOpus: pick(data.seven_day_opus, 10080), weekSonnet: pick(data.seven_day_sonnet, 10080) };
+  accountUsageAt = Date.now();
+  return accountUsage;
+}
+const ACCOUNT_FALLBACK =['opus-5-5', 'sonnet-5-5', 'haiku-5-5', 'fable-5-1', 'opus-4-8', 'opus-4-6', 'sonnet-4-6'];
+async function getAccountCatalog(source = []) {
+  const status = await accountStatus();
+  const ids = source.length
+    ? source.map(m => m.id.replace(/^anthropic\/claude-/, '').replace('.', '-'))
+    : ACCOUNT_FALLBACK;
+  const models = [...new Set(ids)].flatMap(id => {
+    const match = id.match(/^(opus|sonnet|haiku|fable)-(\d+)(?:-(\d+))?$/);
+    if (!match || Number(match[2]) < 4) return [];
+    return [{ id: `account/claude-${id}`, label: `Claude · ${match[1][0].toUpperCase()}${match[1].slice(1)} ${match[2]}${match[3] ? '.' + match[3] : ''}`, engine: 'claude', source: 'account', billing: 'Claude 订阅额度', disabled: !status.ready }];
+  });
+  return { ready: status.ready, plan: status.plan, models };
+}
+
+const CLAUDE_TRIMMED_TOOLS = [
+  // App conversations use existing wake-outbox and local tools, not agent-team orchestration.
+  'Agent', 'ListAgents', 'ReportFindings', 'Workflow',
+  'CronCreate', 'CronDelete', 'CronList', 'EnterWorktree', 'ExitWorktree',
+  'ListMcpResourcesTool', 'NotebookEdit', 'ReadMcpResourceDirTool',
+  'ReadMcpResourceTool', 'SendMessage', 'TaskCreate', 'TaskGet', 'TaskList',
+  'TaskStop', 'TaskUpdate', 'WaitForMcpServers', 'WebFetch',
+];
+
 function spawnClaude(args, options = {}, role = 'chat') {
-  if (!key) return spawn('claude', args, options);
+  // Scoped to App subprocesses; MCP capabilities remain discoverable with ToolSearch.
+  options = { ...options, env: { ...process.env, ...options.env, ENABLE_TOOL_SEARCH: 'true' } };
   const mapped = [...args];
+  mapped.push('--disallowedTools', ...CLAUDE_TRIMMED_TOOLS);
+  if (!key) return spawn('claude', mapped, options);
   // The owner authorizes all VPS tools for App-driven Claude tasks.
   // Keep explicit --tools selections (e.g. tool-free probes) intact.
   const fullTools = ['Bash', 'Read', 'Edit', 'Write', 'Glob', 'Grep', 'WebFetch', 'WebSearch',
@@ -47,13 +132,27 @@ function spawnClaude(args, options = {}, role = 'chat') {
       if (server.enabled) fullTools.push(`mcp__${name}__*`);
     }
   } catch {}
-  mapped.push('--allowedTools', ...fullTools);
+  mapped.push('--allowedTools', ...fullTools.filter(name => !CLAUDE_TRIMMED_TOOLS.includes(name)));
   const modelIndex = mapped.indexOf('--model');
   if (modelIndex >= 0) {
     const original = mapped[modelIndex + 1];
     mapped[modelIndex + 1] = MODEL_IDS[original] || original;
   } else {
-    mapped.push('--model', (ROLE_MODELS[role] || ROLE_MODELS.chat).model);
+    const roles = roleModels();
+    mapped.push('--model', (roles[role] || roles.chat).model);
+  }
+  const chosen = mapped[mapped.indexOf('--model') + 1];
+  if (accountModel(chosen)) {
+    // Claude 订阅账号：走 Claude Code 自己的登录，不经过 OpenRouter。
+    mapped[mapped.indexOf('--model') + 1] = accountModel(chosen);
+    const env = accountEnv({ ...process.env, ...options.env });
+    env.CLAUDE_CODE_PROMPT_CACHE_TTL = role === 'chat' ? '1h' : '5m';
+    env.CLAUDE_CODE_SUBAGENT_PROMPT_CACHE_TTL = '5m';
+    const { cacheSessionId, ...spawnOptions } = options;
+    const child = spawn('claude', mapped, { ...spawnOptions, env });
+    observeCache(child, { role, session: 'account-' + createHash('sha256').update(String(cacheSessionId || randomUUID())).digest('hex').slice(0, 32),
+      ttl: env.CLAUDE_CODE_PROMPT_CACHE_TTL, model: chosen });
+    return child;
   }
   const env = {
     ...process.env,
@@ -111,7 +210,7 @@ function normalizeModels(data) {
 }
 
 async function getModelCatalog() {
-  if (!key) return { provider: 'anthropic', models: normalizeModels(Object.values(MODEL_IDS).filter((id, i, all) => all.indexOf(id) === i).map(id => ({ id, supported_parameters: ['tools'] }))), roles: ROLE_MODELS, default_model: MODEL_IDS.opus, stale: false };
+  if (!key) return { provider: 'anthropic', models: normalizeModels(Object.values(MODEL_IDS).filter((id, i, all) => all.indexOf(id) === i).map(id => ({ id, supported_parameters: ['tools'] }))), roles: roleModels(), default_model: MODEL_IDS.opus, stale: false };
   let stale = false;
   if (!catalog || Date.now() - catalogAt > 5 * 60000) {
     if (!refreshing) refreshing = (async () => {
@@ -127,7 +226,7 @@ async function getModelCatalog() {
     })().finally(() => { refreshing = null; });
     try { await refreshing; } catch { stale = true; if (!catalog) throw new Error('Model catalogue unavailable'); }
   }
-  return { provider: 'openrouter', models: catalog, roles: ROLE_MODELS, default_model: MODEL_IDS.opus, stale, updated_at: new Date(catalogAt).toISOString() };
+  return { provider: 'openrouter', models: catalog, roles: roleModels(), default_model: MODEL_IDS.opus, stale, updated_at: new Date(catalogAt).toISOString() };
 }
 
 function registerModelRoutes(app) {
@@ -138,4 +237,4 @@ function registerModelRoutes(app) {
   });
 }
 
-module.exports = { spawnClaude, MODEL_IDS, ROLE_MODELS, normalizeModels, getModelCatalog, registerModelRoutes, provider: key ? 'openrouter' : 'anthropic' };
+module.exports = { spawnClaude, accountModel, getAccountCatalog, getAccountUsage, roleModels, MODEL_IDS, ROLE_MODELS, normalizeModels, getModelCatalog, registerModelRoutes, provider: key ? 'openrouter' : 'anthropic' };

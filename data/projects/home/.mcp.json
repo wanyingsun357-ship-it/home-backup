@@ -1,9 +1,6 @@
 {
   "mcpServers": {
-    "monopoly": {
-      "type": "http",
-      "url": "https://spicy-monopoly.lol/mcp"
-    },
+
     "nest": {
       "command": "/opt/node22/bin/node",
       "args": [
