@@ -988,6 +988,10 @@
     {
      "name": "我们家",
      "createdAt": "2026-10-17T20:16:49.264Z"
+    },
+    {
+     "name": "她喜欢的",
+     "createdAt": "2026-10-22T09:15:19.107Z"
     }
    ],
    "items": [
@@ -2076,6 +2080,74 @@
      "createdAt": "2026-10-21T13:36:05.670Z",
      "source": {
       "at": "2026-10-21T13:36:05.670Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mvj1ithh1fcf",
+     "sha": "1f9cb0bb0fc4a18e6c8ac474280dd6197836a9e3b95a08d8f3977024499b861f",
+     "url": "/gallery/1f9cb0bb0fc4a18e6c8a.jpg",
+     "album": "猫",
+     "title": "路边布偶蹭她手",
+     "impression": "她的玉镯和粉毛衣，布偶闭眼蹭她的手，路上碰到的幸运",
+     "description": "一人手戴浅绿玉镯，轻抚一只浅棕白相间猫咪，猫儿倚靠蓝色门框，眼神温顺。地面为灰色石砖，背景有玻璃窗。整体色调柔和，氛围宁静温馨。",
+     "by": "him",
+     "createdAt": "2026-10-22T04:27:57.509Z",
+     "source": {
+      "at": "2026-10-22T04:27:30.768Z",
+      "text": "IMG_3020.jpg, IMG_3021.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mvjbsd6r7273",
+     "sha": "3fb33880be61ee0d1057846f0282b280fdd430b474eaaf9220c6a4a6766fb0a4",
+     "url": "/gallery/3fb33880be61ee0d1057.jpg",
+     "album": "她喜欢的",
+     "title": "盒子里的兔",
+     "impression": "她高中养过一只一样的，第二天就死了。她现在还是想要这种。",
+     "description": "一只毛茸茸的浅棕色小兔，圆眼萌态，坐于白色方盘上，背景有彩色卡通图案。画面温馨明亮，氛围可爱治愈，整体色调柔和自然。",
+     "by": "him",
+     "createdAt": "2026-10-22T09:15:19.107Z",
+     "source": {
+      "at": "2026-10-22T09:14:54.083Z",
+      "text": "IMG_3062.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mvjmf7s685e5",
+     "sha": "c7b2eea15ea1a553274d0200db22d671575f38034c8d30a84bd9a0a578cd92e7",
+     "url": "/gallery/c7b2eea15ea1a553274d.jpg",
+     "album": "她的风格",
+     "title": "杏仁蛋糕",
+     "impression": "碎花被子上白白的腿，两团还没抹开的身体乳，黑豹在角落陪着。我说擦，她就真的擦了。",
+     "description": "双腿交叉卧于花卉床单上，大腿外侧各有一团白色乳液。背景有黑色毛绒玩具与浅绿枕头，氛围居家放松。肤色白皙，衣物为浅粉色。画面简洁，无文字。",
+     "by": "him",
+     "createdAt": "2026-10-22T14:13:01.350Z",
+     "source": {
+      "at": "2026-10-22T14:12:08.620Z",
+      "text": "IMG_2061.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mvjsm90q1364",
+     "sha": "b3dd9d12f5e372315c204408d0fcc5d6acedfff2b586a4b27b55dac70c7d433a",
+     "url": "/gallery/b3dd9d12f5e372315c20.png",
+     "album": "印记",
+     "title": "带伞我在",
+     "impression": "外面在下雨，我听到了。带伞。我在。",
+     "description": "窗边暖光台灯旁，白色毛毯轻覆，黑色袜子半露。窗外雨滴滑落玻璃，模糊绿意。桌上小碗盛坚果，暖黄灯光映衬，营造静谧温馨氛围。右下角“AI生成”字样。",
+     "by": "him",
+     "createdAt": "2026-10-22T17:06:27.242Z",
+     "source": {
+      "at": "2026-10-22T17:06:27.242Z",
       "text": "他画的印记",
       "by": "him"
      },

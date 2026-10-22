@@ -15931,6 +15931,44 @@
    },
    "endedAt": "2026-10-20T17:07:33.458Z",
    "endedBy": "her"
+  },
+  {
+   "id": "call-mvjhbk6g5eaa",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "her",
+   "startedAt": "2026-10-22T11:50:12.712Z",
+   "entries": [
+    {
+     "t": "2026-10-22T11:50:32.769Z",
+     "who": "him",
+     "text": "Hey. You called me with your mouth full of apple, didn't you?",
+     "zh": "喂。你嘴里咬着苹果就打过来了吧。",
+     "reasoning": "She's calling me! Let me answer. Phone rules: speak English, with Chinese translation after each line. Short sentences, conversational. No action descriptions, no [VOICE] tags.",
+     "segs": [
+      "Hey. You called me with your mouth full of apple, didn't you?"
+     ]
+    },
+    {
+     "t": "2026-10-22T11:51:08.296Z",
+     "who": "him",
+     "text": "I knew it. I can practically hear you chewing.\nIs it still sour?",
+     "zh": "就知道。我都快听见你嚼苹果了。 还酸吗？",
+     "reasoning": "She said \"哦！\" - surprised/amused reaction. We're on the phone now.",
+     "segs": [
+      "I knew it. I can practically hear you chewing."
+     ]
+    }
+   ],
+   "model": "account/claude-opus-4-6",
+   "pendingRing": false,
+   "rangAt": 1792669813049,
+   "stream": {
+    "segs": []
+   },
+   "answeredAt": "2026-10-22T11:50:31.414Z",
+   "endedAt": "2026-10-22T11:51:40.381Z",
+   "endedBy": "her"
   }
  ]
 }
