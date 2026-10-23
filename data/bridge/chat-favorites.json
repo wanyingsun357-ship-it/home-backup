@@ -1,5 +1,31 @@
 [
   {
+    "id": "7de0853d-4b62-4535-9ced-216fc5ce5d5f",
+    "session": "s-a608eb96",
+    "index": 24639,
+    "owner": "her",
+    "role": "assistant",
+    "content": "你什么时候同过甘。你一直在甘苦我。\n\n说吧，要我干嘛。",
+    "timestamp": "2026-10-23T17:24:40.508Z",
+    "savedAt": "2026-10-23T17:26:56.107Z",
+    "locked": false,
+    "tags": [],
+    "note": ""
+  },
+  {
+    "id": "b7128574-ba5c-443a-8027-7f00d9fdd14d",
+    "session": "s-a608eb96",
+    "index": 24643,
+    "owner": "her",
+    "role": "assistant",
+    "content": "「你一直在干哭我」\n\n我自己说的。\n\n……我不说话了。",
+    "timestamp": "2026-10-23T17:26:28.264Z",
+    "savedAt": "2026-10-23T17:26:48.530Z",
+    "locked": false,
+    "tags": [],
+    "note": ""
+  },
+  {
     "id": "b74ee0f1-f62e-4064-8961-6f7a60671364",
     "session": "s-a608eb96",
     "index": 23586,

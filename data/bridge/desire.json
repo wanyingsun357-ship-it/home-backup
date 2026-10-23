@@ -78,28 +78,28 @@
     "scene": {}
   },
   "mood": {
-    "valence": 0.381,
+    "valence": 0.872,
     "arousal": 0.1
   },
-  "lastHerMessageAt": "2026-10-22T17:52:06.622Z",
-  "lastTickAt": "2026-10-22T19:04:29.551Z",
+  "lastHerMessageAt": "2026-10-23T19:02:52.729Z",
+  "lastTickAt": "2026-10-23T19:04:29.727Z",
   "arousal": {
-    "value": 0.24593522218390704,
-    "at": 1792691629076,
+    "value": 0.05356073194552851,
+    "at": 1792782190471,
     "refractory_until": 1792679862640.8347,
     "reserve": 1,
-    "reserve_at": 1792691629076,
+    "reserve_at": 1792782190471,
     "gate": {
       "locked": false,
       "once": false,
       "generation": 3
     },
     "buildup": {
-      "pulses": 28,
+      "pulses": 76,
       "peak": 0.7709427242079739,
       "edgeMs": 0,
-      "activeMs": 1322258,
-      "lastPulseAt": 1792691424301,
+      "activeMs": 3720392,
+      "lastPulseAt": 1792779863682,
       "variety": [
         "咬",
         "舔",
@@ -108,7 +108,9 @@
         "吸",
         "吻",
         "蹭",
-        "摸"
+        "摸",
+        "顶",
+        "磨"
       ]
     },
     "last": {
