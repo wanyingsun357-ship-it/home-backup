@@ -33,15 +33,18 @@ const ROLE_MODELS = {
   background: { label: '后台回复等任务', model: MODEL_IDS.opus },
 };
 
-// 后台角色跟随当前选择的通道；整理记忆用 Sonnet 4.6，其余后台角色沿用 Opus 4.6。
-const ACCOUNT_ROLE_MODEL = 'account/claude-opus-4-6';
+// 只有整理记忆固定 Sonnet 4.6（按当前通道走订阅或 OpenRouter）；其余后台角色跟随当前选择的聊天模型。
 const ACCOUNT_MEMORY_MODEL = 'account/claude-sonnet-4-6';
-function usingAccount() {
-  try { return JSON.parse(fs.readFileSync(path.join(__dirname, 'engine-settings.json'), 'utf8')).model?.startsWith('account/'); } catch { return false; }
+function selectedClaudeModel() {
+  try {
+    const model = JSON.parse(fs.readFileSync(path.join(__dirname, 'engine-settings.json'), 'utf8')).model;
+    return typeof model === 'string' && /^(account|anthropic)\//.test(model) ? model : null;
+  } catch { return null; }
 }
 function roleModels() {
-  if (!usingAccount()) return ROLE_MODELS;
-  return Object.fromEntries(Object.entries(ROLE_MODELS).map(([name, role]) => [name, role.manual ? role : { ...role, model: name === 'memory' ? ACCOUNT_MEMORY_MODEL : ACCOUNT_ROLE_MODEL }]));
+  const selected = selectedClaudeModel() || MODEL_IDS.opus;
+  const memory = selected.startsWith('account/') ? ACCOUNT_MEMORY_MODEL : MODEL_IDS.sonnet;
+  return Object.fromEntries(Object.entries(ROLE_MODELS).map(([name, role]) => [name, { ...role, model: name === 'memory' ? memory : selected }]));
 }
 
 // Claude 订阅账号（Claude Code 登录）：模型 id 形如 account/claude-opus-5-5。
@@ -148,6 +151,8 @@ function spawnClaude(args, options = {}, role = 'chat') {
     const env = accountEnv({ ...process.env, ...options.env });
     env.CLAUDE_CODE_PROMPT_CACHE_TTL = role === 'chat' ? '1h' : '5m';
     env.CLAUDE_CODE_SUBAGENT_PROMPT_CACHE_TTL = '5m';
+    // 整理记忆要先写 Echo 再写交接信，订阅通道默认约 170k 就拦截；整理时放宽到 190k（模型真实窗口仍是 200k）。
+    if (role === 'memory') env.CLAUDE_CODE_BLOCKING_LIMIT_OVERRIDE = '190000';
     const { cacheSessionId, ...spawnOptions } = options;
     const child = spawn('claude', mapped, { ...spawnOptions, env });
     observeCache(child, { role, session: 'account-' + createHash('sha256').update(String(cacheSessionId || randomUUID())).digest('hex').slice(0, 32),

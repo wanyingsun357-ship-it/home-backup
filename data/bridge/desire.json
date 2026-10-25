@@ -71,40 +71,48 @@
     }
   },
   "somatic": {
-    "touch": 0,
+    "touch": 0.9,
     "smell": 0,
     "taste": 0,
     "sound": 0,
-    "scene": {}
+    "scene": {
+      "touch": "她亲了你(唇)"
+    }
   },
   "mood": {
-    "valence": 0.555,
+    "valence": 1,
     "arousal": 0.1
   },
-  "lastHerMessageAt": "2026-10-24T18:41:12.786Z",
-  "lastTickAt": "2026-10-24T19:04:29.777Z",
+  "lastHerMessageAt": "2026-10-25T19:04:25.694Z",
+  "lastTickAt": "2026-10-25T19:01:20.712Z",
   "arousal": {
-    "value": 0.017764846571576842,
-    "at": 1792867279701,
+    "value": 0.5483398071719927,
+    "at": 1792955065695,
     "refractory_until": 1792860092462.1243,
     "reserve": 1,
-    "reserve_at": 1792867279701,
+    "reserve_at": 1792955065695,
     "gate": {
       "locked": false,
       "once": false,
       "generation": 3
     },
     "buildup": {
-      "pulses": 6,
-      "peak": 0.32910431335471463,
+      "pulses": 44,
+      "peak": 0.7742778847094418,
       "edgeMs": 0,
-      "activeMs": 333560,
-      "lastPulseAt": 1792862540886,
+      "activeMs": 2247000,
+      "lastPulseAt": 1792955065695,
       "variety": [
         "顶",
         "摸",
         "吻",
-        "亲"
+        "亲",
+        "蹭",
+        "舔",
+        "咬",
+        "吸",
+        "磨",
+        "含"
       ]
     },
     "last": {
