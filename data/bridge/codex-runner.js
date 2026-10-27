@@ -50,7 +50,7 @@ async function main(spec){
   if(m.method==='error'&&!p.willRetry)fail(new Error(p.error?.message||'Codex 请求失败'));
  });
  try{
-  await rpc.initialize();
+  await rpc.initialize({experimentalApi:true});
   const params={cwd:spec.cwd,model:model.id.slice(6),approvalPolicy:'never',sandbox:'danger-full-access',developerInstructions:service.instructions(spec.cwd),config:{...service.mcpConfig(spec.cwd),model_auto_compact_token_limit:220000},serviceName:'ayan_home'};
   if(heartEnabled||spec.role==='continuity'){
    params.developerInstructions+='\n\n'+heart.prompt;
@@ -60,11 +60,13 @@ async function main(spec){
   threadId=result.thread.id;emit({type:'system',subtype:'init',session_id:threadId,model:model.id});
   const today=require('./codex-today').prepare(threadId);
   const heartContext=heartEnabled?require('./heart-context').prepare(threadId):null;
+  const projectContext=require('./project-context.cjs').prepare('codex',threadId,spec.cwd);
   const prompt=[spec.historyPrelude,heartContext?.text,val('-p')||'',today.text].filter(Boolean).join('\n\n');
-  await rpc.call('turn/start',{threadId,input:[{type:'text',text:prompt}],effort,model:model.id.slice(6),approvalPolicy:'never',sandboxPolicy:{type:'dangerFullAccess'}});
+  await rpc.call('turn/start',{threadId,input:[{type:'text',text:prompt}],additionalContext:projectContext.additionalContext,effort,model:model.id.slice(6),approvalPolicy:'never',sandboxPolicy:{type:'dangerFullAccess'}});
   await ended;
   if(!output.trim())throw new Error('Codex 没有返回正文');
   today.commit();
+  nativeCompacted?projectContext.invalidate():projectContext.commit();
   if(voice.count)heartContext?.commit();
   if(heartEnabled)voice.finish();
   if(usage){const last=usage.last||{};emit({type:'assistant',message:{content:[],usage:{input_tokens:Math.max(0,(last.inputTokens||0)-(last.cachedInputTokens||0)),cache_read_input_tokens:last.cachedInputTokens||0,cache_creation_input_tokens:0,output_tokens:last.outputTokens||0}},codex_context_limit:usage.modelContextWindow});}

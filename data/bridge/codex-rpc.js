@@ -19,7 +19,7 @@ class CodexRpc extends EventEmitter {
   }
   write(message){if(this.closed)throw new Error('Codex connection closed');this.child.stdin.write(JSON.stringify(message)+'\n');}
   call(method,params={},timeout=30000){return new Promise((resolve,reject)=>{const id=++this.seq;const timer=setTimeout(()=>{this.pending.delete(id);reject(new Error('Codex request timed out: '+method));},timeout);this.pending.set(id,{resolve,reject,timer});try{this.write({id,method,params});}catch(e){clearTimeout(timer);this.pending.delete(id);reject(e);}});}
-  async initialize(){await this.call('initialize',{clientInfo:{name:'ayan_home',title:'晏白的家',version:'1.0.0'}});this.write({method:'initialized',params:{}});return this;}
+  async initialize(capabilities){await this.call('initialize',{clientInfo:{name:'ayan_home',title:'晏白的家',version:'1.0.0'},...(capabilities?{capabilities}:{})});this.write({method:'initialized',params:{}});return this;}
   shutdown(error){if(this.closed)return;this.closed=true;for(const p of this.pending.values()){clearTimeout(p.timer);p.reject(error);}this.pending.clear();this.emit('closed',error);}
   close(){this.child.kill();}
 }

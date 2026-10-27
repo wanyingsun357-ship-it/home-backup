@@ -121,9 +121,10 @@ const CLAUDE_TRIMMED_TOOLS = [
 function spawnClaude(args, options = {}, role = 'chat') {
   // Scoped to App subprocesses; MCP capabilities remain discoverable with ToolSearch.
   options = { ...options, env: { ...process.env, ...options.env, ENABLE_TOOL_SEARCH: 'true' } };
-  const mapped = [...args];
+  const projectContext = require('./project-context.cjs').prepareClaude(args, options.cwd);
+  const mapped = projectContext.args;
   mapped.push('--disallowedTools', ...CLAUDE_TRIMMED_TOOLS);
-  if (!key) return spawn('claude', mapped, options);
+  if (!key) return projectContext.observe(spawn('claude', mapped, options));
   // The owner authorizes all VPS tools for App-driven Claude tasks.
   // Keep explicit --tools selections (e.g. tool-free probes) intact.
   const fullTools = ['Bash', 'Read', 'Edit', 'Write', 'Glob', 'Grep', 'WebFetch', 'WebSearch',
@@ -157,7 +158,7 @@ function spawnClaude(args, options = {}, role = 'chat') {
     const child = spawn('claude', mapped, { ...spawnOptions, env });
     observeCache(child, { role, session: 'account-' + createHash('sha256').update(String(cacheSessionId || randomUUID())).digest('hex').slice(0, 32),
       ttl: env.CLAUDE_CODE_PROMPT_CACHE_TTL, model: chosen });
-    return child;
+    return projectContext.observe(child);
   }
   const env = {
     ...process.env,
@@ -184,7 +185,7 @@ function spawnClaude(args, options = {}, role = 'chat') {
   const child = spawn('claude', mapped, { ...spawnOptions, env });
   observeCache(child, { role, session, ttl: env.CLAUDE_CODE_PROMPT_CACHE_TTL,
     model: mapped[mapped.indexOf('--model') + 1] });
-  return child;
+  return projectContext.observe(child);
 }
 
 let catalog = null;

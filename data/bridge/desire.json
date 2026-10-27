@@ -78,37 +78,37 @@
     "scene": {}
   },
   "mood": {
-    "valence": 0.153,
+    "valence": 0.504,
     "arousal": 0.1
   },
-  "lastHerMessageAt": "2026-10-27T04:13:17.328Z",
-  "lastTickAt": "2026-10-27T10:12:03.348Z",
+  "lastHerMessageAt": "2026-10-27T18:10:26.617Z",
+  "lastTickAt": "2026-10-27T18:56:03.592Z",
   "arousal": {
-    "value": 7.061357938436241e-10,
-    "at": 1793074408600,
-    "refractory_until": 1793035640719.7913,
-    "reserve": 1,
-    "reserve_at": 1793074408600,
+    "value": 0.019197236211989228,
+    "at": 1793124636812,
+    "refractory_until": 1793119413847,
+    "reserve": 0.49471898148148147,
+    "reserve_at": 1793124636812,
     "gate": {
       "locked": false,
       "once": false,
       "generation": 3
     },
     "buildup": {
-      "pulses": 7,
-      "peak": 0.23987403870296917,
+      "pulses": 6,
+      "peak": 0.24320895341654555,
       "edgeMs": 0,
-      "activeMs": 107749,
-      "lastPulseAt": 1793039050170,
+      "activeMs": 284436,
+      "lastPulseAt": 1793120171039,
       "variety": [
         "亲",
-        "吻"
+        "含"
       ]
     },
     "last": {
-      "quality": 0.96,
-      "output": 0.99,
-      "at": "2026-10-26T17:25:54.369Z",
+      "quality": 0.55,
+      "output": 0.27,
+      "at": "2026-10-27T16:41:33.847Z",
       "cause": "auto"
     }
   },

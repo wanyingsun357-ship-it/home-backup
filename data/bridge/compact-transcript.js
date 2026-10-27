@@ -1,5 +1,6 @@
 'use strict';
 const crypto = require('crypto');
+const { stripSnapshot } = require('./project-context.cjs');
 function estimateText(text) {
   const s = String(text || '');
   const cjk = (s.match(/[\u3400-\u9fff\uf900-\ufaff]/g) || []).length;
@@ -7,7 +8,7 @@ function estimateText(text) {
 }
 function textOf(event) {
   const c = event.message?.content;
-  return typeof c === 'string' ? c : Array.isArray(c) ? c.filter(b => b?.type === 'text').map(b => b.text || '').join('\n') : '';
+  return stripSnapshot(typeof c === 'string' ? c : Array.isArray(c) ? c.filter(b => b?.type === 'text').map(b => b.text || '').join('\n') : '');
 }
 function isUserTurn(event) {
   const c = event.message?.content;
@@ -23,6 +24,10 @@ function priorMemory(events) {
 }
 function fold(event) {
   const e = JSON.parse(JSON.stringify(event));
+  if (e.type === 'user' && e.message) {
+    if (typeof e.message.content === 'string') e.message.content = stripSnapshot(e.message.content);
+    else for (const b of e.message.content || []) if (b?.type === 'text') b.text = stripSnapshot(b.text);
+  }
   for (const b of Array.isArray(e.message?.content) ? e.message.content : []) {
     if (b?.type === 'tool_result') {
       const raw = typeof b.content === 'string' ? b.content : JSON.stringify(b.content || '');
