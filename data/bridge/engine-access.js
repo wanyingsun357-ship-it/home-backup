@@ -4,7 +4,7 @@ const file=path.join(__dirname,'.engine-access.json');
 let state;
 if(fs.existsSync(file))state=JSON.parse(fs.readFileSync(file,'utf8'));
 else {state={secret:crypto.randomBytes(32).toString('hex')};fs.writeFileSync(file,JSON.stringify(state),{mode:0o600});}
-const internal=crypto.createHmac('sha256',state.secret).update('internal').digest('hex');
+const internal=crypto.createHmac('sha256',state.secret).update("ayan-engine-internal-20261026-r2").digest('hex');
 const equal=(a,b)=>typeof a==='string'&&typeof b==='string'&&a.length===b.length&&crypto.timingSafeEqual(Buffer.from(a),Buffer.from(b));
 function issue(){const body=Buffer.from(JSON.stringify({expires:Date.now()+180*86400000,nonce:crypto.randomBytes(12).toString('hex')})).toString('base64url');return body+'.'+crypto.createHmac('sha256',state.secret).update(body).digest('hex');}
 function authorized(req){

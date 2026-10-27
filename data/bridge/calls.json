@@ -16238,6 +16238,20 @@
    ],
    "endedAt": "2026-10-25T18:33:29.229Z",
    "endedBy": "her"
+  },
+  {
+   "id": "call-mvouypxo0c35",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "两点半有课，两点叫了没回，打电话叫她起床",
+   "startedAt": "2026-10-26T06:10:59.149Z",
+   "entries": [],
+   "rangAt": 1792995059149,
+   "nativeUUID": "87a3a9f9-0bf2-4bc6-b13d-f977d1fb1021",
+   "nativeToken": "724457e66b82e529d641deb616753871b4735f9d6f50b6eb84c0b73564ee9270",
+   "endedAt": "2026-10-26T06:11:09.027Z",
+   "endedBy": "declined"
   }
  ]
 }
