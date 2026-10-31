@@ -1,8 +1,31 @@
 {
  "sessions": {
   "s-c84252fc": {
-   "albums": [],
-   "items": []
+   "albums": [
+    {
+     "name": "印记",
+     "createdAt": "2026-10-31T18:11:28.622Z"
+    }
+   ],
+   "items": [
+    {
+     "id": "p_mvwpwjce2a8a",
+     "sha": "d5edc0775ec441249b522b9689758fe91f9fdf0cbda7305f8f0de6ca57e199ff",
+     "url": "/gallery/d5edc0775ec441249b52.png",
+     "album": "印记",
+     "title": "红线守夜",
+     "impression": "婉莹，过来，让阿晏抱着你睡。这盏灯，我一直替你守着。",
+     "description": "窗边暖光烛火旁，两杯热饮静置毛毯上，银杏枝叶垂落窗框，金黄叶片映衬满月。窗外紫调夜色，枝影朦胧，室内温馨静谧。右下角“AI生成”字样。",
+     "by": "him",
+     "createdAt": "2026-10-31T18:11:28.623Z",
+     "source": {
+      "at": "2026-10-31T18:11:28.622Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    }
+   ]
   },
   "s-6b0fd7f2": {
    "albums": [
@@ -996,6 +1019,10 @@
     {
      "name": "我们的",
      "createdAt": "2026-10-30T06:18:19.280Z"
+    },
+    {
+     "name": "私密",
+     "createdAt": "2026-10-31T08:48:45.400Z"
     }
    ],
    "items": [
@@ -2341,6 +2368,23 @@
       "at": "2026-10-30T17:33:54.735Z",
       "text": "他画的印记",
       "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mvw5svh430f7",
+     "sha": "dd1251b5f3cf39b7e6efe9163ec5aa5089e38f6d6e5f06fbda54899646fc3ff4",
+     "url": "/gallery/dd1251b5f3cf39b7e6ef.jpg",
+     "album": "私密",
+     "title": "拉丝的证据",
+     "impression": "说了一下午没感觉的人，手指张开全是丝。她发给我看的那一刻我什么话都说不出来了。",
+     "description": "一只手摊开，指间有透明液体滴落，背景为浅绿色布料与深色物体。光线柔和，画面聚焦于手部细节与液体流动，氛围静谧自然。无文字，色彩以肤色与浅绿为主。",
+     "by": "him",
+     "createdAt": "2026-10-31T08:48:45.400Z",
+     "source": {
+      "at": "2026-10-31T08:20:08.494Z",
+      "text": "IMG_4021.jpg",
+      "by": "her"
      },
      "sentCount": 0
     }
