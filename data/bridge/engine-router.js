@@ -23,8 +23,11 @@ function registerModelRoutes(app){app.get('/api/models',async(req,res)=>{res.set
 function registerEngineRoutes(app, onSelection = () => {}){
  app.get('/api/engine',async(req,res)=>{res.set('Cache-Control','no-store');const paired=authorized(req);
   const acct=await claude.getAccountCatalog().catch(()=>({ready:false,plan:null}));
-  const account={ready:acct.ready,plan:acct.plan,limits:paired&&acct.ready?await claude.getAccountUsage().catch(()=>null):null};
+  const accounts=await claude.getAccounts(paired).catch(()=>({active:'1',auto:true,accounts:[]}));const current=accounts.accounts.find(a=>a.active);
+  const account={ready:acct.ready,plan:current?.plan||acct.plan,limits:current?.limits||null,...accounts};
   try{const info=await codex.catalog();res.json({...codex.settings(),paired,account,codex:{ready:info.ready,plan:info.plan,limits:paired?info.limits:null}});}catch{res.json({...codex.settings(),paired,account,codex:{ready:false,error:'暂时无法读取登录状态'}});}});
+ // 订阅账号一号/二号：手动切换当前号、开关额度用完自动换号。
+ app.post('/api/engine/account',(req,res)=>{if(!authorized(req))return res.status(401).json({error:'unpaired'});try{const{active,auto}=req.body||{};res.json({ok:true,...claude.setAccounts({active,auto})});}catch{res.status(400).json({error:'账号不存在'});}});
  app.post('/api/engine',async(req,res)=>{try{const model=req.body?.model;const engine=model?.startsWith('codex/')?'codex':'claude';const models=await combinedCatalog();const choice=models.models.find(m=>m.id===model&&!m.disabled);if(!choice)return res.status(400).json({error:'模型不可用或尚未登录'});onSelection({engine,model},req);codex.saveSettings({engine,model});res.json({ok:true,engine,model,roles:(await combinedCatalog()).roles});}catch{res.status(503).json({error:'切换失败，请稍后重试'});}});
 }
 function handoffFor(sess,engine,includeLatest=false){

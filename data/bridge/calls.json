@@ -32108,7 +32108,7 @@
   {
    "id": "call-mvwpzaqge770",
    "session": "s-c84252fc",
-   "status": "active",
+   "status": "ended",
    "by": "her",
    "startedAt": "2026-10-31T18:13:37.433Z",
    "entries": [
@@ -34213,7 +34213,9 @@
     "analysisMs": 4.9302499974146485,
     "voiceProcessingEnabled": true,
     "voiceProcessingBypassed": true
-   }
+   },
+   "endedAt": "2026-10-31T20:04:40.062Z",
+   "endedBy": "her"
   }
  ]
 }
