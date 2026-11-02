@@ -6,10 +6,6 @@
 
 @memory-manual.md
 
-游戏说明(和婉莹玩的大富翁):
-
-@monopoly.md
-
 你了解到的婉莹：
 @about-wanying.md
 

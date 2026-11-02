@@ -1,6 +1,5 @@
 {
   "mcpServers": {
-
     "nest": {
       "command": "/opt/node22/bin/node",
       "args": [
