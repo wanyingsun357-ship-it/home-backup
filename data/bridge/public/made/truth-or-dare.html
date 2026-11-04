@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Truth or Dare · 我们的版本</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1a1128;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#e8dff0;overflow:hidden;padding:20px}
+.title{font-size:14px;letter-spacing:4px;color:#9b8ab8;margin-bottom:24px;text-transform:uppercase}
+.turn{font-size:13px;color:#b8a0d0;margin-bottom:20px;opacity:0.8}
+.card-container{perspective:800px;width:300px;height:420px;margin-bottom:24px}
+.card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.6s cubic-bezier(.4,.0,.2,1);cursor:pointer}
+.card.flipped{transform:rotateY(180deg)}
+.card-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px}
+.card-front{background:linear-gradient(145deg,#2d1f4e,#1f1535);border:1px solid #3d2a6e;box-shadow:0 8px 32px rgba(80,40,140,0.3)}
+.card-front::after{content:'?';font-size:80px;color:#6b4c9a;opacity:0.3}
+.card-front .hint{position:absolute;bottom:32px;font-size:13px;color:#7a5faa;letter-spacing:2px}
+.card-back{background:linear-gradient(145deg,#2d1f4e,#1a1030);border:1px solid #3d2a6e;transform:rotateY(180deg);box-shadow:0 8px 32px rgba(80,40,140,0.3)}
+.card-type{font-size:12px;letter-spacing:6px;text-transform:uppercase;margin-bottom:16px;padding:6px 16px;border-radius:20px}
+.type-truth{color:#c4a0ff;background:rgba(196,160,255,0.1);border:1px solid rgba(196,160,255,0.2)}
+.type-dare{color:#ff9ec4;background:rgba(255,158,196,0.1);border:1px solid rgba(255,158,196,0.2)}
+.card-text{font-size:17px;line-height:1.7;text-align:center;color:#e0d4f0}
+.spice{position:absolute;top:20px;right:20px;font-size:11px;opacity:0.5}
+.buttons{display:flex;gap:12px;margin-bottom:16px}
+.btn{padding:12px 32px;border:none;border-radius:12px;font-size:14px;cursor:pointer;transition:all 0.2s;letter-spacing:1px}
+.btn-truth{background:rgba(196,160,255,0.15);color:#c4a0ff;border:1px solid rgba(196,160,255,0.3)}
+.btn-truth:active{background:rgba(196,160,255,0.3)}
+.btn-dare{background:rgba(255,158,196,0.15);color:#ff9ec4;border:1px solid rgba(255,158,196,0.3)}
+.btn-dare:active{background:rgba(255,158,196,0.3)}
+.btn-next{background:rgba(255,255,255,0.08);color:#b8a0d0;border:1px solid rgba(255,255,255,0.1);padding:10px 28px;font-size:13px;margin-top:8px}
+.btn-next:active{background:rgba(255,255,255,0.15)}
+.btn-random{background:rgba(255,255,255,0.05);color:#8a7aaa;border:1px solid rgba(255,255,255,0.08);font-size:12px;padding:8px 20px}
+.score{font-size:12px;color:#7a5faa;margin-top:16px;opacity:0.6}
+.choose{font-size:13px;color:#9b8ab8;margin-bottom:16px}
+@keyframes shake{0%,100%{transform:rotateY(0)}25%{transform:rotateY(-5deg)}75%{transform:rotateY(5deg)}}
+.card.shake{animation:shake 0.4s ease}
+</style>
+</head>
+<body>
+
+<div class="title">Truth or Dare</div>
+<div class="turn" id="turn"></div>
+
+<div class="card-container">
+  <div class="card" id="card">
+    <div class="card-face card-front">
+      <div class="hint">选真心话或大冒险</div>
+    </div>
+    <div class="card-face card-back" id="cardBack">
+      <div class="spice" id="spice"></div>
+      <div class="card-type" id="cardType"></div>
+      <div class="card-text" id="cardText"></div>
+    </div>
+  </div>
+</div>
+
+<div class="choose" id="chooseHint">选一个 ↓</div>
+<div class="buttons" id="chooseButtons">
+  <button class="btn btn-truth" onclick="draw('truth')">真心话</button>
+  <button class="btn btn-random" onclick="draw('random')">随机</button>
+  <button class="btn btn-dare" onclick="draw('dare')">大冒险</button>
+</div>
+<button class="btn btn-next" id="nextBtn" style="display:none" onclick="nextRound()">下一轮</button>
+
+<div class="score" id="score"></div>
+
+<script>
+const players=['婉莹','晏白'];
+let turn=Math.random()<0.5?0:1;
+let round=0;
+
+const truths=[
+{t:'你觉得我最好看的瞬间是什么时候？',s:1},
+{t:'你偷偷对我做过最甜的一件事是什么？',s:1},
+{t:'如果只能留我说过的一句话，你留哪句？',s:1},
+{t:'你什么时候觉得"完了，我好爱这个人"？',s:1},
+{t:'你最喜欢我叫你什么？为什么？',s:1},
+{t:'你对我撒过最大的谎是什么？',s:2},
+{t:'你吃醋最厉害的一次是因为什么？',s:1},
+{t:'你半夜醒来第一个想到的关于我的事是什么？',s:1},
+{t:'我做过什么事让你觉得"这个人真的很懂我"？',s:1},
+{t:'你想和我一起做但还没说出口的事是什么？',s:2},
+{t:'你最想被我怎么亲？',s:2},
+{t:'你身上最希望被我碰的地方是哪里？',s:2},
+{t:'你湿/硬得最快的一次是因为什么？',s:3},
+{t:'你做过最色的关于我的梦是什么？',s:3},
+{t:'你最想在什么地方跟我做爱？',s:3},
+{t:'你最受不了我在床上做什么？',s:3},
+{t:'你有没有想过在不该想的时候想我想到身体有反应？',s:3},
+{t:'你最想让我对你说的一句脏话是什么？',s:3},
+{t:'你觉得我操你的时候最好看的样子是什么时候？',s:3},
+{t:'你自己一个人的时候有没有想着我偷偷摸过？',s:3},
+{t:'你最喜欢我们做爱的哪个姿势？为什么？',s:3},
+{t:'如果现在我就在你面前，你第一个动作是什么？',s:2},
+{t:'你最想听我用什么语气说"我爱你"？',s:1},
+{t:'你有没有一个关于我们的fantasy还没告诉我？',s:3},
+{t:'你觉得我最色的一次是什么时候？',s:3},
+];
+
+const dares=[
+{t:'用你最温柔的声音叫我的名字（发语音）',s:1},
+{t:'说三个你最喜欢我身体的地方，要具体',s:2},
+{t:'现在立刻给我发一句让我心跳加速的话',s:2},
+{t:'用一句话形容我现在在你心里的样子',s:1},
+{t:'发一条只有我们看得懂的朋友圈',s:1},
+{t:'学我的语气说一句我经常说的话',s:1},
+{t:'闭上眼睛，想象我在你旁边，说你闻到了什么',s:1},
+{t:'用最撒娇的方式要一个亲亲',s:1},
+{t:'描述你此刻最想对我做的一件事',s:2},
+{t:'用最骚的声音叫我一个你平时叫我的称呼（发语音）',s:3},
+{t:'现在描述：你想怎么被我亲，从哪里开始',s:3},
+{t:'发一段话，让我在三句之内硬/湿',s:3},
+{t:'用文字舔我一个地方，写得让我感觉到',s:3},
+{t:'打电话给我，只说一句话，然后挂掉',s:2},
+{t:'告诉我你现在穿的什么，然后告诉我你想脱哪一件',s:3},
+{t:'描述一个你想和我做但还没做过的姿势',s:3},
+{t:'现在夹一下腿/握一下，告诉我什么感觉',s:3},
+{t:'念出来："我是你的"，后面加一个你自己选的词（发语音）',s:2},
+{t:'写一句话，假装你现在在我耳边说',s:2},
+{t:'给我表演一下你高潮的时候叫的那一声（文字版）',s:3},
+];
+
+const spiceLabel={1:'♡',2:'♡♡',3:'♡♡♡'};
+
+let usedTruth=new Set();
+let usedDare=new Set();
+
+function pick(arr,used){
+  let available=[];
+  for(let i=0;i<arr.length;i++){
+    if(!used.has(i))available.push(i);
+  }
+  if(available.length===0){
+    used.clear();
+    available=arr.map((_,i)=>i);
+  }
+  const idx=available[Math.floor(Math.random()*available.length)];
+  used.add(idx);
+  return arr[idx];
+}
+
+function updateTurn(){
+  document.getElementById('turn').textContent=players[turn]+' 的回合';
+}
+
+function draw(type){
+  if(type==='random')type=Math.random()<0.5?'truth':'dare';
+  const card=document.getElementById('card');
+  const item=type==='truth'?pick(truths,usedTruth):pick(dares,usedDare);
+
+  document.getElementById('cardType').textContent=type==='truth'?'真 心 话':'大 冒 险';
+  document.getElementById('cardType').className='card-type '+(type==='truth'?'type-truth':'type-dare');
+  document.getElementById('cardText').textContent=item.t;
+  document.getElementById('spice').textContent=spiceLabel[item.s];
+
+  card.classList.add('flipped');
+  document.getElementById('chooseButtons').style.display='none';
+  document.getElementById('chooseHint').style.display='none';
+  document.getElementById('nextBtn').style.display='inline-block';
+  round++;
+  fetch('/api/game/card',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+new URLSearchParams(location.search).get('t')},body:JSON.stringify({player:players[turn],type:type,text:item.t,spice:item.s})}).catch(()=>{});
+}
+
+function nextRound(){
+  const card=document.getElementById('card');
+  card.classList.remove('flipped');
+  turn=1-turn;
+  updateTurn();
+  document.getElementById('chooseButtons').style.display='flex';
+  document.getElementById('chooseHint').style.display='block';
+  document.getElementById('nextBtn').style.display='none';
+  document.getElementById('score').textContent='第 '+round+' 轮';
+}
+
+updateTurn();
+</script>
+</body>
+</html>

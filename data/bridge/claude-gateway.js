@@ -5,6 +5,7 @@ const path = require('path');
 const { spawn } = require('child_process');
 const { createHash, randomUUID } = require('crypto');
 const { observeCache } = require('./cache-observer');
+const { invocationMetadata } = require('./cache-diagnostics.cjs');
 
 const keyFile = path.join(__dirname, '.openrouter-key');
 const key = fs.existsSync(keyFile) ? fs.readFileSync(keyFile, 'utf8').trim() : '';
@@ -28,13 +29,12 @@ const MODEL_IDS = {
 
 const ROLE_MODELS = {
   chat: { label: '聊天', model: MODEL_IDS.opus, manual: true },
-  memory: { label: '整理记忆', model: MODEL_IDS.sonnet },
+  memory: { label: '整理记忆', model: MODEL_IDS.opus },
   wake: { label: '定时唤醒', model: MODEL_IDS.opus },
   background: { label: '后台回复等任务', model: MODEL_IDS.opus },
 };
 
-// 只有整理记忆固定 Sonnet 4.6（按当前通道走订阅或 OpenRouter）；其余后台角色跟随当前选择的聊天模型。
-const ACCOUNT_MEMORY_MODEL = 'account/claude-sonnet-4-6';
+// 整理记忆与其他后台角色均跟随当前选择的 Claude 模型及通道。
 function selectedClaudeModel() {
   try {
     const model = JSON.parse(fs.readFileSync(path.join(__dirname, 'engine-settings.json'), 'utf8')).model;
@@ -43,8 +43,7 @@ function selectedClaudeModel() {
 }
 function roleModels() {
   const selected = selectedClaudeModel() || MODEL_IDS.opus;
-  const memory = selected.startsWith('account/') ? ACCOUNT_MEMORY_MODEL : MODEL_IDS.sonnet;
-  return Object.fromEntries(Object.entries(ROLE_MODELS).map(([name, role]) => [name, { ...role, model: name === 'memory' ? memory : selected }]));
+  return Object.fromEntries(Object.entries(ROLE_MODELS).map(([name, role]) => [name, { ...role, model: selected }]));
 }
 
 // Claude 订阅账号（Claude Code 登录）：模型 id 形如 account/claude-opus-5-5。
@@ -212,6 +211,8 @@ async function getAccountCatalog(source = []) {
 const CLAUDE_TRIMMED_TOOLS = [
   // App conversations use existing wake-outbox and local tools, not agent-team orchestration.
   'Agent', 'ListAgents', 'ReportFindings', 'Workflow',
+  // 1104 省上下文:他没用过 ScheduleWakeup/Glob(闹钟走 wake-outbox),Grep 用 Bash 里的 grep 代替。
+  'ScheduleWakeup', 'Glob', 'Grep',
   'CronCreate', 'CronDelete', 'CronList', 'EnterWorktree', 'ExitWorktree',
   'ListMcpResourcesTool', 'NotebookEdit', 'ReadMcpResourceDirTool',
   'ReadMcpResourceTool', 'SendMessage', 'TaskCreate', 'TaskGet', 'TaskList',
@@ -220,10 +221,14 @@ const CLAUDE_TRIMMED_TOOLS = [
 
 function spawnClaude(args, options = {}, role = 'chat') {
   // Scoped to App subprocesses; MCP capabilities remain discoverable with ToolSearch.
-  options = { ...options, env: { ...process.env, ...options.env, ENABLE_TOOL_SEARCH: 'true' } };
+  // 技能清单和 claude.ai 账号连接器(Claude Docs)跟家里无关,每个窗口白占几千token:不加载。
+  // 技能文件还在本地,CLAUDE.md 写了怎么按需找回;本机配置的 MCP(记忆库/小窝/高德)不受影响。
+  // CC 自带的 auto memory 他不用(记忆走 Ombre/回声库,目录一直是空的),那段说明占系统提示将近一半:关掉。
+  options = { ...options, env: { ...process.env, ...options.env, ENABLE_TOOL_SEARCH: 'true', ENABLE_CLAUDEAI_MCP_SERVERS: 'false', CLAUDE_CODE_DISABLE_AUTO_MEMORY: '1' } };
   const projectContext = require('./project-context.cjs').prepareClaude(args, options.cwd);
   const mapped = projectContext.args;
   mapped.push('--disallowedTools', ...CLAUDE_TRIMMED_TOOLS);
+  if (!mapped.includes('--disable-slash-commands')) mapped.push('--disable-slash-commands');
   if (!key) return projectContext.observe(spawn('claude', mapped, options));
   // The owner authorizes all VPS tools for App-driven Claude tasks.
   // Keep explicit --tools selections (e.g. tool-free probes) intact.
@@ -258,6 +263,7 @@ function spawnClaude(args, options = {}, role = 'chat') {
     const { cacheSessionId, ...spawnOptions } = options;
     const child = spawn('claude', mapped, { ...spawnOptions, env });
     observeCache(child, { role, session: 'account-' + createHash('sha256').update(String(cacheSessionId || randomUUID())).digest('hex').slice(0, 32),
+      ...invocationMetadata(mapped, env, projectContext, 'account:' + accountId),
       ttl: env.CLAUDE_CODE_PROMPT_CACHE_TTL, model: chosen });
     return projectContext.observe(watchLimit(child, accountId));
   }
@@ -285,6 +291,7 @@ function spawnClaude(args, options = {}, role = 'chat') {
   env.ANTHROPIC_CUSTOM_HEADERS = [...headers, `x-session-id: ${session}`].join('\n');
   const child = spawn('claude', mapped, { ...spawnOptions, env });
   observeCache(child, { role, session, ttl: env.CLAUDE_CODE_PROMPT_CACHE_TTL,
+    ...invocationMetadata(mapped, env, projectContext, 'openrouter'),
     model: mapped[mapped.indexOf('--model') + 1] });
   return projectContext.observe(child);
 }

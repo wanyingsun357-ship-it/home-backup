@@ -22,12 +22,22 @@ function priorMemory(events) {
   return [...events].reverse().find(e => isUserTurn(e) && textOf(e).trim().startsWith('<过往记忆>')) ?
     textOf([...events].reverse().find(e => isUserTurn(e) && textOf(e).trim().startsWith('<过往记忆>'))) : '';
 }
+// 带进新窗口的旧消息只留她说的话:当轮注入的召回/状态/提醒到了新窗口已经过时,只占地方
+const INJECTED_RE = [
+  /\n?<(想起来的|你知道的|此刻状态|家里最近|通话说明)>[\s\S]*?<\/\1>/g,
+  /\n?\(指尖节奏:[^\n]*\)/g,
+  /\n?\((?:你留意到她刚才有新动静|之前看到她的这些)[\s\S]*?不用提"提示"。\)/g,
+  /\n?\(本地 API 的所有请求需加[^\n]*\)/g,
+];
+const stripInjected = (t) => INJECTED_RE.reduce((s, re) => s.replace(re, ''), stripSnapshot(t));
 function fold(event) {
   const e = JSON.parse(JSON.stringify(event));
   if (e.type === 'user' && e.message) {
-    if (typeof e.message.content === 'string') e.message.content = stripSnapshot(e.message.content);
-    else for (const b of e.message.content || []) if (b?.type === 'text') b.text = stripSnapshot(b.text);
+    if (typeof e.message.content === 'string') e.message.content = stripInjected(e.message.content);
+    else for (const b of e.message.content || []) if (b?.type === 'text') b.text = stripInjected(b.text);
   }
+  // 旧轮次的思考过程不带进新窗口(说出口的话都在);只剩思考的那条记录整条不要
+  if (e.type === 'assistant' && Array.isArray(e.message?.content)) e.message.content = e.message.content.filter((b) => b?.type !== 'thinking' && b?.type !== 'redacted_thinking');
   for (const b of Array.isArray(e.message?.content) ? e.message.content : []) {
     if (b?.type === 'tool_result') {
       const raw = typeof b.content === 'string' ? b.content : JSON.stringify(b.content || '');
@@ -51,7 +61,7 @@ function recordTokens(event) {
   if (event.type === 'attachment') return estimateText(JSON.stringify(event.attachment || {}));
   return 0;
 }
-function buildTranscript(events, newId, memoryText, { budget = 20000, cwd = '/root/ayan', now = Date.now() } = {}) {
+function buildTranscript(events, newId, memoryText, { budget = 12000, cwd = '/root/ayan', now = Date.now() } = {}) {
   if (!events.length) throw new Error('transcript为空');
   let internal = false;
   const candidates = [];
@@ -59,7 +69,10 @@ function buildTranscript(events, newId, memoryText, { budget = 20000, cwd = '/ro
     if (isUserTurn(original)) internal = isInternal(original);
     if (internal) continue;
     if (original.type === 'attachment' && original.attachment?.type === 'prompt_snapshot') continue;
-    if ((original.type === 'user' || original.type === 'assistant') && original.message || original.type === 'attachment') candidates.push(fold(original));
+    if (!((original.type === 'user' || original.type === 'assistant') && original.message || original.type === 'attachment')) continue;
+    const folded = fold(original);
+    if (folded.type === 'assistant' && Array.isArray(folded.message.content) && !folded.message.content.length) continue;
+    candidates.push(folded);
   }
   const starts = candidates.flatMap((e, i) => isUserTurn(e) && !isInternal(e) ? [i] : []);
   if (!starts.length) throw new Error('没有可保留的真实对话，原窗口保持不变');

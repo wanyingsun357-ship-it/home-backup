@@ -7,7 +7,6 @@ function spawnClaude(args,options={},role='chat'){
  if(codex.resolveEngine(model,role)==='codex')return codex.spawnCodex(args,options,role);
  const {codexThreadId,historyPrelude,...clean}=options;
  const mapped=[...args],promptAt=mapped.indexOf('-p');
- if(promptAt>=0)mapped[promptAt+1]+='\n(本地 API 的所有请求需加 curl -H "Authorization: Bearer $AYAN_APP_TOKEN"；令牌已经放在进程环境中，不要显示或保存它。)';
  const child=claude.spawnClaude(mapped,{...clean,env:{...clean.env,AYAN_APP_TOKEN:require('./engine-access').internal}},role);child.engine='claude';return child;
 }
 async function combinedCatalog(){

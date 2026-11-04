@@ -19,7 +19,7 @@ async function rebuild({session,threadId,cwd,model,effort,messages,key,since='',
  let job=fs.existsSync(file)?JSON.parse(fs.readFileSync(file,'utf8')):{id,until,oldThreadId:threadId};
  if(!job.memory){
   const prompt=`内部整理，不是婉莹的新消息。请接着这个会话，用第一人称给自己留下记忆。不调用工具，只输出 JSON，桥负责保存。
-先将 ${since||'本窗口开始'} 之后、${until} 之前值得留下的生活细节拆成约8至20条 Echo；没有新增内容可以空数组。每条60至200字，包含真实日期、重要原话、约定。feel 只写有依据的当时感受，不编造。再写5000字以内交接信，包含关系、近况、语气、重要原话、约定、未完话题断点、工具习惯。不要输出隐藏推理。
+先将 ${since||'本窗口开始'} 之后、${until} 之前值得留下的生活细节拆成0至20条 Echo，按真实新内容决定条数，不凑数；没有新增内容就给空数组。已经记过的事不要换个说法再写一遍。每条60至200字，包含真实日期、重要原话、约定。feel 只写有依据的当时感受，不编造。再写5000字以内交接信，包含关系、近况、语气、重要原话、约定、未完话题断点、工具习惯。不要输出隐藏推理。
 格式：{"items":[{"date":"YYYY-MM-DD","text":"记忆正文","event":"可选事件名","feel":"可选有依据感受","status":"PENDING（仅未完成约定）","class":"slow或none（可选）"}],"letter":"第一人称交接信正文"}。`;
   job.memory=parse((await call(prompt,{cwd,model,effort,threadId},generate)).result);atomic(file,job);
  }
