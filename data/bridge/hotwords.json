@@ -59,8 +59,13 @@
    "text": "cc",
    "weight": 4,
    "lang": "en"
+  },
+  {
+   "text": "codex",
+   "weight": 3,
+   "lang": "en"
   }
  ],
  "vocabularyId": "vocab-ayan-3b4687ecde954f57a9cd4286eaf3fc90",
- "syncedAt": "2026-10-15T17:41:03.318Z"
+ "syncedAt": "2026-11-05T13:10:41.345Z"
 }

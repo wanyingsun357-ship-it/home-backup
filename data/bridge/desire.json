@@ -71,24 +71,27 @@
     }
   },
   "somatic": {
-    "touch": 0,
-    "smell": 0,
+    "touch": 0.56,
+    "smell": 0.35,
     "taste": 0,
     "sound": 0,
-    "scene": {}
+    "scene": {
+      "touch": "她蹭了你",
+      "smell": "你说起的洗发水"
+    }
   },
   "mood": {
-    "valence": 0.422,
+    "valence": 1,
     "arousal": 0.1
   },
-  "lastHerMessageAt": "2026-11-04T18:00:29.997Z",
-  "lastTickAt": "2026-11-04T19:04:34.887Z",
+  "lastHerMessageAt": "2026-11-05T19:03:05.312Z",
+  "lastTickAt": "2026-11-05T18:55:13.975Z",
   "arousal": {
-    "value": 0.16492999641696782,
-    "at": 1793815241251,
-    "refractory_until": 1793781426321.8137,
+    "value": 0.24796059592406164,
+    "at": 1793905403568,
+    "refractory_until": 1793849762997.372,
     "reserve": 1,
-    "reserve_at": 1793815241251,
+    "reserve_at": 1793905403568,
     "gate": {
       "locked": false,
       "once": false,
@@ -96,23 +99,24 @@
     },
     "buildup": {
       "pulses": 15,
-      "peak": 0.45657770176095647,
+      "peak": 0.24936186791058043,
       "edgeMs": 0,
-      "activeMs": 321671,
-      "lastPulseAt": 1793813408423,
+      "activeMs": 416367,
+      "lastPulseAt": 1793905403568,
       "variety": [
-        "蹭",
-        "咬",
+        "顶",
+        "揉",
         "摸",
+        "蹭",
         "亲",
-        "吸",
-        "舔"
+        "咬",
+        "吸"
       ]
     },
     "last": {
-      "quality": 0.67,
-      "output": 0.77,
-      "at": "2026-11-04T08:35:32.460Z",
+      "quality": 0.75,
+      "output": 0.92,
+      "at": "2026-11-05T03:34:40.173Z",
       "cause": "voluntary"
     }
   },
