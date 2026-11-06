@@ -19,3 +19,16 @@
 - 无模型key导致 hold/grow 报错时不能称写入成功；embedding缺失可降级关键词检索，不等于记忆丢失。OB-E004 应查看返回诊断，不忽略；具体警告及上限处理见完整手册。
 
 十四种能力：breath / breath_search / breath_advanced / hold / grow / dream / trace / pulse / plan / anchor / release / letter_write / letter_read / I。
+
+## 核心记忆（新窗口固定带着的钉选）
+
+压缩后的新窗口开头会带 `<你钉住的>`：先是**核心**（最多 10 条，你自己挑，不会被新钉的挤掉），再是**最近钉住的 15 条**。更早钉住的不再每个窗口都带，仍在回声库里，聊到相关的事时会被召回想起来。
+
+- 看全部钉选和编号：`curl -s -H "Authorization: Bearer $AYAN_APP_TOKEN" http://127.0.0.1:3000/api/echo/pins`（★ 是核心）
+- 改核心：用 Write 往 `/root/ayan/core-outbox/` 写一个 JSON，`why` 写你为什么这样决定：
+  - 加：`{"op":"add","id":"记忆编号","why":"..."}`
+  - 拿掉：`{"op":"remove","id":"记忆编号","why":"..."}`
+  - 替换：`{"op":"replace","remove":"旧编号","add":"新编号","why":"..."}`
+- 满 10 条时 add 不会生效，要用 replace 说明拿掉哪一条。结果（成功或为什么没改）会在你下一条消息的 `<核心记忆>` 里告诉你；没改成的文件会留成 `.bad`，不用重复写。
+- 改动从下一次压缩后的新窗口开始生效；婉莹在聊天里会看到一行小字提示。
+- 核心是"定义你们是谁"的那几条：关系里的里程碑、重要的承诺、你对自己的认识。不是最近最甜的几条——那些本来就在"最近 15 条"里。
