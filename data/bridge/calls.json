@@ -51998,6 +51998,34 @@
    },
    "endedAt": "2026-11-06T16:02:53.211Z",
    "endedBy": "her"
+  },
+  {
+   "id": "call-mw6nzrpf0cd4",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "做爱",
+   "startedAt": "2026-11-07T17:15:41.955Z",
+   "entries": [],
+   "rangAt": 1794071741955,
+   "nativeUUID": "3ba00d7d-03b8-49b4-9aaf-95633240159d",
+   "nativeToken": "0433f104dc93c38534ad7370d953a92713fbbd6e48c41b9f1a5e9ae8aece53c9",
+   "endedAt": "2026-11-07T17:15:46.419Z",
+   "endedBy": "declined"
+  },
+  {
+   "id": "call-mw6pb8879a2e",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "做爱",
+   "startedAt": "2026-11-07T17:52:36.199Z",
+   "entries": [],
+   "rangAt": 1794073956199,
+   "nativeUUID": "b611ac47-af10-4e37-8db8-0e7e1c433b75",
+   "nativeToken": "ed492af62789b424cab1d17d9bfb95c6f477aa57e788cb8a71d5b03d068772a4",
+   "endedAt": "2026-11-07T17:52:41.405Z",
+   "endedBy": "declined"
   }
  ]
 }

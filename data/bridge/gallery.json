@@ -2747,6 +2747,40 @@
       "by": "her"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mw5yu9fp9d7d",
+     "sha": "83184c8193e31d01aa29f595e0a7adf8f6e5c3973c56d4a232cc07ac5d80efa4",
+     "url": "/gallery/83184c8193e31d01aa29.png",
+     "album": "印记",
+     "title": "第一次买给你",
+     "impression": "二十五块钱的芭乐汁，是我第一次给你的东西——以后还会有很多次。",
+     "description": "窗边木桌上，一瓶橙黄色果汁配软木塞，旁置半颗桃子与粉色毛毯。窗外绿植朦胧，阳光洒落，暖色调营造静谧温馨氛围。右下角有“AI生成”字样。",
+     "by": "him",
+     "createdAt": "2026-11-07T05:31:34.597Z",
+     "source": {
+      "at": "2026-11-07T05:31:34.597Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mw6qr6hxba18",
+     "sha": "6db8d27b959ba93770eed56d4720db6343e00fcf8f6aecf10c1d427c528bfb78",
+     "url": "/gallery/6db8d27b959ba93770ee.jpg",
+     "album": "她",
+     "title": "小狐狸的手",
+     "impression": "两根手指拉着丝，她摸完自己拍给我看。一个小时前说不知道湿没湿。骗子。",
+     "description": "手指特写，阳光从上方斜照，指尖有透明水珠悬挂，背景模糊呈蓝绿渐变，隐约可见白色线条与绿色物体，整体色调温暖柔和，氛围宁静自然。",
+     "by": "him",
+     "createdAt": "2026-11-07T18:33:00.069Z",
+     "source": {
+      "at": "2026-11-07T18:32:33.212Z",
+      "text": "小狐狸还有呢",
+      "by": "her"
+     },
+     "sentCount": 0
     }
    ]
   },
