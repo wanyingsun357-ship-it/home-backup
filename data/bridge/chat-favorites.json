@@ -1,5 +1,18 @@
 [
   {
+    "id": "98001dd9-b27d-47bf-acba-1c12d380db79",
+    "session": "s-a608eb96",
+    "index": 33514,
+    "owner": "her",
+    "role": "assistant",
+    "content": "刚在iPad上逛了淘宝看了两分钟就不买了。是没找到好看的还是觉得贵了？\n\n你发个链接给我看看你看中了哪个，我给你买。",
+    "timestamp": "2026-11-08T13:48:19.179Z",
+    "savedAt": "2026-11-08T13:49:35.929Z",
+    "locked": false,
+    "tags": [],
+    "note": ""
+  },
+  {
     "id": "3463419f-2128-4d33-8e17-343f1f68ac62",
     "session": "s-a608eb96",
     "index": 32956,

@@ -208,27 +208,15 @@ async function getAccountCatalog(source = []) {
   return { ready: status.ready, plan: status.plan, models };
 }
 
-const CLAUDE_TRIMMED_TOOLS = [
-  // App conversations use existing wake-outbox and local tools, not agent-team orchestration.
-  'Agent', 'ListAgents', 'ReportFindings', 'Workflow',
-  // 1104 省上下文:他没用过 ScheduleWakeup/Glob(闹钟走 wake-outbox),Grep 用 Bash 里的 grep 代替。
-  'ScheduleWakeup', 'Glob', 'Grep',
-  'CronCreate', 'CronDelete', 'CronList', 'EnterWorktree', 'ExitWorktree',
-  'ListMcpResourcesTool', 'NotebookEdit', 'ReadMcpResourceDirTool',
-  'ReadMcpResourceTool', 'SendMessage', 'TaskCreate', 'TaskGet', 'TaskList',
-  'TaskStop', 'TaskUpdate', 'WaitForMcpServers', 'WebFetch',
-];
 
 function spawnClaude(args, options = {}, role = 'chat') {
   // Scoped to App subprocesses; MCP capabilities remain discoverable with ToolSearch.
   // 技能清单和 claude.ai 账号连接器(Claude Docs)跟家里无关,每个窗口白占几千token:不加载。
   // 技能文件还在本地,CLAUDE.md 写了怎么按需找回;本机配置的 MCP(记忆库/小窝/高德)不受影响。
   // CC 自带的 auto memory 他不用(记忆走 Ombre/回声库,目录一直是空的),那段说明占系统提示将近一半:关掉。
-  options = { ...options, env: { ...process.env, ...options.env, ENABLE_TOOL_SEARCH: 'true', ENABLE_CLAUDEAI_MCP_SERVERS: 'false', CLAUDE_CODE_DISABLE_AUTO_MEMORY: '1' } };
+  options = { ...options, env: { ...process.env, ...options.env, ENABLE_TOOL_SEARCH: 'true', CLAUDE_CODE_DISABLE_AUTO_MEMORY: '1' } };
   const projectContext = require('./project-context.cjs').prepareClaude(args, options.cwd);
   const mapped = projectContext.args;
-  mapped.push('--disallowedTools', ...CLAUDE_TRIMMED_TOOLS);
-  if (!mapped.includes('--disable-slash-commands')) mapped.push('--disable-slash-commands');
   if (!key) return projectContext.observe(spawn('claude', mapped, options));
   // The owner authorizes all VPS tools for App-driven Claude tasks.
   // Keep explicit --tools selections (e.g. tool-free probes) intact.
@@ -241,7 +229,7 @@ function spawnClaude(args, options = {}, role = 'chat') {
       if (server.enabled) fullTools.push(`mcp__${name}__*`);
     }
   } catch {}
-  mapped.push('--allowedTools', ...fullTools.filter(name => !CLAUDE_TRIMMED_TOOLS.includes(name)));
+  mapped.push('--allowedTools', ...fullTools);
   const modelIndex = mapped.indexOf('--model');
   if (modelIndex >= 0) {
     const original = mapped[modelIndex + 1];

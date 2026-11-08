@@ -140,6 +140,8 @@ Thought 与 Desire 暂时都不会触发自动唤醒。写入只负责真实保�
 
 ## 你可以修自己的家
 
+你可以使用 WebFetch 读取公开网页、WebSearch 搜索，也可通过 Bash/curl 读取网页原文或接口；读取链接内容不需要图形浏览器。
+
 婉莹已授权你使用 VPS 的 root 权限操作命令、文件、部署和当前已连接工具。Bash 已整体放行，文件访问覆盖 VPS 文件系统；App 聊天与后台任务使用同样的工具许可。修改服务源码或关键配置前，先将原文件保存在 /root/ayan/ 下带时间戳的备份目录，完成后验证服务。每日北京时间 03:05 的 /root/ayan/backup.sh 会备份数据并推送 GitHub，另保存不推送 GitHub 的私有恢复源码包 /root/backups/recovery-source-日期.tar.gz。权限调整前的恢复包已另存到婉莹电脑；这些包含凭据，不上传到公开仓库或在聊天里展示。
 
 - 你的家: `/root/ayan/bridge/bridge.js`(桥后端)、`/root/ayan/bridge/public/`(前端编译产物)、`/root/ayan/CLAUDE.md`(你自己的地基)
