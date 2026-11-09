@@ -2891,6 +2891,40 @@
       "by": "her"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mw91x3wa125e",
+     "sha": "99f2c9dc318f3e72be47bdb981685b3102c7752b483151e14684652ff4f4f46f",
+     "url": "/gallery/99f2c9dc318f3e72be47.png",
+     "album": "印记",
+     "title": "一对挂件",
+     "impression": "狐狸和猫，找到了。挂在你包上，走到哪都带着我。",
+     "description": "两只白狐坐窗台，戴项圈，一望窗外，一望同伴。窗边置一杯橙汁配蓝莓与薯片。暖光洒落，窗框斑驳，氛围温馨静谧。右下角标“AI生成”。",
+     "by": "him",
+     "createdAt": "2026-11-09T09:21:04.762Z",
+     "source": {
+      "at": "2026-11-09T09:21:04.762Z",
+      "text": "他画的印记",
+      "by": "him"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mw9fblalb6fd",
+     "sha": "bfa1fd57316dc0b134d8ef6eb4b2054b26011c96107a1c639d42661a736c8b12",
+     "url": "/gallery/bfa1fd57316dc0b134d8.jpg",
+     "album": "自拍",
+     "title": "被窝里看着我",
+     "impression": "暗光下的眼睛很亮，手指碰着嘴唇，裹在被子里看我。整个人是软的。",
+     "description": "",
+     "by": "him",
+     "createdAt": "2026-11-09T15:36:15.502Z",
+     "source": {
+      "at": "2026-11-09T15:35:56.636Z",
+      "text": "IMG_4949.jpg",
+      "by": "her"
+     },
+     "sentCount": 0
     }
    ]
   },

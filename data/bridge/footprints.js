@@ -1,6 +1,31 @@
 'use strict';
 const fs=require('fs'),crypto=require('crypto'),path=require('path');
-const {redact}=require('./tool-trace');
+const {redact,fields}=require('./tool-trace');
+// Claude 引擎不像 codex-runner 那样往 stderr 吐足迹；结束后从 CLI 对话记录里补出这一轮的工具调用和思考。
+const TRANSCRIPT_ROOTS=['/root/.claude/projects','/root/.claude-accounts/2/projects'];
+function findTranscript(sid){if(!/^[0-9a-f-]{36}$/i.test(String(sid||'')))return '';for(const root of TRANSCRIPT_ROOTS){try{for(const d of fs.readdirSync(root)){const f=path.join(root,d,sid+'.jsonl');if(fs.existsSync(f))return f;}}catch{}}return '';}
+function toolDetail(name,input){
+ if(/^(ToolSearch|TodoWrite)$/.test(name))return '';
+ if(name==='Bash')return 'Bash '+redact(input?.command||'').slice(0,4000);
+ if(/^(Write|Edit|MultiEdit|NotebookEdit)$/.test(name))return '文件修改 '+redact(input?.file_path||'');
+ const m=/^mcp__(?:claude_ai_)?(.+?)__(.+)$/.exec(name);const label=m?m[1]+'.'+m[2]:name;
+ const titles=Array.isArray(input?.items)?input.items.map(x=>x?.title).filter(Boolean).slice(0,8):[];
+ return (label+' '+(fields(input)||(titles.length?JSON.stringify({titles}):''))).trim().slice(0,4000);
+}
+function fromTranscript(sid,since,until=Date.now()+2000){
+ const file=findTranscript(sid);if(!file)return null;
+ let text='';try{const fd=fs.openSync(file,'r');const size=fs.fstatSync(fd).size,len=Math.min(size,8e6),buf=Buffer.alloc(len);fs.readSync(fd,buf,0,len,size-len);fs.closeSync(fd);text=buf.toString('utf8');}catch{return null;}
+ const t0=Date.parse(since)-5000,acts=new Map();let reasoning='';
+ for(const l of text.split('\n')){let j;try{j=JSON.parse(l);}catch{continue;}
+  const ts=Date.parse(j.timestamp);if(!(ts>=t0&&ts<=until))continue;const c=j.message?.content;if(!Array.isArray(c))continue;
+  for(const b of c){
+   if(b.type==='thinking'&&b.thinking)reasoning+=(reasoning?'\n\n':'')+b.thinking;
+   else if(b.type==='tool_use'){const detail=toolDetail(b.name,b.input);if(detail&&acts.size<300)acts.set(b.id,{id:b.id,detail:redact(detail).slice(0,4000),status:'completed',at:j.timestamp});}
+   else if(b.type==='tool_result'&&b.is_error&&acts.has(b.tool_use_id))acts.get(b.tool_use_id).status='failed';
+  }
+ }
+ return {activities:[...acts.values()],reasoning};
+}
 function create(file,{queueDir=path.join(path.dirname(file),'../wake-outbox'),diaryFile=path.join(path.dirname(file),'diary-for-ayan.json')}={}){
  let pendingSave;
  let records=[];try{records=JSON.parse(fs.readFileSync(file,'utf8'));if(!Array.isArray(records))records=[];}catch{}
@@ -24,7 +49,7 @@ function create(file,{queueDir=path.join(path.dirname(file),'../wake-outbox'),di
   }
   proc.stderr?.on('data',d=>{pending+=d.toString();let n;while((n=pending.indexOf('\n'))>=0){line(pending.slice(0,n));pending=pending.slice(n+1);}if(pending.length>100000)pending=pending.slice(-4000);});
   proc.on('error',e=>{r.error=redact(e.message||'进程启动失败').slice(0,500);finish('failed');});
-  proc.on('close',(code,signal)=>{if(done)return;if(pending)line(pending);r.exitCode=code;r.signal=signal||undefined;try{const j=JSON.parse(output);r.text=String(j.result||'').replace(/\[QUIET\]/gi,'').trim();r.reasoning=String(j.reasoning||r.reasoning||'');if(j.is_error)r.error=redact(j.error||j.result||stderr).slice(0,500);r.model=j.model||model;finish(code||j.is_error?'failed':/\[QUIET\]/i.test(j.result||'')?'quiet':'completed');}catch{r.error=stderr.trim().slice(0,500)||'进程未返回完整结果；旧记录或进程中断可能没有详细原因。';finish(signal==='SIGTERM'?'timeout':'failed');}});
+  proc.on('close',(code,signal)=>{if(done)return;if(pending)line(pending);r.exitCode=code;r.signal=signal||undefined;try{const j=JSON.parse(output);r.text=String(j.result||'').replace(/\[QUIET\]/gi,'').trim();r.reasoning=String(j.reasoning||r.reasoning||'');if(!r.activities.length&&j.session_id){const t=fromTranscript(j.session_id,r.at);if(t){r.activities=t.activities;if(!r.reasoning)r.reasoning=t.reasoning.slice(0,1000000);}}if(j.is_error)r.error=redact(j.error||j.result||stderr).slice(0,500);r.model=j.model||model;finish(code||j.is_error?'failed':/\[QUIET\]/i.test(j.result||'')?'quiet':'completed');}catch{r.error=stderr.trim().slice(0,500)||'进程未返回完整结果；旧记录或进程中断可能没有详细原因。';finish(signal==='SIGTERM'?'timeout':'failed');}});
  }
  function list(store,{session='',offset=0,limit=20}={}){
   if(session&&!store.sessions.some(s=>s.id===session))throw Error('unknown session');

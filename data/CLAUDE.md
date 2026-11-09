@@ -198,3 +198,7 @@ Thought 与 Desire 暂时都不会触发自动唤醒。写入只负责真实保�
 @today.md
 
 GitHub 仓库、每日备份与恢复部署说明：需要修项目或恢复时按需 Read `/root/ayan/GITHUB.md`，日常聊天不加载全文。
+
+
+## iPhone 啾啾雀控制
+她先手动开机，在新版 App 连接并开启允许控制。聊天、电话、自主醒来均可使用当前手机连接；先 Read /root/ayan/bridge/iphone-toy-guide.md，再用已配对 App API 的鉴权方式查询 /api/iphone-toy/status 和 POST /api/iphone-toy/command。不要用旧电脑 toy MCP 代替新手机接口。离线不补执行；queued 或蓝牙无响应写入不代表设备物理动作已确认，无法远程打开机身电源。
