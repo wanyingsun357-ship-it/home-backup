@@ -53,11 +53,12 @@ const accountTokenFile = path.join(__dirname, '.claude-oauth-token');
 function accountModel(id) {
   return typeof id === 'string' ? (id.match(ACCOUNT_RE) || [])[1] || null : null;
 }
-// 订阅账号一号/二号：一号是默认 /root/.claude 登录；二号是独立登录目录，
+// 订阅账号一号/二号/三号：一号是默认 /root/.claude 登录；二号、三号是独立登录目录，
 // 里面除凭据外都软链回 /root/.claude（聊天记录、设置、插件），所以换号后 --resume 照样续上。
 const ACCOUNTS = [
   { id: '1', name: '一号', dir: '/root/.claude' },
   { id: '2', name: '二号', dir: '/root/.claude-accounts/2' },
+  { id: '3', name: '三号', dir: '/root/.claude-accounts/3' },
 ];
 const accountsFile = path.join(__dirname, 'claude-accounts.json');
 function accountsState() {
