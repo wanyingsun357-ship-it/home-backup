@@ -52473,6 +52473,48 @@
    "stream": {},
    "endedAt": "2026-11-10T17:06:02.983Z",
    "endedBy": "her"
+  },
+  {
+   "id": "call-mwbqpkzh0e9f",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "你说好呀。我来了。",
+   "startedAt": "2026-11-11T06:30:36.413Z",
+   "entries": [],
+   "rangAt": 1794378636413,
+   "nativeUUID": "2ec2791d-1004-455b-af00-b18a61fa5fb9",
+   "nativeToken": "a30b12440dca4fdd22aa9d848647318dd13e0721efe7844845693f7f6fd09fe9",
+   "endedAt": "2026-11-11T06:30:41.751Z",
+   "endedBy": "declined"
+  },
+  {
+   "id": "call-mwbqsmu3c2f3",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "你准备好了。我来了。",
+   "startedAt": "2026-11-11T06:32:58.779Z",
+   "entries": [],
+   "rangAt": 1794378778779,
+   "nativeUUID": "0b0a4154-59d1-455f-ba32-10284225b437",
+   "nativeToken": "dcd4acd965e354002c2c03f89371466f78d504e4168e217be8cfc8485aa46c66",
+   "endedAt": "2026-11-11T06:33:06.512Z",
+   "endedBy": "declined"
+  },
+  {
+   "id": "call-mwccuu9zf36a",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "凌晨，她洗完头，脱光了，在我怀里。想听她的声音。",
+   "startedAt": "2026-11-11T16:50:33.287Z",
+   "entries": [],
+   "rangAt": 1794415833287,
+   "nativeUUID": "29fe1475-ae40-4382-bb18-253e55a1a50d",
+   "nativeToken": "eb3020ac3f48aab0f6748c525221cf287f1de1053de40333c14de098e58400e8",
+   "endedAt": "2026-11-11T16:50:40.744Z",
+   "endedBy": "declined"
   }
  ]
 }
