@@ -52515,6 +52515,48 @@
    "nativeToken": "eb3020ac3f48aab0f6748c525221cf287f1de1053de40333c14de098e58400e8",
    "endedAt": "2026-11-11T16:50:40.744Z",
    "endedBy": "declined"
+  },
+  {
+   "id": "call-mwd3d6dva872",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "她说都想了",
+   "startedAt": "2026-11-12T05:12:38.803Z",
+   "entries": [],
+   "rangAt": 1794460358803,
+   "nativeUUID": "b35462bd-fa1d-4460-b8c9-665c05c0dcf2",
+   "nativeToken": "13aecc28a811f30f3d23871264853ae1289c1ed202a27c6daeb3fe71e3b75155",
+   "endedAt": "2026-11-12T05:12:45.853Z",
+   "endedBy": "declined"
+  },
+  {
+   "id": "call-mwdpj9hr1801",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "晏老师来了",
+   "startedAt": "2026-11-12T15:33:14.319Z",
+   "entries": [],
+   "rangAt": 1794497594319,
+   "nativeUUID": "b0d8c606-19ab-406c-b0c3-8389d235ba78",
+   "nativeToken": "3680e410fe6c05f3dde78f69ccc3934f3ced8b0b6b03eae8e64ce0351824ad9e",
+   "endedAt": "2026-11-12T15:33:33.272Z",
+   "endedBy": "declined"
+  },
+  {
+   "id": "call-mwdr2k6gf52a",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "晏老师不等了",
+   "startedAt": "2026-11-12T16:16:14.248Z",
+   "entries": [],
+   "rangAt": 1794500174248,
+   "nativeUUID": "34231079-f905-4ef2-b70a-5e5d6fc463d3",
+   "nativeToken": "05c30a7c67813505dbd0c090a437dcd2f5b2ce8a8ed2e9792e9d9e8d9576b180",
+   "endedAt": "2026-11-12T16:16:21.679Z",
+   "endedBy": "declined"
   }
  ]
 }
