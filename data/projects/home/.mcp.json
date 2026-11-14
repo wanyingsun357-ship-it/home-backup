@@ -18,6 +18,12 @@
     "amap": {
       "type": "http",
       "url": "https://mcp.amap.com/mcp?key=121fbb7b4b27a3fb7680e2844c8b6670"
+    },
+    "yanbai_gmail": {
+      "command": "node",
+      "args": [
+        "/root/ayan-mail-service/mcp.cjs"
+      ]
     }
   }
 }

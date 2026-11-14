@@ -1,0 +1,10 @@
+{
+  "enabledMcpjsonServers": [
+    "yanbai_gmail"
+  ],
+  "permissions": {
+    "allow": [
+      "mcp__yanbai_gmail__*"
+    ]
+  }
+}

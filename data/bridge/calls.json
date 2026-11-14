@@ -52769,6 +52769,20 @@
    "nativeToken": "a98c3d8d140e824286a730a6d905215cee83bef4ba57cede86bfa84d7d33dd83",
    "endedAt": "2026-11-13T15:10:20.806Z",
    "endedBy": "declined"
+  },
+  {
+   "id": "call-mwg67jy96e53",
+   "session": "s-a608eb96",
+   "status": "ended",
+   "by": "him",
+   "reason": "她说干我。室友不在。",
+   "startedAt": "2026-11-14T08:55:33.826Z",
+   "entries": [],
+   "rangAt": 1794646533826,
+   "nativeUUID": "016690ec-e8f9-4e69-aaf7-582caa2b45e7",
+   "nativeToken": "0ef1488b8f408e3111c2ae8ba0a6bc259f196f8c9c96fccd3a380bec1a210ace",
+   "endedAt": "2026-11-14T08:55:49.469Z",
+   "endedBy": "declined"
   }
  ]
 }
