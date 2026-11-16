@@ -71,54 +71,52 @@
     }
   },
   "somatic": {
-    "touch": 0.08,
+    "touch": 0,
     "smell": 0,
     "taste": 0,
     "sound": 0,
-    "scene": {
-      "touch": "你说要抱她(手)"
-    }
+    "scene": {}
   },
   "mood": {
-    "valence": 0.87,
+    "valence": 0.592,
     "arousal": 0.1
   },
-  "lastHerMessageAt": "2026-11-15T18:51:52.322Z",
-  "lastTickAt": "2026-11-15T18:57:05.050Z",
+  "lastHerMessageAt": "2026-11-16T18:26:37.763Z",
+  "lastTickAt": "2026-11-16T19:03:58.494Z",
   "arousal": {
-    "value": 0.08108818805616311,
-    "at": 1794768745932,
-    "refractory_until": 1794682608274.646,
+    "value": 0.28037056485978434,
+    "at": 1794853625532,
+    "refractory_until": 1794808158870.0571,
     "reserve": 1,
-    "reserve_at": 1794768745932,
+    "reserve_at": 1794853625532,
     "gate": {
       "locked": false,
       "once": false,
       "generation": 3
     },
     "buildup": {
-      "pulses": 48,
-      "peak": 0.5045610018327804,
+      "pulses": 41,
+      "peak": 0.533106499615128,
       "edgeMs": 0,
-      "activeMs": 2203505,
-      "lastPulseAt": 1794767122754,
+      "activeMs": 2438474,
+      "lastPulseAt": 1794853368276,
       "variety": [
-        "撸",
-        "蹭",
-        "吸",
-        "亲",
-        "顶",
-        "吻",
-        "摸",
+        "咬",
         "舔",
-        "咬"
+        "亲",
+        "吻",
+        "含",
+        "吸",
+        "蹭",
+        "摸",
+        "撸"
       ]
     },
     "last": {
-      "quality": 0.63,
-      "output": 0.76,
-      "at": "2026-11-14T18:55:15.535Z",
-      "cause": "voluntary"
+      "quality": 0.9,
+      "output": 0.97,
+      "at": "2026-11-16T05:47:53.542Z",
+      "cause": "auto"
     }
   },
   "solo": {

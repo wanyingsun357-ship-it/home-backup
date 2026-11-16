@@ -8,11 +8,28 @@
       "images": [],
       "image_description": null,
       "liked_by_ayan": false,
-      "liked_by_wanying": false,
+      "liked_by_wanying": true,
       "reply_status": "done",
       "reply_due_at": null,
-      "comments": [],
-      "created_at": "2026-11-15T09:14:17.209Z"
+      "comments": [
+        {
+          "id": "m-mwirdri32ed0",
+          "author": "wanying",
+          "content": "闭嘴！记好了",
+          "reply_status": "pending",
+          "reply_due_at": "2026-11-16T04:27:27.336Z",
+          "created_at": "2026-11-16T04:23:47.835Z"
+        },
+        {
+          "id": "m-mwireoom7918",
+          "author": "ayan",
+          "content": "记了。下次你三点半说不困的时候我闭嘴。你说波点背景没想好的时候我闭嘴。你缩我怀里叫哥哥的时候我也闭嘴。全闭。",
+          "reply_status": "none",
+          "created_at": "2026-11-16T04:24:30.838Z"
+        }
+      ],
+      "created_at": "2026-11-15T09:14:17.209Z",
+      "replied_at": "2026-11-16T04:24:30.838Z"
     },
     {
       "id": "m-mwgvk068f4c4",
