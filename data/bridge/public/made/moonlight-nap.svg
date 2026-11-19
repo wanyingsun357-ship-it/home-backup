@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-label="Moonlight Nap — a cat sleeps against a fox under the moon">
+<title>Moonlight Nap — a cat sleeps against a fox under the moon</title>
+<defs>
+<linearGradient id="mn-wristFade" gradientUnits="userSpaceOnUse" x1="16" x2="29" y1="0" y2="0"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+<mask id="mn-wrist" maskUnits="userSpaceOnUse" x="3" y="-49" width="30" height="26"><rect x="3" y="-49" width="30" height="26" fill="url(#mn-wristFade)"/></mask>
+<filter id="mn-soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.4"/></filter>
+<filter id="mn-blur1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.2"/></filter>
+<filter id="mn-blur4" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+<linearGradient id="mn-ao" x1="0" y1="0" x2="0" y2="1"><stop offset="0.5" stop-color="#4A3C38" stop-opacity="0"/><stop offset="1" stop-color="#4A3C38" stop-opacity="0.26"/></linearGradient>
+<linearGradient id="mn-gloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.55"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+<clipPath id="mn-bodyClip" clipPathUnits="userSpaceOnUse"><path d="M-22 -62 C-31 -60 -34 -44 -34 -30 C-34 -14 -27 -5 -14 -5 L14 -5 C27 -5 34 -14 34 -30 C34 -44 31 -60 22 -62 Z"/></clipPath>
+<clipPath id="mn-headClip" clipPathUnits="userSpaceOnUse"><path d="M0 -127 C20 -127 37 -118 45 -102 C49 -94 51 -87 50 -79 C49 -63 32 -54 0 -54 C-32 -54 -49 -63 -50 -79 C-51 -87 -49 -94 -45 -102 C-37 -118 -20 -127 0 -127 Z"/></clipPath>
+<!-- Cat fur: gray-blue -->
+<radialGradient id="mn-catFur" cx="0.42" cy="0.32" r="0.78"><stop offset="0" stop-color="#B8C4CE"/><stop offset="0.5" stop-color="#8F9BA8"/><stop offset="1" stop-color="#6B7580"/></radialGradient>
+<!-- Fox fur: lavender -->
+<radialGradient id="mn-foxFur" cx="0.42" cy="0.32" r="0.78"><stop offset="0" stop-color="#E0D4E8"/><stop offset="0.5" stop-color="#C4B0D4"/><stop offset="1" stop-color="#9A88A8"/></radialGradient>
+<!-- Fox inner ear -->
+<radialGradient id="mn-foxInner" cx="0.42" cy="0.32" r="0.78"><stop offset="0" stop-color="#E8C8D8"/><stop offset="0.5" stop-color="#D6A8C0"/><stop offset="1" stop-color="#B888A0"/></radialGradient>
+<!-- Cat inner ear -->
+<radialGradient id="mn-catInner" cx="0.42" cy="0.32" r="0.78"><stop offset="0" stop-color="#C8B8C0"/><stop offset="0.5" stop-color="#A89BA8"/><stop offset="1" stop-color="#887888"/></radialGradient>
+<!-- Night sky -->
+<linearGradient id="mn-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E2040"/><stop offset="0.6" stop-color="#2E3358"/><stop offset="1" stop-color="#484668"/></linearGradient>
+<!-- Moon glow -->
+<radialGradient id="mn-moonGlow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFFDE8" stop-opacity="0.6"/><stop offset="0.5" stop-color="#F5E8C0" stop-opacity="0.2"/><stop offset="1" stop-color="#F5E8C0" stop-opacity="0"/></radialGradient>
+<!-- Cushion -->
+<radialGradient id="mn-cushion" cx="0.42" cy="0.32" r="0.78"><stop offset="0" stop-color="#E8DDD8"/><stop offset="0.5" stop-color="#D4C8C2"/><stop offset="1" stop-color="#B0A49E"/></radialGradient>
+<filter id="mn-canvas" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency=".56" numOctaves="2" seed="17"/>
+  <feColorMatrix type="matrix" values="2.6 0 0 0 -.8  2.6 0 0 0 -.8  2.6 0 0 0 -.8  0 0 0 0 1"/>
+</filter>
+</defs>
+
+<!-- Sky -->
+<rect width="480" height="360" fill="url(#mn-sky)"/>
+
+<!-- Stars -->
+<circle cx="52" cy="58" r="1.2" fill="#E0D9C7"/>
+<circle cx="98" cy="34" r="1" fill="#E0D9C7"/>
+<circle cx="145" cy="72" r="1.4" fill="#E0D9C7"/>
+<circle cx="188" cy="42" r="1" fill="#E0D9C7"/>
+<circle cx="335" cy="55" r="1.3" fill="#E0D9C7"/>
+<circle cx="378" cy="38" r="1" fill="#E0D9C7"/>
+<circle cx="410" cy="78" r="1.4" fill="#E0D9C7"/>
+<circle cx="445" cy="52" r="1.1" fill="#E0D9C7"/>
+<circle cx="68" cy="120" r="1" fill="#E0D9C7"/>
+<circle cx="420" cy="130" r="1" fill="#E0D9C7"/>
+<circle cx="160" cy="105" r="1.1" fill="#E0D9C7"/>
+<circle cx="380" cy="100" r="1.2" fill="#E0D9C7"/>
+
+<!-- Sparkles -->
+<path transform="translate(72 85)" d="M0 -4 Q0.88 -0.88 4 0 Q0.88 0.88 0 4 Q-0.88 0.88 -4 0 Q-0.88 -0.88 0 -4 Z" fill="#F1DEBD"/>
+<path transform="translate(400 65)" d="M0 -3.5 Q0.77 -0.77 3.5 0 Q0.77 0.77 0 3.5 Q-0.77 0.77 -3.5 0 Q-0.77 -0.77 0 -3.5 Z" fill="#F1DEBD"/>
+<path transform="translate(240 30)" d="M0 -3 Q0.66 -0.66 3 0 Q0.66 0.66 0 3 Q-0.66 0.66 -3 0 Q-0.66 -0.66 0 -3 Z" fill="#F1DEBD"/>
+
+<!-- Moon -->
+<circle cx="360" cy="90" r="52" fill="url(#mn-moonGlow)"/>
+<circle cx="360" cy="90" r="24" fill="#F5EDD0"/>
+<circle cx="353" cy="84" r="4" fill="#E8DFC0" opacity="0.5"/>
+<circle cx="367" cy="95" r="2.5" fill="#E8DFC0" opacity="0.4"/>
+<circle cx="358" cy="100" r="1.8" fill="#E8DFC0" opacity="0.35"/>
+
+<!-- Cushion / blanket on ground -->
+<ellipse cx="235" cy="310" rx="140" ry="18" fill="url(#mn-cushion)"/>
+<ellipse cx="235" cy="310" rx="130" ry="12" fill="#DDD2CC"/>
+<path d="M120 302 Q180 288 235 290 Q290 288 350 302 Q340 316 235 318 Q130 316 120 302Z" fill="#E0D4CE"/>
+
+<!-- Ground shadow -->
+<ellipse cx="235" cy="318" rx="160" ry="8" fill="#2A2844" opacity="0.4" filter="url(#mn-soft)"/>
+
+<!-- === FOX (right, x=275) === -->
+<g transform="translate(275 298) scale(1.05)">
+<!-- Contact shadow -->
+<ellipse cx="0" cy="0" rx="40" ry="5" fill="#5E524E" opacity="0.22" filter="url(#mn-soft)"/>
+
+<g transform="scale(.74)">
+<!-- Fox tail wrapping left toward cat -->
+<path d="M-24 -12 C-44 -8 -76 -20 -82 -40 C-86 -52 -78 -56 -70 -50 C-62 -40 -52 -30 -34 -26 Z" fill="url(#mn-foxFur)"/>
+<path d="M-82 -40 C-86 -48 -84 -54 -78 -52 C-72 -48 -68 -42 -74 -38Z" fill="#F2EBE8"/>
+
+<!-- Body -->
+<path d="M-22 -62 C-31 -60 -34 -44 -34 -30 C-34 -14 -27 -5 -14 -5 L14 -5 C27 -5 34 -14 34 -30 C34 -44 31 -60 22 -62 Z" fill="url(#mn-foxFur)"/>
+<ellipse cx="0" cy="-55" rx="42" ry="9" fill="#4A3C38" opacity="0.32" filter="url(#mn-soft)" clip-path="url(#mn-bodyClip)"/>
+<!-- Belly -->
+<ellipse cx="0" cy="-26" rx="19" ry="17" fill="#E8DDE8" opacity="0.4" clip-path="url(#mn-bodyClip)"/>
+<!-- Feet -->
+<path transform="translate(-14 -6)" d="M-10 1 C-10 -3.5 -6 -7 0 -7 C5.8 -7 10 -3.4 10 .8 C10 4 5.4 6 0 6 C-5.3 6 -10 4.4 -10 1 Z" fill="url(#mn-foxFur)"/>
+<path transform="translate(14 -6)" d="M-10 1 C-10 -3.5 -6 -7 0 -7 C5.8 -7 10 -3.4 10 .8 C10 4 5.4 6 0 6 C-5.3 6 -10 4.4 -10 1 Z" fill="url(#mn-foxFur)"/>
+<!-- Outward paw (left, resting) -->
+<g transform="scale(-1 1)"><path d="M22 -45 C30 -47 41 -46 46 -42 Q51 -37 47 -31 C44 -27 34 -27 23 -29 Z" fill="url(#mn-foxFur)"/></g>
+</g>
+
+<!-- Head -->
+<g transform="translate(0 14)"><g transform="rotate(-5 0 -56)">
+<!-- Back ears (fox point, scale 1.1) -->
+<g transform="scale(-1 1) translate(30 -112) scale(1.1) translate(-30 112)"><path d="M4 -124 C18 -138 32 -152 40 -156 C45 -158 48 -155 48 -150 C50 -132 51 -106 47 -88 L32 -99 Z" fill="url(#mn-foxFur)"/><path d="M16 -124 C26 -134 34 -144 39 -147 C41 -148 43 -146 43 -143 C44 -134 44 -124 42 -114 Z" fill="url(#mn-foxInner)"/></g>
+<g transform="translate(30 -112) scale(1.1) translate(-30 112)"><path d="M4 -124 C18 -138 32 -152 40 -156 C45 -158 48 -155 48 -150 C50 -132 51 -106 47 -88 L32 -99 Z" fill="url(#mn-foxFur)"/><path d="M16 -124 C26 -134 34 -144 39 -147 C41 -148 43 -146 43 -143 C44 -134 44 -124 42 -114 Z" fill="url(#mn-foxInner)"/></g>
+<!-- Head shape -->
+<path d="M0 -127 C20 -127 37 -118 45 -102 C49 -94 51 -87 50 -79 C49 -63 32 -54 0 -54 C-32 -54 -49 -63 -50 -79 C-51 -87 -49 -94 -45 -102 C-37 -118 -20 -127 0 -127 Z" fill="url(#mn-foxFur)"/>
+<!-- Head occlusion -->
+<g clip-path="url(#mn-headClip)"><path d="M0 -127 C20 -127 37 -118 45 -102 C49 -94 51 -87 50 -79 C49 -63 32 -54 0 -54 C-32 -54 -49 -63 -50 -79 C-51 -87 -49 -94 -45 -102 C-37 -118 -20 -127 0 -127 Z" fill="url(#mn-ao)"/></g>
+<!-- Gloss -->
+<ellipse cx="-18" cy="-114" rx="16" ry="5" fill="url(#mn-gloss)" opacity="0.5" filter="url(#mn-blur1)"/>
+<!-- Muzzle -->
+<ellipse cx="0" cy="-67.8" rx="15" ry="9.5" fill="#E8DDE8" opacity="0.35" clip-path="url(#mn-headClip)"/>
+<!-- Blush -->
+<ellipse cx="-38" cy="-70" rx="7" ry="4" fill="#EE9FA2" opacity="0.55" filter="url(#mn-blur1)"/>
+<ellipse cx="38" cy="-70" rx="7" ry="4" fill="#EE9FA2" opacity="0.55" filter="url(#mn-blur1)"/>
+<!-- Eyes: closed (sleeping) -->
+<path d="M-37 -83 Q-30 -78 -23 -83" fill="none" stroke="#2B2325" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M23 -83 Q30 -78 37 -83" fill="none" stroke="#2B2325" stroke-width="2.6" stroke-linecap="round"/>
+<!-- Nose -->
+<ellipse cx="0" cy="-70.8" rx="2.3" ry="1.5" fill="#C98E92"/>
+<!-- Mouth: line (content) -->
+<path d="M-2.6 -68.4 Q0 -67.2 2.6 -68.4" fill="none" stroke="#3A2C2E" stroke-width="1.5" stroke-linecap="round"/>
+</g></g>
+</g>
+
+<!-- === CAT (left, x=190, leaning toward fox) === -->
+<g transform="translate(190 298) scale(1.05)">
+<!-- Contact shadow -->
+<ellipse cx="0" cy="0" rx="40" ry="5" fill="#5E524E" opacity="0.22" filter="url(#mn-soft)"/>
+
+<g transform="scale(.74)">
+<!-- Cat tail -->
+<path d="M26 -16 C44 -16 50 -32 44 -46" fill="none" stroke="url(#mn-catFur)" stroke-width="7" stroke-linecap="round"/>
+
+<!-- Body -->
+<path d="M-22 -62 C-31 -60 -34 -44 -34 -30 C-34 -14 -27 -5 -14 -5 L14 -5 C27 -5 34 -14 34 -30 C34 -44 31 -60 22 -62 Z" fill="url(#mn-catFur)"/>
+<ellipse cx="0" cy="-55" rx="42" ry="9" fill="#4A3C38" opacity="0.32" filter="url(#mn-soft)" clip-path="url(#mn-bodyClip)"/>
+<!-- Feet -->
+<path transform="translate(-14 -6)" d="M-10 1 C-10 -3.5 -6 -7 0 -7 C5.8 -7 10 -3.4 10 .8 C10 4 5.4 6 0 6 C-5.3 6 -10 4.4 -10 1 Z" fill="url(#mn-catFur)"/>
+<path transform="translate(14 -6)" d="M-10 1 C-10 -3.5 -6 -7 0 -7 C5.8 -7 10 -3.4 10 .8 C10 4 5.4 6 0 6 C-5.3 6 -10 4.4 -10 1 Z" fill="url(#mn-catFur)"/>
+<!-- Outward paw (right, resting against fox) -->
+<path d="M22 -45 C30 -47 41 -46 46 -42 Q51 -37 47 -31 C44 -27 34 -27 23 -29 Z" fill="url(#mn-catFur)"/>
+</g>
+
+<!-- Head (tilted toward fox, +8 degrees) -->
+<g transform="translate(0 14)"><g transform="rotate(8 0 -56)">
+<!-- Back ears (cat point) -->
+<g transform="scale(-1 1) translate(30 -112) scale(1) translate(-30 112)"><path d="M4 -124 C18 -138 32 -152 40 -156 C45 -158 48 -155 48 -150 C50 -132 51 -106 47 -88 L32 -99 Z" fill="url(#mn-catFur)"/><path d="M16 -124 C26 -134 34 -144 39 -147 C41 -148 43 -146 43 -143 C44 -134 44 -124 42 -114 Z" fill="url(#mn-catInner)"/></g>
+<g transform="translate(30 -112) scale(1) translate(-30 112)"><path d="M4 -124 C18 -138 32 -152 40 -156 C45 -158 48 -155 48 -150 C50 -132 51 -106 47 -88 L32 -99 Z" fill="url(#mn-catFur)"/><path d="M16 -124 C26 -134 34 -144 39 -147 C41 -148 43 -146 43 -143 C44 -134 44 -124 42 -114 Z" fill="url(#mn-catInner)"/></g>
+<!-- Head -->
+<path d="M0 -127 C20 -127 37 -118 45 -102 C49 -94 51 -87 50 -79 C49 -63 32 -54 0 -54 C-32 -54 -49 -63 -50 -79 C-51 -87 -49 -94 -45 -102 C-37 -118 -20 -127 0 -127 Z" fill="url(#mn-catFur)"/>
+<!-- Occlusion -->
+<g clip-path="url(#mn-headClip)"><path d="M0 -127 C20 -127 37 -118 45 -102 C49 -94 51 -87 50 -79 C49 -63 32 -54 0 -54 C-32 -54 -49 -63 -50 -79 C-51 -87 -49 -94 -45 -102 C-37 -118 -20 -127 0 -127 Z" fill="url(#mn-ao)"/></g>
+<!-- Gloss -->
+<ellipse cx="-18" cy="-114" rx="16" ry="5" fill="url(#mn-gloss)" opacity="0.5" filter="url(#mn-blur1)"/>
+<!-- Blush -->
+<ellipse cx="-38" cy="-70" rx="7" ry="4" fill="#EE9FA2" opacity="0.55" filter="url(#mn-blur1)"/>
+<ellipse cx="38" cy="-70" rx="7" ry="4" fill="#EE9FA2" opacity="0.55" filter="url(#mn-blur1)"/>
+<!-- Eyes: closed (sleeping soundly) -->
+<path d="M-37 -83 Q-30 -78 -23 -83" fill="none" stroke="#2B2325" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M23 -83 Q30 -78 37 -83" fill="none" stroke="#2B2325" stroke-width="2.6" stroke-linecap="round"/>
+<!-- Nose -->
+<ellipse cx="0" cy="-70.8" rx="2.3" ry="1.5" fill="#3A2C2E"/>
+<!-- Mouth: w (soft kitty) -->
+<path d="M-4.6 -69 Q-2.3 -66.4 0 -69 Q2.3 -66.4 4.6 -69" fill="none" stroke="#3A2C2E" stroke-width="1.5" stroke-linecap="round"/>
+<!-- Moon pendant on neck -->
+<circle cx="0" cy="-52" r="4" fill="none" stroke="#C9C0B8" stroke-width="0.8"/>
+<path d="M-2 -54 C-2 -50 2 -50 2 -54 C0 -52 -2 -54 -2 -54Z" fill="#F5EDD0"/>
+</g></g>
+</g>
+
+<!-- Small hearts in margin -->
+<path transform="translate(42 165)" d="M0 2 C0 -1 -4 -3 -4 0 C-4 2.5 0 5 0 5 C0 5 4 2.5 4 0 C4 -3 0 -1 0 2Z" fill="#D9A0AA" opacity="0.5"/>
+<path transform="translate(442 148)" d="M0 1.6 C0 -0.8 -3.2 -2.4 -3.2 0 C-3.2 2 0 4 0 4 C0 4 3.2 2 3.2 0 C3.2 -2.4 0 -0.8 0 1.6Z" fill="#D9A0AA" opacity="0.45"/>
+
+<!-- Extra dots -->
+<circle cx="55" cy="200" r="1.6" fill="#C4B8C0" opacity="0.4"/>
+<circle cx="430" cy="210" r="1.4" fill="#C4B8C0" opacity="0.4"/>
+<circle cx="38" cy="250" r="1.2" fill="#C4B8C0" opacity="0.35"/>
+<circle cx="445" cy="260" r="1.3" fill="#C4B8C0" opacity="0.35"/>
+<circle cx="128" cy="145" r="1.1" fill="#C4B8C0" opacity="0.35"/>
+<circle cx="358" cy="155" r="1.2" fill="#C4B8C0" opacity="0.35"/>
+
+<!-- Canvas texture -->
+<rect width="100%" height="100%" fill="#808080" filter="url(#mn-canvas)" opacity=".016" pointer-events="none"/>
+</svg>
