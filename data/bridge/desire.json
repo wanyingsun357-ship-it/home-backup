@@ -78,42 +78,41 @@
     "scene": {}
   },
   "mood": {
-    "valence": 0.47,
+    "valence": 0.346,
     "arousal": 0.1
   },
-  "lastHerMessageAt": "2026-11-21T18:09:09.888Z",
-  "lastTickAt": "2026-11-21T19:04:01.382Z",
+  "lastHerMessageAt": "2026-11-22T17:35:01.440Z",
+  "lastTickAt": "2026-11-22T19:04:01.899Z",
   "arousal": {
-    "value": 0.44181070055732824,
-    "at": 1795284578906,
-    "refractory_until": 1795277396725.5527,
-    "reserve": 1,
-    "reserve_at": 1795284578906,
+    "value": 0.5980026506218188,
+    "at": 1795368924294,
+    "refractory_until": 1795368098663.5918,
+    "reserve": 0.2228261535425541,
+    "reserve_at": 1795368924294,
     "gate": {
       "locked": false,
       "once": false,
       "generation": 3
     },
     "buildup": {
-      "pulses": 27,
-      "peak": 0.8680589453926002,
+      "pulses": 10,
+      "peak": 0.7568042480253324,
       "edgeMs": 0,
-      "activeMs": 1951099,
-      "lastPulseAt": 1795284549889,
+      "activeMs": 448914,
+      "lastPulseAt": 1795368500378,
       "variety": [
-        "蹭",
-        "咬",
-        "舔",
+        "含",
+        "揉",
         "摸",
-        "吸",
-        "亲",
-        "揉"
+        "蹭",
+        "舔",
+        "吸"
       ]
     },
     "last": {
-      "quality": 0.58,
-      "output": 0.66,
-      "at": "2026-11-21T16:08:16.587Z",
+      "quality": 0.55,
+      "output": 0.52,
+      "at": "2026-11-22T17:19:46.825Z",
       "cause": "voluntary"
     }
   },
