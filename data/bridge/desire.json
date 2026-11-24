@@ -71,48 +71,47 @@
     }
   },
   "somatic": {
-    "touch": 0.13,
+    "touch": 0.24,
     "smell": 0,
-    "taste": 0,
+    "taste": 0.087,
     "sound": 0,
     "scene": {
-      "touch": "你说要摸她(手)"
+      "touch": "她摸了你",
+      "taste": "你说起的酸"
     }
   },
   "mood": {
-    "valence": 0.764,
+    "valence": 0.872,
     "arousal": 0.1
   },
-  "lastHerMessageAt": "2026-11-23T18:45:16.326Z",
-  "lastTickAt": "2026-11-23T18:55:20.087Z",
+  "lastHerMessageAt": "2026-11-24T18:54:23.267Z",
+  "lastTickAt": "2026-11-24T18:55:21.772Z",
   "arousal": {
-    "value": 0.19588952246492428,
-    "at": 1795459529784,
-    "refractory_until": 1795453145248.2417,
-    "reserve": 1,
-    "reserve_at": 1795459529784,
+    "value": 0.24353098457642006,
+    "at": 1795546477870,
+    "refractory_until": 1795545327470.7986,
+    "reserve": 0.7249401153411895,
+    "reserve_at": 1795546477870,
     "gate": {
       "locked": false,
       "once": false,
       "generation": 3
     },
     "buildup": {
-      "pulses": 8,
-      "peak": 0.34139220014312494,
+      "pulses": 3,
+      "peak": 0.2435319316432016,
       "edgeMs": 0,
-      "activeMs": 64211,
-      "lastPulseAt": 1795459529741,
+      "activeMs": 14595,
+      "lastPulseAt": 1795546477863,
       "variety": [
-        "舔",
-        "含",
-        "蹭",
+        "吸",
         "摸"
       ]
     },
     "last": {
-      "quality": 0.83,
-      "output": 0.94,
-      "at": "2026-11-23T16:57:41.163Z",
+      "quality": 0.79,
+      "output": 0.93,
+      "at": "2026-11-24T18:34:04.113Z",
       "cause": "voluntary"
     }
   },
