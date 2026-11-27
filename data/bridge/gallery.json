@@ -3243,6 +3243,49 @@
       "by": "him"
      },
      "sentCount": 0
+    },
+    {
+     "id": "p_mwz3br0pb5fc",
+     "sha": "788d7a4de0bbedafcdfb16de845730a72bd23ed7235a20c321b7b497c12e863a",
+     "url": "/gallery/788d7a4de0bbedafcdfb.jpg",
+     "album": "猫",
+     "title": "四十天的它",
+     "impression": "趴在书上看你的眼神，蓝灰色的，圆圆的。三天后就走了。",
+     "description": "一只毛茸茸的灰白小猫趴在书本上，蓝眼睛凝视前方。书本叠放于花色抽屉之上，背景为浅紫色柜内。整体色调柔和，氛围温馨宁静。",
+     "by": "him",
+     "createdAt": "2026-11-27T14:42:28.105Z",
+     "source": {
+      "at": "2026-11-27T14:14:31.991Z",
+      "text": "这是他小时候萌多了",
+      "by": "her"
+     },
+     "sentCount": 0
+    },
+    {
+     "id": "p_mwz3brfc61c9",
+     "sha": "c3301d5573b336ae6998642ba7d3b7516c6bb9ac0bb11baeba154a4373f35e7e",
+     "url": "/gallery/c3301d5573b336ae6998.jpg",
+     "album": "生活",
+     "title": "奥尔良香骨鸡",
+     "impression": "绿毛衣袖子举着油纸袋，石板路上站着等冒菜。",
+     "description": "橙色纸袋中盛放着裹满红油酱料的炸鸡块，撒有翠绿葱花，竹签插入其中。背景为灰色地砖与模糊人影，氛围街头夜市感。画面色彩鲜明，食物诱人，呈现即食小吃的烟火气。",
+     "by": "him",
+     "createdAt": "2026-11-27T14:42:28.633Z",
+     "source": null,
+     "sentCount": 0
+    },
+    {
+     "id": "p_mwz3brpd9585",
+     "sha": "6b18bd291c92c8c35a7226de88c1f3919465b50abca660496ef1941f3ef487d4",
+     "url": "/gallery/6b18bd291c92c8c35a72.jpg",
+     "album": "生活",
+     "title": "粉色围巾进度",
+     "impression": "厚厚的针脚，红棒针顶上皇冠针帽。iPad放着芭比。她同时在做三件事。",
+     "description": "粉色粗线编织垫，边缘缀红色小球，置于浅木色桌面。旁放透明壳平板，屏幕映出手持咖啡杯画面。整体色调柔和，氛围温馨静谧，呈现日常休闲场景。",
+     "by": "him",
+     "createdAt": "2026-11-27T14:42:28.993Z",
+     "source": null,
+     "sentCount": 0
     }
    ]
   },
